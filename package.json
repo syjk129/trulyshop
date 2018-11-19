@@ -22,6 +22,8 @@
     "watch": "slate-tools start --skipFirstDeploy",
     "build": "slate-tools build",
     "deploy": "slate-tools build && slate-tools deploy",
+    "deploy-staging": "slate-tools build && slate-tools deploy --env=staging",
+    "deploy-prod": "slate-tools build && slate-tools deploy --env=production",
     "zip": "slate-tools build && slate-tools zip"
   }
 }
