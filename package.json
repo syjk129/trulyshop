@@ -23,7 +23,7 @@
     "build": "slate-tools build",
     "deploy": "slate-tools build && slate-tools deploy --skipPrompts",
     "deploy-staging": "slate-tools build && slate-tools deploy --skipPrompts --env=staging",
-    "deploy-prod": "slate-tools build && slate-tools deploy --skipPrompts --env=production",
+    "deploy-prod": "slate-tools build && slate-tools deploy --env=production --skipPrompts",
     "zip": "slate-tools build && slate-tools zip"
   }
 }
