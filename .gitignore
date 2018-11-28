@@ -13,7 +13,6 @@ upload
 deploy.log
 config/shopify.yml
 npm-debug.log
-.env.*
 
 
 # Compiled source #
