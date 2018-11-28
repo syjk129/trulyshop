@@ -1,5 +1,5 @@
 {
-  "name": "skeleton-theme",
+  "name": "trulyshop",
   "version": "1.0.0-alpha.1",
   "private": true,
   "author": "Shopify Inc.",
@@ -21,7 +21,9 @@
     "start": "slate-tools start",
     "watch": "slate-tools start --skipFirstDeploy",
     "build": "slate-tools build",
-    "deploy": "slate-tools build && slate-tools deploy",
+    "deploy": "slate-tools build && slate-tools deploy --skipPrompts",
+    "deploy-staging": "slate-tools build && slate-tools deploy --skipPrompts --env=staging",
+    "deploy-prod": "slate-tools build && slate-tools deploy --skipPrompts --env=production",
     "zip": "slate-tools build && slate-tools zip"
   }
 }
