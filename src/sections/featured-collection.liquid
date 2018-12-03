@@ -1,5 +1,15 @@
 <section class="featured-collection">
-  hello
+  {% if section.settings.title != blank %}
+    <h2 class="featured-collection__title">{{ section.settings.title | escape }}</h2>
+  {% endif %}
+
+  {%- assign collection = collections[section.settings.collection] -%}
+
+  {% for product in collection.products limit: 6 %}
+    <a href="{{ product.url | within: collection }}" class="featured-collection-item">
+      {{ product.title }}
+    </a>
+  {% endfor %}
 </section>
 
 {% schema %}
