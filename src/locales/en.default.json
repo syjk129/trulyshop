@@ -1,1 +1,12 @@
-{}
+{
+  "general": {
+  },
+  "cart": {
+    "shopping_cart": "Your Shopping Cart"
+  },
+  "product": {
+    "add_to_cart": "Add to Cart",
+    "sold_out": "Sold Out",
+    "quantity": "Quantity"
+  }
+}

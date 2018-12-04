@@ -1,1 +1,10 @@
 @charset 'UTF-8';
+
+@import './variables';
+
+// Components
+@import './components/button';
+
+.button {
+  color: red;
+}
