@@ -2,7 +2,10 @@
   <h1>{{ 'cart.shopping_cart' | t }}</h1>
 
   {% for item in cart.items %}
-    <a href="{{ item.url }}">{{ item.product.title }}</a>
+    <form action="/cart" method="post" novalidate>
+      <a href="{{ item.url }}">{{ item.product.title }}</a>
+      <input type="submit" name="checkout" value="{{ 'cart.checkout' | t}}">
+    </form>
   {% endfor %}
 {% else %}
 {% endif %}

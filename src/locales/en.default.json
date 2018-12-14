@@ -2,7 +2,8 @@
   "general": {
   },
   "cart": {
-    "shopping_cart": "Your Shopping Cart"
+    "shopping_cart": "Your Shopping Cart",
+    "checkout": "Checkout"
   },
   "product": {
     "add_to_cart": "Add to Cart",
