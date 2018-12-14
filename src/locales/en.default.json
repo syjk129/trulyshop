@@ -3,7 +3,10 @@
   },
   "cart": {
     "shopping_cart": "Your Shopping Cart",
-    "checkout": "Checkout"
+    "checkout": "Checkout",
+    "empty": "Your cart is empty",
+    "item": "Item",
+    "price": "Price"
   },
   "product": {
     "add_to_cart": "Add to Cart",

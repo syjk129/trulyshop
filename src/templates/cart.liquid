@@ -1,11 +1,32 @@
 {% if cart.item_count > 0 %}
   <h1>{{ 'cart.shopping_cart' | t }}</h1>
 
-  {% for item in cart.items %}
-    <form action="/cart" method="post" novalidate>
-      <a href="{{ item.url }}">{{ item.product.title }}</a>
-      <input type="submit" name="checkout" value="{{ 'cart.checkout' | t}}">
-    </form>
-  {% endfor %}
+  <form action="/cart" method="post" novalidate>
+    <table>
+      <tr>
+        <th>
+          {{ 'cart.item' | t }}
+        </th>
+        <th>
+          {{ 'cart.price' | t }}
+        </th>
+      </tr>
+      {% for item in cart.items %}
+        <tr>
+          <td>
+            <a href="{{ item.url }}">
+              <h2>{{ item.product.title }}</h2>
+            </a>
+          </td>
+          <td>
+            {{ item.product.price | money }}m
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+    
+    <input type="submit" name="checkout" value="{{ 'cart.checkout' | t}}">
+  </form>
 {% else %}
+  <h1>{{ 'cart.empty' | t }}</h1>
 {% endif %}
