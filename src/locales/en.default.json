@@ -6,7 +6,8 @@
     "checkout": "Checkout",
     "empty": "Your cart is empty",
     "item": "Item",
-    "price": "Price"
+    "price": "Price",
+    "quantity": "Quantity"
   },
   "product": {
     "add_to_cart": "Add to Cart",

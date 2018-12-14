@@ -10,16 +10,26 @@
         <th>
           {{ 'cart.price' | t }}
         </th>
+        <th>
+          {{ 'cart.quantity' | t }}
+        </th>
       </tr>
       {% for item in cart.items %}
         <tr>
           <td>
-            <a href="{{ item.url }}">
-              <h2>{{ item.product.title }}</h2>
-            </a>
+            <a href="{{ item.url }}">{{ item.product.title }}</a>
           </td>
           <td>
-            {{ item.product.price | money }}m
+            {{ item.product.price | money }}
+          </td>
+          <td>
+            <input
+              type="number"
+              name="updates[]"
+              id="updates_{{ item.key }}"
+              value="{{ item.quantity }}"
+              min="0"
+              aria-label="{{ cart.quantity | t }}">
           </td>
         </tr>
       {% endfor %}
