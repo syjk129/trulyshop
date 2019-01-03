@@ -2,7 +2,9 @@
   "general": {
   },
   "cart": {
-    "shopping_cart": "Your Shopping Cart"
+    "shopping_cart": "Your Shopping Cart",
+    "empty": "Your cart is currently empty",
+    "continue_browsing_html": "Continue browsing <a href=\"/collections/all\">here</a>."
   },
   "product": {
     "add_to_cart": "Add to Cart",

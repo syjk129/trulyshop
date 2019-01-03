@@ -1,0 +1,13 @@
+@import "../variables";
+
+input {
+  outline: none;
+  border-color: $color-grey-2;
+  color: black;
+  border-style: solid;
+  padding: 10px;
+
+  &:focus {
+    border-color: black;
+  }
+}

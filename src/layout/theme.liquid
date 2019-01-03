@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="">
   <link rel="canonical" href="{{ canonical_url }}">
+  <link href="https://s3.us-east-2.amazonaws.com/thetrulystore/fonts/fonts_campton.css" rel="stylesheet" type="text/CSS">
 
   <title>{{ shop.name }}</title>
 
   <meta name="description" content="">
 
-  {% include 'style-tags', layout: 'theme' %}
   {% include 'script-tags', layout: 'theme' %}
+  {% include 'style-tags', layout: 'theme' %}
 
   {{ content_for_header }}
 </head>

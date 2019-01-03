@@ -4,7 +4,13 @@
 
 // Components
 @import './components/button';
+@import './components/checkbox';
+@import './components/input';
+@import './components/switch';
 
-.button {
-  color: red;
+html,
+body,
+input,
+button {
+  font-family: Campton, Helvetica, sans-serif;
 }
