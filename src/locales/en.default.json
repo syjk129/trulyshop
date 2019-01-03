@@ -3,8 +3,12 @@
   },
   "cart": {
     "shopping_cart": "Your Shopping Cart",
-    "empty": "Your cart is currently empty",
-    "continue_browsing_html": "Continue browsing <a href=\"/collections/all\">here</a>."
+    "checkout": "Checkout",
+    "empty": "Your cart is empty",
+    "item": "Item",
+    "price": "Price",
+    "quantity": "Quantity",
+    "update": "Update"
   },
   "product": {
     "add_to_cart": "Add to Cart",

@@ -1,25 +1,41 @@
 <h1>{{ 'cart.shopping_cart' | t }}</h1>
-
-{% if cart.item_count > 0 %}
-  {% for item in cart.items %}
-    <a href="{{ item.url }}">{{ item.product.title }}</a>
-  {% endfor %}
+  <form action="/cart" method="post" novalidate>
+    <table>
+      <tr>
+        <th>
+          {{ 'cart.item' | t }}
+        </th>
+        <th>
+          {{ 'cart.price' | t }}
+        </th>
+        <th>
+          {{ 'cart.quantity' | t }}
+        </th>
+      </tr>
+      {% for item in cart.items %}
+        <tr>
+          <td>
+            <a href="{{ item.url }}">{{ item.product.title }}</a>
+          </td>
+          <td>
+            {{ item.product.price | money }}
+          </td>
+          <td>
+            <input
+              type="number"
+              name="updates[]"
+              id="updates_{{ item.key }}"
+              value="{{ item.quantity }}"
+              min="0"
+              aria-label="{{ cart.quantity | t }}">
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+    
+    <input type="submit" name="update" value="{{ 'cart.update' | t }}">
+    <input type="submit" name="checkout" value="{{ 'cart.checkout' | t}}">
+  </form>
 {% else %}
-  {% comment %}
-  Cart empty state
-  {% endcomment %}
-  <div class="supports-cookies">
-    <p>{{ 'cart.empty' | t }}</p>
-    <p>{{ 'cart.continue_browsing_html' | t }}</p>
-  </div>
-
-  {% comment %}
-  Cart no cookies state
-  ---------------------
-  Browser cookies are required to use the cart. If cookies aren't enabled in the
-  browser a message is displayed prompting the user to enable them.
-  {% endcomment %}
-  <div class="supports-no-cookies">
-    <p>{{ 'cart.general.cookies_required' | t }}</p>
-  </div>
+  <h1>{{ 'cart.empty' | t }}</h1>
 {% endif %}
