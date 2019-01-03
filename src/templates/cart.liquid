@@ -1,41 +1,38 @@
 <h1>{{ 'cart.shopping_cart' | t }}</h1>
-  <form action="/cart" method="post" novalidate>
-    <table>
+<form action="/cart" method="post" novalidate>
+  <table>
+    <tr>
+      <th>
+        {{ 'cart.item' | t }}
+      </th>
+      <th>
+        {{ 'cart.price' | t }}
+      </th>
+      <th>
+        {{ 'cart.quantity' | t }}
+      </th>
+    </tr>
+    {% for item in cart.items %}
       <tr>
-        <th>
-          {{ 'cart.item' | t }}
-        </th>
-        <th>
-          {{ 'cart.price' | t }}
-        </th>
-        <th>
-          {{ 'cart.quantity' | t }}
-        </th>
+        <td>
+          <a href="{{ item.url }}">{{ item.product.title }}</a>
+        </td>
+        <td>
+          {{ item.product.price | money }}
+        </td>
+        <td>
+          <input
+            type="number"
+            name="updates[]"
+            id="updates_{{ item.key }}"
+            value="{{ item.quantity }}"
+            min="0"
+            aria-label="{{ cart.quantity | t }}">
+        </td>
       </tr>
-      {% for item in cart.items %}
-        <tr>
-          <td>
-            <a href="{{ item.url }}">{{ item.product.title }}</a>
-          </td>
-          <td>
-            {{ item.product.price | money }}
-          </td>
-          <td>
-            <input
-              type="number"
-              name="updates[]"
-              id="updates_{{ item.key }}"
-              value="{{ item.quantity }}"
-              min="0"
-              aria-label="{{ cart.quantity | t }}">
-          </td>
-        </tr>
-      {% endfor %}
-    </table>
-    
-    <input type="submit" name="update" value="{{ 'cart.update' | t }}">
-    <input type="submit" name="checkout" value="{{ 'cart.checkout' | t}}">
-  </form>
-{% else %}
-  <h1>{{ 'cart.empty' | t }}</h1>
-{% endif %}
+    {% endfor %}
+  </table>
+  
+  <input type="submit" name="update" value="{{ 'cart.update' | t }}">
+  <input type="submit" name="checkout" value="{{ 'cart.checkout' | t}}">
+</form>

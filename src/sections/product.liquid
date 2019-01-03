@@ -4,6 +4,13 @@
   {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
 
   <h1>{{ product.title }}</h1>
+  <h2>{{ product.title }}</h2>
+  <h3>{{ product.title }}</h3>
+  <p class="body1">body1</p>
+  <p class="body2">body2</p>
+  <p class="body3">body3</p>
+  <p class="callout">Callout</p>
+  <a>yo</a>
 
   <form action="/cart/add" method="post" enctype="multipart/form-data">
     <select name="id" class="no-js" data-product-select>
@@ -21,7 +28,7 @@
     <input type="number" id="Quantity" name="quantity" value="1" min="1">
     {% include 'switch' with value_id: 'switch-id' %}
     <button
-      class="button"
+      class="btn"
       type="submit"
       name="add"
       data-add-to-cart

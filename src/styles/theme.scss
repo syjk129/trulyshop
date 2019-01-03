@@ -1,16 +1,9 @@
 @charset 'UTF-8';
 
 @import './variables';
+@import './typography';
 
 // Components
 @import './components/button';
-@import './components/checkbox';
 @import './components/input';
 @import './components/switch';
-
-html,
-body,
-input,
-button {
-  font-family: Campton, Helvetica, sans-serif;
-}
