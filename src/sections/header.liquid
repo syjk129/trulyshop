@@ -1,9 +1,20 @@
 <section data-section-id="{{ section.id }}" data-section-type="header" class="header">
-  {%- if settings.announcement_bar_enabled -%}
-    <div>
-      Announcement bar
-    </div>    
+  {%- if section.settings.announcement_bar_enabled -%}
+    <div class="announcement-bar">
+      <div class="header-content">
+        <div class="callout regular">
+          {{ section.settings.announcement_bar_text }}
+        </div>
+        {%- if section.settings.announcement_bar_link -%}
+          <a href="{{ section.settings.announcement_bar_link }}">
+            {{ section.settings.announcement_bar_link_text }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>  
   {%- endif -%}
+  <div class="header-content">
+  </div>
 </section>
 
 {% schema %}
@@ -32,6 +43,12 @@
         "label": "Announcement bar text",
         "default": "<p><b>10% off</b> your first order with code <b>welcome</b></p>"
       },
+      {
+        "type": "text",
+        "id": "announcement_bar_link_text",
+        "label": "Announcement bar link text",
+        "info": "Optional"
+      }
       {
         "type": "url",
         "id": "announcement_bar_link",
