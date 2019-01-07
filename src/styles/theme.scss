@@ -5,9 +5,20 @@
 
 // Components
 @import './components/button';
+@import './components/icon';
 @import './components/input';
 @import './components/select';
 @import './components/switch';
 
 // Sections
 @import './sections/header';
+
+body {
+  margin: 0;
+}
+
+.content {
+  max-width: $max-screen-width;
+  margin: auto;
+  padding: 0 25px;
+}

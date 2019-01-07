@@ -1,7 +1,7 @@
-<section data-section-id="{{ section.id }}" data-section-type="header" class="header">
+<section data-section-id="{{ section.id }}" data-section-type="header" class="header-container" id="header-container">
   {%- if section.settings.announcement_bar_enabled -%}
     <div class="announcement-bar">
-      <div class="header-content">
+      <div class="announcement-bar-content">
         <div class="callout regular">
           {{ section.settings.announcement_bar_text }}
         </div>
@@ -13,9 +13,31 @@
       </div>
     </div>  
   {%- endif -%}
-  <div class="header-content">
+  <div class="header">
+    <div class="header-content">
+      <div class="action">
+        {% include 'menu-icon' %}
+      </div>
+      {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
+      <img class="logo"
+        src="{{ section.settings.logo | img_url: image_size }}"
+        srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+        alt="{{ section.settings.logo.alt | default: shop.name }}">
+      <div class="action user-actions">
+        <div class="search">
+          <img src="{{ 'search.png' | asset_url }}" />
+        </div>
+        <div class="bag">
+          <img src="{{ 'bag.png' | asset_url }}" />
+        </div>
+        <a>
+          <img src="{{ 'account.png' | asset_url }}" />
+        </a>
+      </div>
+    </div>
   </div>
 </section>
+<div id="header-placeholder"></div>
 
 {% schema %}
   {

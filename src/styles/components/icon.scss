@@ -1,0 +1,36 @@
+@import "../variables";
+
+.menu-icon {
+  $menu-color: black;
+  $menu-line-width: 25px;
+  $menu-line-height: 2px;
+  $menu-line-gap: 8px;
+
+  width: $menu-line-width;
+
+  &:after,
+  &:before,
+  div {
+    background-color: $menu-color;
+    content: '';
+    display: block;
+    height: $menu-line-height;
+    margin: $menu-line-gap 0;
+    transition: all .2s ease-in-out;
+  }
+
+  /* Change this later */
+  &:hover {
+    &:before {
+      transform: translateY(10px) rotate(135deg);
+    }
+
+    &:after {
+      transform: translateY(-10px) rotate(-135deg);
+    }
+
+    div {
+      transform: scale(0);
+    }
+  }
+}
