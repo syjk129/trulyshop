@@ -5,9 +5,18 @@ input {
   border-color: $color-grey-2;
   color: black;
   border-style: solid;
-  padding: 10px;
+  padding: 10px 15px;
+  font-size: $font-size-5;
 
   &:focus {
     border-color: black;
+  }
+
+  &.success {
+    border-color: $color-green;
+  }
+
+  &.error {
+    border-color: $color-red;
   }
 }

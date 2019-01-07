@@ -13,16 +13,18 @@
   <a>yo</a>
 
   <form action="/cart/add" method="post" enctype="multipart/form-data">
-    <select name="id" class="no-js" data-product-select>
-      {% for variant in product.variants %}
-        <option
-          {% if variant == current_variant %}selected="selected"{% endif %}
-          {% unless variant.available %}disabled="disabled"{% endunless %}
-          value="{{ variant.id }}">
-            {{ variant.title }}
-        </option>
-      {% endfor %}
-    </select>
+    <div class="select-container" style="width: 200px">
+      <select name="id" class="no-js" data-product-select>
+        {% for variant in product.variants %}
+          <option
+            {% if variant == current_variant %}selected="selected"{% endif %}
+            {% unless variant.available %}disabled="disabled"{% endunless %}
+            value="{{ variant.id }}">
+              {{ variant.title }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
 
     <label for="Quantity">{{ 'product.quantity' | t }}</label>
     <input type="number" id="Quantity" name="quantity" value="1" min="1">
