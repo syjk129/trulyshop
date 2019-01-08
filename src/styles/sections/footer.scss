@@ -1,0 +1,18 @@
+@import "../variables";
+
+.footer-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+footer {
+  background-color: black;
+  color: white;
+
+  .footer-content {
+    max-width: $max-screen-width;
+    margin: auto;
+    padding: 40px;
+  }
+}

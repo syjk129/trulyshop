@@ -11,10 +11,13 @@
 @import './components/switch';
 
 // Sections
+@import './sections/footer';
 @import './sections/header';
 
 body {
+  position: relative;
   margin: 0;
+  // min-height: 100vh;
 }
 
 .content {

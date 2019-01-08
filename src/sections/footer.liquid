@@ -1,10 +1,35 @@
 <footer role="contentinfo" data-section-id="{{ section.id }}" data-section-type="footer-section">
+  <div class="footer-content">
+    <div class="footer-links">
+      <div class="footer-column">
+        <div class="body-2">
+          {{ section.settings.footer_column_1_title }}
+        </div>
+
+        {%- assign footer_column_1_list = section.settings.footer_column_1_list -%}
+        {% if linklists[footer_column_1_list].links.size > 0 %}
+          <ul>
+            {% for link in linklists[footer_column_1_list].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+    <div class="footer-follow">
+    </div>
+  </div>
 </footer>
 
 {% schema %}
   {
     "name": "Footer",
+    "class": "footer-container",
     "settings": [
+      {
+        "type": "header",
+        "content": "Footer column 1"
+      },
       {
         "type": "text",
         "id": "footer_column_1_title",
@@ -15,6 +40,21 @@
         "type": "link_list",
         "id": "footer_column_1_list",
         "label": "Footer column 1 list"
+      },
+      {
+        "type": "header",
+        "content": "Footer column 2"
+      },
+      {
+        "type": "text",
+        "id": "footer_column_2_title",
+        "label": "Footer column 2 title",
+        "default": "Help"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_column_2_list",
+        "label": "Footer column 2 list"
       }
     ]
   }
