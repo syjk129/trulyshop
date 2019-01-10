@@ -24,20 +24,25 @@
         srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
         alt="{{ section.settings.logo.alt | default: shop.name }}">
       <div class="action user-actions">
-        <div class="search">
-          <img src="{{ 'search.png' | asset_url }}" />
-        </div>
-        <div class="bag">
-          <img src="{{ 'bag.png' | asset_url }}" />
-        </div>
-        <a>
-          <img src="{{ 'account.png' | asset_url }}" />
-        </a>
+        {% include 'icon-button' with
+          icon: 'search',
+          button_id: 'header-search'
+        %}
+        {% include 'icon-button' with
+          icon: 'bag',
+          button_id: 'header-cart'
+        %}
+        {% include 'icon-button' with
+          icon: 'account',
+          button_id: 'header-account'
+        %}
       </div>
     </div>
   </div>
 </section>
 <div id="header-placeholder"></div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+{% include 'sidebar-cart' %}
 
 {% schema %}
   {

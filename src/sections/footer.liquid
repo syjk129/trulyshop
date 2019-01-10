@@ -1,11 +1,10 @@
-<footer role="contentinfo" data-section-id="{{ section.id }}" data-section-type="footer-section">
+<footer id="footer" role="contentinfo" data-section-id="{{ section.id }}" data-section-type="footer-section">
   <div class="footer-content">
     <div class="footer-links">
       <div class="footer-column">
-        <div class="body-2">
+        <div class="body2 column-header">
           {{ section.settings.footer_column_1_title }}
         </div>
-
         {%- assign footer_column_1_list = section.settings.footer_column_1_list -%}
         {% if linklists[footer_column_1_list].links.size > 0 %}
           <ul>
@@ -15,8 +14,52 @@
           </ul>
         {% endif %}
       </div>
+      <div class="footer-column">
+        <div class="body2 column-header">
+          Contact
+        </div>
+        <div class="footer-column-item">
+          {{ shop.address.street }}
+        </div>
+        <div class="footer-column-item">
+          {{ shop.address.city }}, {{ shop.address.province_code }} {{ shop.address.zip }}
+        </div>
+        <div class="footer-column-item">&nbsp;</div>
+        <div class="footer-column-item">
+          Email Us
+        </div>
+        <div class="footer-column-item">
+          <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
+        </div>
+      </div>
     </div>
     <div class="footer-follow">
+      <div class="footer-follow-content">
+        <div class="column-header">
+          Follow Us
+        </div>
+        <div class="social-icons">
+          <a class="social-icon" href="">
+            <img src="{{ 'facebook_white.png' | asset_url}}">
+          </a>
+          <a class="social-icon" href="">
+            <img src="{{ 'spotify_white.png' | asset_url}}">
+          </a>
+          <a class="social-icon" href="">
+            <img src="{{ 'youtube_white.png' | asset_url}}">
+          </a>
+          <a class="social-icon" href="">
+            <img src="{{ 'instagram_white.png' | asset_url}}">
+          </a>
+          <a class="social-icon" href="">
+            <img src="{{ 'twitter_white.png' | asset_url}}">
+          </a>
+        </div>
+      </div>
+      <div class="footer-legal">
+        True Brands Group, Inc.<br>
+        © 2018 TRULY. All Rights Reserved.
+      </div>
     </div>
   </div>
 </footer>
