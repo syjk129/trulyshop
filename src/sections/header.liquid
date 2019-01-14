@@ -19,10 +19,12 @@
         {% include 'menu-icon' %}
       </div>
       {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
-      <img class="logo"
-        src="{{ section.settings.logo | img_url: image_size }}"
-        srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
-        alt="{{ section.settings.logo.alt | default: shop.name }}">
+      <a href="/">
+        <img class="logo"
+          src="{{ section.settings.logo | img_url: image_size }}"
+          srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+          alt="{{ section.settings.logo.alt | default: shop.name }}">
+      </a>
       <div class="action user-actions">
         {% include 'icon-button' with
           icon: 'search',

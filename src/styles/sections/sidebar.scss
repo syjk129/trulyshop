@@ -1,14 +1,3 @@
-.sidebar {
-  position: fixed;
-  height: 100%;
-  width: 0;
-  z-index: 2;
-  top: 0;
-  right: 0;
-  background-color: white;
-  overflow-x: hidden;
-}
-
 .sidebar-overlay {
   position: fixed;
   display: none;
@@ -18,4 +7,60 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 1;
+}
+
+.sidebar {
+  $sidebar-padding: 40px;
+  $sidebar-width: 400px;
+
+  position: fixed;
+  height: 100%;
+  width: $sidebar-width;
+  z-index: 2;
+  top: 0;
+  right: -1 * $sidebar-width;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.2s ease-in-out;
+  padding: $sidebar-padding;
+  box-sizing: border-box;
+
+  &.sidebar-cart {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .sidebar-close {
+    position: absolute;
+    top: $sidebar-padding;
+    right: $sidebar-padding;
+    font-size: 40px;
+    font-weight: 200;
+    cursor: pointer;
+  }
+
+  .sidebar-header {
+    text-align: center;
+    border-bottom: 1px solid $color-grey-1;
+  }
+}
+
+.cart-item {
+  display: flex;
+  padding: 20px 0;
+  border-bottom: 1px solid $color-grey-1;
+}
+
+.cart-actions {
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }
