@@ -11,7 +11,7 @@
 
 .sidebar {
   $sidebar-padding: 40px;
-  $sidebar-width: 400px;
+  $sidebar-width: 435px;
 
   position: fixed;
   height: 100%;
@@ -48,19 +48,77 @@
 
   .sidebar-header {
     text-align: center;
-    border-bottom: 1px solid $color-grey-1;
+    border-bottom: 1px solid $color-grey-3;
+    padding-bottom: 30px;
   }
-}
 
-.cart-item {
-  display: flex;
-  padding: 20px 0;
-  border-bottom: 1px solid $color-grey-1;
-}
+  .cart-item {
+    display: flex;
+    padding: 20px 0;
+    border-bottom: 1px solid $color-grey-3;
 
-.cart-actions {
-  button {
-    width: 100%;
-    margin-bottom: 10px;
+    img {
+      width: 125px;
+      height: 125px;
+      flex-shrink: 0;
+      margin-right: 15px;
+    }
+
+    .cart-item-content {
+      width: 100%;
+      position: relative;
+
+      .title {
+        margin-bottom: 5px;
+      }
+
+      .price {
+        margin-bottom: 10px;
+      }
+
+      .variant {
+        color: $color-grey-1;
+      }
+
+      .cart-remove {
+        position: absolute;
+        cursor: pointer;
+        right: 0;
+        font-weight: $font-weight-light;
+        font-size: 25px;
+      }
+
+      .quantity-selector {
+        display: flex;
+        margin-bottom: 5px;
+
+        .cart-quantity-btn {
+          cursor: pointer;
+          color: $color-grey-1;
+        }
+
+        *:not(:last-child) {
+          margin-right: 15px;
+        }
+      }
+    }
+  }
+
+  .cart-content {
+    .subtotal {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+  }
+
+  .cart-actions {
+    text-align: center;
+    color: $color-grey-1;
+
+    button {
+      width: 100%;
+      margin-bottom: 10px;
+    }
   }
 }

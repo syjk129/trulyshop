@@ -2,17 +2,26 @@
   "general": {
   },
   "cart": {
-    "shopping_cart": "Your Shopping Cart",
+    "shopping_cart": "Your Cart",
     "checkout": "Checkout",
     "empty": "Your cart is empty",
     "item": "Item",
     "price": "Price",
     "quantity": "Quantity",
-    "update": "Update"
+    "update": "Update",
+    "subtotal": "Subtotal",
+    "shipping_tax_disclaimer": "*Shipping and taxes will be calculated at checkout",
+    "update_cart": "Update Cart",
+    "keep_shopping": "Keep Shopping",
+    "agree_to_terms": "By checking out, I agree to the Terms of Use and acknowledge that I have read the Privacy Policy.",
+    "calculated_at_checkout": "Shipping and promotions calculated in checkout"
   },
   "product": {
     "add_to_cart": "Add to Cart",
+    "details": "Details",
     "sold_out": "Sold Out",
-    "quantity": "Quantity"
+    "quantity": "Quantity",
+    "choose_color": "Choose a color",
+    "choose_size": "Choose a size"
   }
 }

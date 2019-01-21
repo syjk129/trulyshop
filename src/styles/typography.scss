@@ -5,11 +5,13 @@ $font-size-4: 20px;
 $font-size-5: 17px;
 $font-size-6: 13px;
 
+$line-height-5: 23px;
+
 $font-size-link: $font-size-6;
 
 /* Font Weights */
 $font-weight-extra-light: 100;
-$font-weight-light: 300;
+$font-weight-light: 200;
 $font-weight-regular: 400;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
@@ -25,8 +27,22 @@ button {
   font-family: Campton, Helvetica, sans-serif;
 }
 
+html {
+  letter-spacing: 0.2px;
+  font-size: $font-size-5;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-5;
+}
+
 p {
   margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 h1 {
@@ -39,7 +55,7 @@ h2 {
 }
 h3 {
   font-size: $font-size-3;
-  font-weight: $font-weight-bold;
+  font-weight: $font-weight-semibold;
   letter-spacing: 0.25px;
 }
 
@@ -51,7 +67,8 @@ h3 {
 
 .body2 {
   font-size: $font-size-5;
-  font-weight: $font-weight-semibold;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-5;
   letter-spacing: 0.2px;
 }
 
@@ -79,4 +96,16 @@ a {
   text-decoration: underline;
   cursor: pointer;
   color: black;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
 }

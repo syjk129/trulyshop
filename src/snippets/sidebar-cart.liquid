@@ -1,37 +1,65 @@
 <div class="sidebar sidebar-cart" id="sidebar-cart">
   <span class="sidebar-close">&times;</span>
   <div class="sidebar-header">
-    <h3>My Cart ({{ cart.item_count }})</h3>
+    <div class="body1">My Cart ({{ cart.item_count }})</div>
   </div>
   <div class="sidebar-content">
     <div class="cart-content">
       {% for item in cart.items %}
+        {% assign color_index = -1 %}
+        {% assign size_index = -1 %}
+
+        {% for option in item.product.options %}
+          {% assign downcased_option = option | downcase %}
+          {% if downcased_option contains 'color' %}
+            {% assign color_index = forloop.index0 %}
+          {% elsif downcased_option contains 'size' %}
+            {% assign size_index = forloop.index0 %}
+          {% endif %}
+        {% endfor %}
+
         <div class="cart-item">
-          {{ item.image | img_url: '100x100' | img_tag }}
+          {{ item.image | img_url: '125x125' | img_tag }}
           <div class="cart-item-content">
-            {{ item.title }}
+            <span class="cart-remove" data-id="{{ item.id }}">&times;</span>
+            <div class="body2 title">{{ item.product.title }}</div>
+            <div class="body3 price">{{ item.product.price | money }}</div>
+            <div class="quantity-selector">
+              <span
+                class="body3 cart-quantity-btn cart-decrement"
+                data-id="{{ item.id }}"
+                data-quantity="{{ item.quantity }}">-</span>
+              <div class="body3">{{ item.quantity }}</div>
+              <span
+                class="body3 cart-quantity-btn cart-increment"
+                data-id="{{ item.id }}"
+                data-quantity="{{ item.quantity }}">+</span>
+            </div>
+            {% if size_index != -1 %}
+              <div class="body3 variant">
+                Size: {{ item.variant.options[size_index] | capitalize }}
+              </div>
+            {% endif %}
+            {% if color_index != -1 %}
+              <div class="body3 variant">
+                Color: {{ item.variant.options[color_index] | capitalize }}
+              </div>
+            {% endif %}
           </div>
-          <button
-            class="cart-decrement"
-            data-id="{{ item.id }}"
-            data-quantity="{{ item.quantity }}">Lower</button>
-          <button
-            class="cart-increment"
-            data-id="{{ item.id }}"
-            data-quantity="{{ item.quantity }}">Higher</button>
-          <button class="cart-remove" data-id="{{ item.id }}">Remove</button>
         </div>
       {% endfor %}
       <div class="subtotal">
+        <span class="body2">Subtotal</span>
+        <span class="body2">{{ cart.total_price | money }}</span>
       </div>
     </div>
     <div class="cart-actions">
-      <div class="disclaimer">
+      <div class="body3">
         Complimentary shipping on all orders
       </div>
       <button class="btn large outline">Keep Shopping</button>
       <button class="btn large">Checkout</button>
-      <div class="disclaimer">
+      <div class="body3">
         By checking out, I agree to the Terms of Use
       </div>
     </div>

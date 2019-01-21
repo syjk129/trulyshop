@@ -1,5 +1,6 @@
 @charset 'UTF-8';
 
+@import './helper';
 @import './variables';
 @import './typography';
 
@@ -8,12 +9,18 @@
 @import './components/icon';
 @import './components/input';
 @import './components/select';
+@import './components/swatch';
 @import './components/switch';
 
 // Sections
 @import './sections/footer';
 @import './sections/header';
+@import './sections/product';
 @import './sections/sidebar';
+@import './sections/sidebar-nav.scss';
+
+// Templates
+@import './templates/cart';
 
 html {
   margin: 0;
@@ -28,9 +35,10 @@ body {
 }
 
 .content {
+  display: flex;
   max-width: $max-screen-width;
   margin: auto;
-  padding: 0 25px;
+  padding: 40px;
 }
 
 iframe {
