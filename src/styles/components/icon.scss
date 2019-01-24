@@ -16,7 +16,7 @@
     display: block;
     height: $menu-line-height;
     margin: $menu-line-gap 0;
-    transition: all .2s ease-in-out;
+    transition: all $base-transition-duration ease-in-out;
   }
 
   /* Change this later */

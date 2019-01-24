@@ -5,7 +5,7 @@ input {
   border-color: $color-grey-2;
   color: black;
   border-style: solid;
-  padding: 10px 15px;
+  padding: 15px;
   font-size: $font-size-5;
   box-sizing: border-box;
 
@@ -20,4 +20,13 @@ input {
   &.error {
     border-color: $color-red;
   }
+}
+
+.input-label {
+  display: block;
+  text-transform: uppercase;
+  color: $color-grey-1;
+  font-size: $font-size-6;
+  letter-spacing: 0.15px;
+  margin-bottom: 5px;
 }

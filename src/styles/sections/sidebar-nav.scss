@@ -34,4 +34,13 @@
     letter-spacing: 0.2px;
     color: $color-grey-1;
   }
+
+  .sidebar-header {
+    margin-bottom: 25px;
+  }
+
+  .selected {
+    text-decoration: underline;
+    color: black;
+  }
 }

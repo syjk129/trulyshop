@@ -34,10 +34,19 @@
           icon: 'bag',
           button_id: 'header-cart'
         %}
-        {% include 'icon-button' with
-          icon: 'account',
-          button_id: 'header-account'
-        %}
+        {% if customer %}
+          {% include 'icon-button' with
+            icon: 'account',
+            button_id: 'header-account',
+            redirect_link: '/account'
+          %}
+        {% else %}
+          {% include 'icon-button' with
+            icon: 'account',
+            button_id: 'header-account',
+            redirect_link: '/account/login'
+          %}
+        {% endif %}
       </div>
     </div>
   </div>

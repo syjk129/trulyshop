@@ -1,0 +1,41 @@
+@import "../variables";
+
+.login {
+  max-width: 360px;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
+
+  .login-header {
+    margin-bottom: 50px;
+  }
+}
+
+.login-form {
+  .form-input {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .forgot-password {
+    color: $color-grey-1;
+    margin-bottom: 70px;
+    display: block;
+  }
+
+  .no-account {
+    color: $color-grey-1;
+    margin-bottom: 15px;
+  }
+
+  input[type=submit] {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .register {
+    display: block;
+  }
+}

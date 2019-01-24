@@ -26,6 +26,11 @@
       template contains 'collection'
     %}
       {% section "sidebar-nav" %}
+    {% elsif
+      template contains 'customers/account' or
+      template contains 'customers/addresses'
+    %}
+      {% section "sidebar-account-nav" %}
     {% endif %}
     {{ content_for_layout }}
   </div>

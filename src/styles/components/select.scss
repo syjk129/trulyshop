@@ -69,5 +69,5 @@ $select-arrow-size: 6px;
 
 .select-items div:hover, .same-as-selected {
   background-color: $color-grey-4;
-  transition: .2s;
+  transition: $base-transition-duration;
 }

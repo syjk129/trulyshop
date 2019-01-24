@@ -6,6 +6,7 @@
 
 // Components
 @import './components/button';
+@import './components/checkbox';
 @import './components/icon';
 @import './components/input';
 @import './components/select';
@@ -17,10 +18,12 @@
 @import './sections/header';
 @import './sections/product';
 @import './sections/sidebar';
-@import './sections/sidebar-nav.scss';
+@import './sections/sidebar-nav';
 
 // Templates
+@import './templates/auth';
 @import './templates/cart';
+@import './templates/customers/account';
 
 html {
   margin: 0;

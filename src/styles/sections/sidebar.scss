@@ -1,3 +1,5 @@
+@import "../variables";
+
 .sidebar-overlay {
   position: fixed;
   display: none;
@@ -21,7 +23,7 @@
   right: -1 * $sidebar-width;
   background-color: white;
   overflow-x: hidden;
-  transition: 0.2s ease-in-out;
+  transition: $base-transition-duration ease-in-out;
   padding: $sidebar-padding;
   box-sizing: border-box;
 

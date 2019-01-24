@@ -42,7 +42,7 @@ $swatch-border-size: 1px;
     border: $swatch-border-size solid $color-grey-3;
     border-radius: 50%;
     box-sizing: border-box;
-    transition: .2s;
+    transition: $base-transition-duration;
 
     &:hover {
       border-color: $color-grey-1;

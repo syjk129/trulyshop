@@ -16,6 +16,28 @@
     "agree_to_terms": "By checking out, I agree to the Terms of Use and acknowledge that I have read the Privacy Policy.",
     "calculated_at_checkout": "Shipping and promotions calculated in checkout"
   },
+  "customer": {
+    "dont_have_account": "Don't have an account with us?",
+    "have_account": "I do have an account!",
+    "email": "Email",
+    "password": "Password",
+    "password_confirm": "Confirm Password",
+    "log_in": "Log In",
+    "forgot_password": "Forgot your password?",
+    "sign_up": "Sign Up",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "create_account": "Create an Account",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "recover_password": "Recover Password",
+    "my_account": "My Account",
+    "general": "General",
+    "order_history": "Order History",
+    "saved_addresses": "Saved Addressses",
+    "log_out": "Log Out",
+    "invite_friends": "Invite Friends"
+  },
   "product": {
     "add_to_cart": "Add to Cart",
     "details": "Details",
@@ -23,5 +45,8 @@
     "quantity": "Quantity",
     "choose_color": "Choose a color",
     "choose_size": "Choose a size"
+  },
+  "date_formats": {
+    "month_day_year": "%B %d, %Y"
   }
 }
