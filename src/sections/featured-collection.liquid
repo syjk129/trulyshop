@@ -1,1 +1,38 @@
-hello
+<section class="featured-collection">
+  {% if section.settings.title != blank %}
+    <h2 class="featured-collection__title">{{ section.settings.title | escape }}</h2>
+  {% endif %}
+
+  {%- assign collection = collections[section.settings.collection] -%}
+
+  {% for product in collection.products limit: 6 %}
+    <a href="{{ product.url | within: collection }}" class="featured-collection-item">
+      {{ product.title }}
+    </a>
+  {% endfor %}
+</section>
+
+{% schema %}
+  {
+    "name": "Featured collection",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Featured collection"
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured collection",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}

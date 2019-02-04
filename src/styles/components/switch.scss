@@ -1,0 +1,60 @@
+@import "../variables";
+
+.switch {
+  $switch-width: 40px;
+  $switch-height: 20px;
+  $dot-height: 12px;
+  $border-width: 2px;
+  $transition-duration: .4s;
+
+  position: relative;
+  display: inline-block;
+  width: $switch-width;
+  height: $switch-height + $border-width * 2;
+
+  input {
+    /* Hide default HTML checkbox */
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    /* Checked Styles */
+    &:checked {
+      & + .slider {
+        border-color: #000;
+
+        &:before {
+          transform: translateX($switch-height - $border-width * 2);
+          background-color: black;
+        }
+      }
+    }
+  }
+
+  /* Slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    border-radius: $switch-height;
+    border: $border-width solid $color-grey-1;
+    transition: $transition-duration;
+
+    /* Slider dot */
+    &:before {
+      position: absolute;
+      content: "";
+      border-radius: 50%;
+      height: $dot-height;
+      width: $dot-height;
+      left: ($switch-height - $dot-height) / 2;
+      top: ($switch-height - $dot-height) / 2;
+      background-color: $color-grey-1;
+      transition: $transition-duration;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+@import "../variables";
+
+.auth,
+.reset-password {
+  max-width: 360px;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.auth-header {
+  margin-bottom: 50px;
+}
+
+.auth-form {
+  .form-input {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .toggle {
+    color: $color-grey-1;
+    margin-bottom: 70px;
+    display: block;
+  }
+
+  .no-account {
+    color: $color-grey-1;
+    margin-bottom: 15px;
+  }
+
+  input[type=submit] {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .register {
+    display: block;
+  }
+
+  .optin {
+    display: flex;
+    align-items: top;
+    margin-bottom: 30px;
+    color: $color-grey-1;
+
+    .checkbox {
+      margin-right: 10px;
+    }
+  }
+
+  .cancel-btn {
+    width: 100%;
+  }
+}

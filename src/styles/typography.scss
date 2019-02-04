@@ -1,0 +1,111 @@
+$font-size-1: 45px;
+$font-size-2: 35px;
+$font-size-3: 25px;
+$font-size-4: 20px;
+$font-size-5: 17px;
+$font-size-6: 13px;
+
+$line-height-5: 23px;
+
+$font-size-link: $font-size-6;
+
+/* Font Weights */
+$font-weight-extra-light: 100;
+$font-weight-light: 200;
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-black: 900;
+
+/* Base Styles */
+html,
+body,
+input,
+div,
+span,
+button {
+  font-family: Campton, Helvetica, sans-serif;
+}
+
+html {
+  letter-spacing: 0.2px;
+  font-size: $font-size-5;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-5;
+}
+
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: $font-size-1;
+  font-weight: $font-weight-bold;
+}
+h2 {
+  font-size: $font-size-2;
+  font-weight: $font-weight-bold;
+}
+h3 {
+  font-size: $font-size-3;
+  font-weight: $font-weight-semibold;
+  letter-spacing: 0.25px;
+}
+
+.body1 {
+  font-size: $font-size-4;
+  font-weight: $font-weight-semibold;
+  letter-spacing: 0.25px;
+}
+
+.body2 {
+  font-size: $font-size-5;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-5;
+  letter-spacing: 0.2px;
+}
+
+.body3  {
+  font-size: $font-size-6;
+  font-weight: $font-weight-regular;
+  letter-spacing: 0.15px;
+}
+
+.callout {
+  font-size: $font-size-6;
+  font-weight: $font-weight-bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.regular {
+  font-weight: $font-weight-regular;
+}
+
+a {
+  font-size: $font-size-6;
+  font-weight: $font-weight-bold;
+  letter-spacing: 2px;
+  text-decoration: underline;
+  cursor: pointer;
+  color: black;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}

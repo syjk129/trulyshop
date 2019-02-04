@@ -1,0 +1,56 @@
+{%- comment -%}
+  Login Form
+
+  Accepts:
+  - form_id: Form id
+{%- endcomment -%}
+
+<div id="{{ form_id }}" class="auth-form">
+  <div class="login" id="CustomerLoginForm">
+    <h3 class="auth-header">{{ 'customer.log_in' | t }}</h3>
+    {% form 'customer_login' %}
+      <input type="email"
+        name="customer[email]"
+        id="CustomerEmail"
+        class="form-input {% if form.errors contains 'email' %}input-error{% endif %}"
+        placeholder="{{ 'customer.email' | t }}*"
+        spellcheck="false"
+        autocomplete="off"
+        autocapitalize="off"
+        autofocus>
+
+      <input type="password"
+        name="customer[password]"
+        id="CustomerPassword"
+        class="form-input {% if form.errors contains 'password' %}input-error{% endif %}"
+        placeholder="{{ 'customer.password' | t }}*">
+
+      <input type="submit" class="btn large" value="{{ 'customer.log_in' | t }}">
+      {% if form.password_needed %}
+        <a id="RecoverPassword" class="body3 toggle" href="/account/login#recover">{{ 'customer.forgot_password' | t }}</a>
+      {% endif %}
+    {% endform %}
+
+    <div class="body3 no-account">{{ 'customer.dont_have_account' | t }}</div>
+    <a class="btn large outline register" href="/account/register">{{ 'customer.sign_up' | t }}</a>
+  </div>
+  <div class="hide" id="RecoverPasswordForm">
+    <h3 class="auth-header">{{ 'customer.recover_password' | t }}</h3>
+    {% form 'recover_customer_password' %}
+      {{ form.errors | default_errors }}
+      <input type="email"
+        class="form-input"
+        name="email"
+        id="RecoverEmail"
+        placeholder="{{ 'customer.email' | t }}"
+        spellcheck="false"
+        autocomplete="off"
+        autocapitalize="off">
+
+      <input type="submit" class="btn large" value="{{ 'customer.submit' | t }}">
+      <button class="btn large outline cancel-btn" type="button" id="HideRecoverPasswordLink">
+        {{ 'customer.cancel' | t }}
+      </button>
+    {% endform %}
+  </div>
+</div>

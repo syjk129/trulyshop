@@ -1,0 +1,11 @@
+{%- comment -%}
+  Checkbox Component
+
+  Accepts:
+  - value_id: {String} unique id for the checkbox component
+  - name: {String} name for checkbox input
+{%- endcomment -%}
+<label class="checkbox">
+  <input id="{{ value_id }}" type="checkbox" name="{{ name }}" checked="checked">
+  <span class="checkmark"></span>
+</label>

@@ -1,0 +1,21 @@
+{%- comment -%}
+  Icon Button Component
+
+  Accepts:
+  - icon: Icon name
+  - button_id: Unique Id
+  - class: Classnames
+  - redirect_link: Redirect link
+{%- endcomment -%}
+
+{%- assign iconFile = icon | append: ".png" -%}
+
+{% if redirect_link %}
+  <a id="{{ button_id }}" class="{{ class }} icon-button" href="{{ redirect_link }}">
+    <img src="{{ iconFile | asset_url }}" />
+  </a>
+{% else %}
+  <div id="{{ button_id }}" class="{{ class }} icon-button">
+    <img src="{{ iconFile | asset_url }}" />
+  </div>
+{% endif %}

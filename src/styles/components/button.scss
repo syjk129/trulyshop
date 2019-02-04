@@ -1,0 +1,63 @@
+@import "../variables";
+
+.btn {
+  border: none;
+  padding: 15px 50px;
+  background-color: black;
+  color: white;
+  font-size: 10px;
+  font-weight: $font-weight-bold;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: $base-transition-duration;
+  outline: none;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    color: black;
+    background-color: $color-yellow;
+  }
+
+  &.outline {
+    background-color: transparent;
+    color: black;
+    border: 2px solid black;
+
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+
+  &.large {
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 2px;
+    padding: 20px 50px;
+  }
+
+  &.circle {
+    font-size: 13px;
+    letter-spacing: 2px;
+    width: 130px;
+    height: 130px;
+    border-radius: 100%;
+    padding: 10px;
+    background-color: $color-yellow;
+    color: black;
+
+    &:hover {
+      color: white;
+      background-color: black;
+    }
+  }
+
+  &:disabled {
+    color: $color-grey-1;
+    background-color: $color-grey-4;
+    cursor: not-allowed;
+  }
+}

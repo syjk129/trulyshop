@@ -1,0 +1,34 @@
+{% assign option_index = 0 %}
+
+{% for option in product.options %}
+  {% assign downcased_option = option | downcase %}
+  {% if downcased_option contains 'size' %}
+    {% assign option_index = forloop.index0 %}
+  {% endif %}
+{% endfor %}
+
+<div class="swatch-container"
+  data-index="{{ option_index }}"
+  data-single-option-selector>
+  {% assign values = '' %}
+  {% for variant in product.variants %}
+    {% assign value = variant.options[option_index] %}
+    {% unless values contains value %}
+      {% assign values = values | join: ',' %}
+      {% assign values = values | append: ',' | append: value %}
+      {% assign values = values | split: ',' %}
+      <label data-value="{{ value | escape }}" class="swatch size-swatch {% unless variant.available %}unavailable{% endunless %}">
+        <input
+          id="size-swatch-{{ value | handle }}"
+          type="radio"
+          name="size-option"
+          value="{{ value | escape }}"
+          {% if forloop.first %}checked{% endif %}
+          {% unless variant.available %}disabled{% endunless %}>
+        <div class="swatch-content">
+          {{ value }}
+        </div>
+      </label>
+    {% endunless %}
+  {% endfor %}
+</div>

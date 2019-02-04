@@ -1,0 +1,42 @@
+<div class="account">
+  <h3>Hi, {{ customer.first_name }}</h3>
+  <div class="body2 account-header">Track your order details here.</div>
+  {% paginate customer.orders %}
+    {% if customer.orders.size > 0 %}
+      {% for order in customer.orders %}
+        <div class="body2 order-date">{{ order.created_at | date: format: 'month_day_year' }}</div>
+        <div class="order-details">
+          <table>
+            <tr>
+              <td class="order-detail-item">
+                <div class="body3">Order Number</div>
+                <div class="body2">{{ order.name }}</div>
+              </td>
+              <td class="order-detail-item">
+                <div class="body3">Order Number</div>
+                <div class="body2">{{ order.name }}</div>
+              </td>
+              <td class="order-detail-item">
+                <div class="body3">Order Number</div>
+                <div class="body2">{{ order.name }}</div>
+              </td>
+              <td class="order-detail-item">
+                <a class="btn" href="{{ order.customer_url }}">View Details</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="body3">Items</div>
+        <div class="items">
+          {% for item in order.line_items %}
+            <a href="{{ item.url }}">
+              {{ item.image | img_url: '150x150' | img_tag }}
+            </a>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    {% else %}
+      none
+    {% endif %}
+  {% endpaginate %}
+</div>

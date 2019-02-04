@@ -1,0 +1,66 @@
+@import "../variables";
+
+.checkbox {
+  $checkbox-border-width: 2px;
+  $checkbox-size: 20px;
+  $checkmark-border-width: 2px;
+
+  display: inline-block;
+  position: relative;
+  padding-left: $checkbox-size;
+  margin-bottom: $checkbox-size;
+  height: 0;
+  cursor: pointer;
+  font-size: 22px;
+  user-select: none;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+
+    &:checked ~ .checkmark {
+      border-color: black;
+
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: $checkbox-size;
+    width: $checkbox-size;
+    background-color: transparent;
+    border: $checkbox-border-width solid $color-grey-1;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: $base-transition-duration;
+
+    &:after {
+      content: "";
+      position: absolute;
+      opacity: 0;
+      display: block;
+      left: 5px;
+      top: 0;
+      width: 5px;
+      height: 10px;
+      border: solid $color-green;
+      border-width: 0 $checkmark-border-width $checkmark-border-width 0;
+      transform: rotate(45deg);
+      transition: $base-transition-duration;
+    }
+  }
+
+  &:hover {
+    .checkmark {
+      border-color: black;
+    }
+  }
+}

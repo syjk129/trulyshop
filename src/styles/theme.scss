@@ -1,1 +1,53 @@
 @charset 'UTF-8';
+
+@import './helper';
+@import './variables';
+@import './typography';
+
+// Components
+@import './components/button';
+@import './components/checkbox';
+@import './components/icon';
+@import './components/input';
+@import './components/select';
+@import './components/swatch';
+@import './components/switch';
+
+// Sections
+@import './sections/footer';
+@import './sections/header';
+@import './sections/product';
+@import './sections/sidebar';
+@import './sections/sidebar-nav';
+
+// Snippets
+@import './snippets/product-card';
+
+// Templates
+@import './templates/auth';
+@import './templates/cart';
+@import './templates/collection';
+@import './templates/customers/account';
+
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  position: relative;
+  min-height: 100%;
+}
+
+.content {
+  display: flex;
+  max-width: $max-screen-width;
+  margin: auto;
+  padding: 40px;
+}
+
+iframe {
+  display: none;
+}
