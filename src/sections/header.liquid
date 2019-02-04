@@ -30,10 +30,21 @@
           icon: 'search',
           button_id: 'header-search'
         %}
-        {% include 'icon-button' with
-          icon: 'bag',
-          button_id: 'header-cart'
-        %}
+        <div class="cart-icon">
+          {% include 'icon-button' with
+            icon: 'bag',
+            button_id: 'header-cart'
+          %}
+          {% if cart.item_count > 0 %}
+            <span class="cart-amount">
+              {% if cart.item_count > 9 %}
+                9+
+              {% else %}
+                {{ cart.item_count }}
+              {% endif %}
+            </span>
+          {% endif %}
+        </div>
         {% if customer %}
           {% include 'icon-button' with
             icon: 'account',

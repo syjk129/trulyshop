@@ -1,0 +1,17 @@
+{% paginate collection.products by 9 %}
+  <div class="collection">
+    <header role="banner">
+      <div class="body3">
+        {{ collection.description }}
+      </div>
+      <div class="cover">
+        {{ collection.image | img_url: '830x275' | img_tag}}
+      </div>
+    </header>
+    <div class="collection-products">
+      {% for product in collection.products %}
+        {% include 'product-card' with product: product %}
+      {% endfor %}
+    </div>
+  </div>
+{% endpaginate %}

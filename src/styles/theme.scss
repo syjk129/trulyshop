@@ -20,9 +20,13 @@
 @import './sections/sidebar';
 @import './sections/sidebar-nav';
 
+// Snippets
+@import './snippets/product-card';
+
 // Templates
 @import './templates/auth';
 @import './templates/cart';
+@import './templates/collection';
 @import './templates/customers/account';
 
 html {

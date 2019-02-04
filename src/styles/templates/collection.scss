@@ -1,0 +1,37 @@
+@import "../variables";
+
+.collection {
+  width: 100%;
+
+  header {
+    margin-bottom: 50px;
+
+    .body3 {
+      color: $color-grey-1;
+      margin-bottom: 10px;
+    }
+
+    .cover {
+      width: 100%;
+      padding-top: 33%;
+      position: relative;
+
+      img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+    }
+  }
+
+  .collection-products {
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}

@@ -17,7 +17,7 @@
       {% assign values = values | join: ',' %}
       {% assign values = values | append: ',' | append: value %}
       {% assign values = values | split: ',' %}
-      <label data-value="{{ value | escape }}" class="swatch color-swatch {% unless variant.available %}unavailable{% endunless %}">
+      <label data-value="{{ value | escape }}" class="swatch color-swatch {% unless variant.available %}unavailable{% endunless %}{% if small %}small{% endif %} {% if small %}small{% endif %}">
         <input
           id="color-swatch-{{ value | handle }}"
           type="radio"

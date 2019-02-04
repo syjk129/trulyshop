@@ -3,6 +3,8 @@
 $swatch-size: 40px;
 $swatch-content-size: 24px;
 $swatch-border-size: 1px;
+$small-swatch-size: 25px;
+$small-swatch-content-size: 15px;
 
 .swatch-container {
   margin-bottom: 10px;
@@ -62,6 +64,23 @@ $swatch-border-size: 1px;
       height: $swatch-content-size;
       border-radius: 50%;
       background: black;
+    }
+  }
+
+  &.small {
+    padding-left: $small-swatch-size;
+    margin-bottom: $small-swatch-size;
+
+    .swatch-content {
+      height: $small-swatch-size;
+      width: $small-swatch-size;
+
+      &:after {
+        top: ($small-swatch-size - $small-swatch-content-size) / 2 - $swatch-border-size;
+        left: ($small-swatch-size - $small-swatch-content-size) / 2 - $swatch-border-size;
+        width: $small-swatch-content-size;
+        height: $small-swatch-content-size;
+      }
     }
   }
 }

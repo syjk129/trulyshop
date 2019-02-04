@@ -1,0 +1,64 @@
+{%- comment -%}
+  Product Card
+
+  Accepts:
+  - product: Product for the card
+{%- endcomment -%}
+
+<div id="product-card-{{ product.id }}" class="product-card" data-product-card>
+  {% assign color_index = -1 %}
+  {% assign size_index = -1 %}
+
+  {% for option in product.options %}
+    {% assign downcased_option = option | downcase %}
+    {% if downcased_option contains 'color' %}
+      {% assign color_index = forloop.index0 %}
+    {% elsif downcased_option contains 'size' %}
+      {% assign size_index = forloop.index0 %}
+    {% endif %}
+  {% endfor %}
+
+  <div class="product-card-img">
+    <a href="{{ product.url }}">
+      <img src="{{ product.featured_image | img_url: '260x343' }}">
+    </a>
+    <button class="btn quick-add" data-quick-add>Quick Add +</button>
+    {% unless size_index == -1 %}
+      <div class="quick-add-size" data-quick-add-size-container>
+        {% assign values = '' %}
+        {% for variant in product.variants %}
+          {% assign value = variant.options[size_index] %}
+          {% unless values contains value %}
+            {% assign values = values | join: ',' %}
+            {% assign values = values | append: ',' | append: value %}
+            {% assign values = values | split: ',' %}
+            <button class="quick-add-size-btn" data-value="{{ value }}" data-quick-add-size>{{ value }}</button>
+          {% endunless %}
+        {% endfor %}
+      </div>
+    {% endunless %}
+  </div>
+  <div class="product-card-details">
+    <a href="{{ product.url }}" class="name-price">
+      <span class="body3">
+        {{ product.title }}
+      </span>
+      <span class="body3">
+        {{ product.price | money }}
+      </span>
+    </a>
+
+    {% unless color_index == -1 %}
+      <div class="body3 variant-name">
+        {{ product.variants[0].options[color_index] | capitalize }}
+      </div>
+      {% include 'color-swatch' with product: product, small: true %}
+    {% endunless %}
+  </div>
+
+  {% unless product == empty %}
+    <script type="application/json" data-product-json>
+      {{ product | json }}
+    </script>
+  {% endunless %}
+</div>
