@@ -1,0 +1,9 @@
+@import "./variables";
+
+$medium-content-width: 735px;
+
+.content-medium {
+  width: 100%;
+  max-width: $medium-content-width;
+  margin: auto;
+}

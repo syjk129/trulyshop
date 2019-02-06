@@ -1,0 +1,24 @@
+<div class="order">
+  <a class="body2 return" href="/account">< Return to All Orders</a>
+  <h3>Order #{{ order.order_number }}</h3>
+  <table class="order-list">
+    <tr>
+      <th>{{ order.created_at | date: format: 'month_day_year' }}</th>
+      <th>Qty.</th>
+      <th>Subtotal</th>
+    </tr>
+    {% for item in order.line_items %}
+      <tr>
+        <td>
+          {{ item.title }}
+        </td>
+        <td>
+          {{ item.quantity }}
+        </td>
+        <td>
+          {{ item.price | money }}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+</div>

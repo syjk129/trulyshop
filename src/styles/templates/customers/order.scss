@@ -1,0 +1,14 @@
+@import "../../variables";
+
+.order {
+  .order-list {
+    text-align: left;
+    width: 100%;
+  }
+
+  .return {
+    display: block;
+    text-decoration: none;
+    margin-bottom: 30px;
+  }
+}

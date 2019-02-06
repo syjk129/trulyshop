@@ -1,6 +1,7 @@
 @charset 'UTF-8';
 
 @import './helper';
+@import './layouts';
 @import './variables';
 @import './typography';
 
@@ -28,6 +29,7 @@
 @import './templates/cart';
 @import './templates/collection';
 @import './templates/customers/account';
+@import './templates/customers/order';
 
 html {
   margin: 0;
