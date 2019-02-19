@@ -1,6 +1,7 @@
 @charset 'UTF-8';
 
 @import './helper';
+@import './layouts';
 @import './variables';
 @import './typography';
 
@@ -9,6 +10,8 @@
 @import './components/checkbox';
 @import './components/icon';
 @import './components/input';
+@import './components/item-table';
+@import './components/modal';
 @import './components/select';
 @import './components/swatch';
 @import './components/switch';
@@ -21,6 +24,7 @@
 @import './sections/sidebar-nav';
 
 // Snippets
+@import './snippets/payment-logo';
 @import './snippets/product-card';
 
 // Templates
@@ -28,6 +32,8 @@
 @import './templates/cart';
 @import './templates/collection';
 @import './templates/customers/account';
+@import './templates/customers/addresses';
+@import './templates/customers/order';
 
 html {
   margin: 0;
@@ -46,8 +52,4 @@ body {
   max-width: $max-screen-width;
   margin: auto;
   padding: 40px;
-}
-
-iframe {
-  display: none;
 }

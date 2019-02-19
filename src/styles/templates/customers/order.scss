@@ -1,0 +1,71 @@
+@import "../../variables";
+
+.order {
+  .order-list {
+    text-align: left;
+    width: 100%;
+  }
+
+  .return {
+    display: block;
+    text-decoration: none;
+    margin-bottom: 30px;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+
+    button:not(:last-of-type) {
+      margin-bottom: 10px;
+    }
+  }
+
+  .purchase-summary {
+    border-bottom: 1px solid $color-grey-3;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+
+    .item {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .value {
+      color: $color-grey-1;
+    }
+
+    .divider {
+      border-bottom: 1px solid $color-grey-3;
+      margin: 20px 0;
+    }
+  }
+
+  .payment-address {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+    .item {
+      .body2 {
+        color: $color-grey-1;
+      }
+
+      .body3 {
+        margin-bottom: 10px;
+      }
+    }
+
+    .card-info {
+      align-items: center;
+      display: flex;
+      margin-bottom: 20px;
+
+      .payment-logo {
+        margin-right: 10px;
+      }
+    }
+  }
+}

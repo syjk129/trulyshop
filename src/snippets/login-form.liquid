@@ -26,6 +26,9 @@
         placeholder="{{ 'customer.password' | t }}*">
 
       <input type="submit" class="btn large" value="{{ 'customer.log_in' | t }}">
+
+      {{ form.errors | default_errors }}
+
       {% if form.password_needed %}
         <a id="RecoverPassword" class="body3 toggle" href="/account/login#recover">{{ 'customer.forgot_password' | t }}</a>
       {% endif %}

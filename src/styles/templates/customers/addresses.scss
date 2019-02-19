@@ -1,0 +1,86 @@
+@import "../../variables";
+
+.addresses {
+  padding-top: 30px;
+
+  .header {
+    margin-bottom: 30px;
+  }
+
+  .address-list {
+    margin-bottom: 100px;
+
+    .address {
+      position: relative;
+      display: inline-block;
+      width: 50%;
+      max-width: 160px;
+      margin-right: 50px;
+
+      .address-delete-form {
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        .close {
+          border: none;
+          color: $color-grey-2;
+          font-size: 15px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+.address-modal {
+  max-width: 450px;
+  width: 100%;
+  padding: 70px;
+}
+
+.address-form {
+  width: 100%;
+
+  .select-container {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  input {
+    width: 100%;
+
+    &[type=submit] {
+      margin-top: 10px;
+    }
+
+    &:not(:last-of-type) {
+      margin-bottom: 20px;
+    }
+  }
+
+  .grouped-address-input {
+    display: flex;
+    margin-bottom: 20px;
+
+    div:first-of-type {
+      margin-right: 20px;
+    }
+
+    .half {
+      width: 50%;
+    }
+
+    .large {
+      width: 60%;
+    }
+
+    .small {
+      width: 40%;
+    }
+  }
+}

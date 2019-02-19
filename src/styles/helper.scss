@@ -17,3 +17,14 @@
 .hide {
   display: none;
 }
+
+.errors {
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: red;
+  }
+}

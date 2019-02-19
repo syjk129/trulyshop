@@ -1,0 +1,79 @@
+@import "../variables";
+
+.item-table-header {
+  margin-bottom: 50px;
+}
+
+.item-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  border-bottom: 1px solid $color-grey-3;
+  margin-bottom: 30px;
+
+  th {
+    text-align: left;
+    border-bottom: 1px solid $color-grey-3;
+    padding-bottom: 15px;
+    font-weight: $font-weight-regular;
+  }
+
+  td {
+    padding: 30px 0;
+  }
+
+  .quantity {
+    width: 70px;
+    padding-right: 50px;
+    vertical-align: text-top;
+
+    input {
+      width: 70px;
+    }
+  }
+
+  .subtotal {
+    width: 160px;
+    vertical-align: text-top;
+  }
+
+  .details {
+    padding-right: 50px;
+
+    .item {
+      display: flex;
+
+      .item-img-container {
+        width: 40%;
+        margin-right: 20px;
+        
+        .item-img {
+          width: 100%;
+          padding-top: 125%;
+          position: relative;
+
+          img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+          }
+        }
+      }
+
+      .item-details {
+        .body2 {
+          margin-bottom: 10px;
+        }
+
+        .variant {
+          color: $color-grey-1;
+        }
+      }
+    }
+  }
+}

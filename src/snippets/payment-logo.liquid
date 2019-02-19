@@ -1,0 +1,12 @@
+{%- comment -%}
+  Payment Logo
+
+  Accepts
+  - logo_type
+{%- endcomment -%}
+
+<div class="payment-logo">
+  {% if logo_type | lowercase == "visa" %}
+    <img src="{{ 'visa.png' | asset_url }}">
+  {% endif %}
+</div>

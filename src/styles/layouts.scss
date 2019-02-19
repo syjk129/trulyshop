@@ -1,0 +1,21 @@
+@import "./variables";
+
+$small-content-width: 450px;
+$medium-content-width: 735px;
+
+.content-small {
+  width: 100%;
+  max-width: $small-content-width;
+}
+
+.layout-small {
+  width: 100%;
+  max-width: $small-content-width;
+  margin: auto;
+}
+
+.content-medium {
+  width: 100%;
+  max-width: $medium-content-width;
+  margin: auto;
+}

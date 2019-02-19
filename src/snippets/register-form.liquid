@@ -7,8 +7,6 @@
 
 <div id="{{ form_id }}" class="auth-form">
   {% form 'create_customer' %}
-    {{ form.errors | default_errors }}
-
     <input type="text"
       class="form-input"
       name="customer[first_name]"
@@ -45,6 +43,7 @@
       <span class="body3">I want to receive emails</span>
     </div>
     <input type="submit" class="btn large" value="{{ 'customer.create_account' | t }}">
+    {{ form.errors | default_errors }}
     <a class="body3 toggle" href="/account/login">{{ 'customer.have_account' | t }}</a>
   {% endform %}
 </div>
