@@ -1,21 +1,4 @@
-$font-size-1: 45px;
-$font-size-2: 35px;
-$font-size-3: 25px;
-$font-size-4: 20px;
-$font-size-5: 17px;
-$font-size-6: 13px;
-
-$line-height-5: 23px;
-
-$font-size-link: $font-size-6;
-
-/* Font Weights */
-$font-weight-extra-light: 100;
-$font-weight-light: 200;
-$font-weight-regular: 400;
-$font-weight-semibold: 600;
-$font-weight-bold: 700;
-$font-weight-black: 900;
+@import "./variables";
 
 /* Base Styles */
 html,
@@ -108,4 +91,16 @@ a {
 
 .text-center {
   text-align: center;
+}
+
+.body1,
+.body2,
+.body3 {
+  &.active {
+    color: black;
+  }
+
+  &.grey {
+    color: $color-grey-1;
+  }
 }

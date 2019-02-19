@@ -1,0 +1,90 @@
+{%- comment -%}
+  Address Form
+
+  Accepts
+  - form_id: Form id
+{%- endcomment -%}
+
+<div id="{{ form_id }}" class="address-form">
+  {% form 'customer_address', customer.new_address %}
+    <div class="grouped-address-input">
+      <div class="half">
+        <label class="input-label" for="AddressFirstNameNew">{{ 'customer.first_name' | t }}*</label>
+        <input type="text"
+          clas="form-input"
+          name="address[first_name]"
+          id="AddressFirstNameNew"
+          autofocus
+          value="{{ form.first_name }}">
+      </div>
+      <div class="half">
+        <label class="input-label" for="AddressFirstNameNew">{{ 'customer.last_name' | t }}*</label>
+        <input type="text"
+          clas="form-input"
+          name="address[last_name]"
+          id="AddressFirstNameNew"
+          value="{{ form.last_name }}">
+        </div>
+    </div>
+    <label class="input-label" for="AddressCountryNew">{{ 'customer.country' | t }}*</label>
+    <div class="select-container">
+      <select
+        id="AddressCountryNew"
+        name="address[country]"
+        data-default="{{ form.country }}">
+        {{ country_option_tags }}
+      </select>
+    </div>
+    <label class="input-label" for="AddressAddress1New">{{ 'customer.address1' | t }}*</label>
+    <input type="text"
+      clas="form-input"
+      name="address[address1]"
+      id="AddressAddress1New"
+      value="{{ form.address1 }}">
+    <label class="input-label" for="AddressAddress2New">{{ 'customer.address2' | t }}</label>
+    <input type="text"
+      clas="form-input"
+      name="address[address2]"
+      id="AddressAddress2New"
+      value="{{ form.address2 }}">
+    <div class="grouped-address-input">
+      <div class="large">
+        <label class="input-label" for="AddressCityNew">{{ 'customer.city' | t }}*</label>
+        <input type="text"
+          clas="form-input"
+          name="address[city]"
+          id="AddressCityNew"
+          value="{{ form.city }}">
+      </div>
+      <div class="small">
+        <label class="input-label" for="AddressProvinceNew">{{ 'customer.state' | t }}*</label>
+        <input type="text"
+          class="form-input"
+          name="address[province]"
+          id="AddressProvinceNew"
+          data-default="{{ form.province }}">
+      </div>
+    </div>
+    <div class="grouped-address-input">
+      <div class="small">
+        <label class="input-label" for="AddressZipNew">{{ 'customer.zip' | t }}*</label>
+        <input type="text"
+          clas="form-input"
+          name="address[zip]"
+          id="AddressZipNew"
+          value="{{ form.zip }}">
+      </div>
+      <div class="large">
+        <label class="input-label" for="AddressPhoneNew">{{ 'customer.phone' | t }}*</label>
+        <input type="text"
+          clas="form-input"
+          name="address[phone]"
+          id="AddressPhoneNew"
+          value="{{ form.phone }}">
+      </div>
+    </div>
+    <input type="submit"
+      class="btn large"
+      value="Save">
+  {% endform %}
+</div>

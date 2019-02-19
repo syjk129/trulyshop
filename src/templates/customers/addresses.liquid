@@ -1,1 +1,36 @@
-Addresses
+<div class="addresses content-small">
+  <div class="body2 header">
+    Manage and add shipping addresses
+  </div>
+  <div class="address-list">
+    {% for address in customer.addresses %}
+      <div class="address">
+        <form
+          class="address-delete-form"
+          method="post"
+          action="/account/addresses/{{ address.id }}"
+          data-confirm-message="Confirm Delete">
+          <input type="hidden" name="_method" value="delete">
+          <button type="submit" class="close">&times;</button>
+        </form>
+        <div class="body3">
+          {{ address.first_name }} {{ address.last_name }}
+        </div>
+        <div class="body3 grey">
+          {{ address.address1 }}<br>
+          {% if address.address2 != "" %}
+            {{ address.address2 }}<br>
+          {% endif %}
+          {{ address.city }}<br>
+          {{ address.province_code }} {{ address.zip }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <button id="add-new-address" class="btn large">Add new Address</button>
+</div>
+<div class="modal" id="address-modal">
+  <div class="modal-content address-modal">
+    {% include 'address-form' %}
+  </div>
+</div>

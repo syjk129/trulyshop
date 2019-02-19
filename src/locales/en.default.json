@@ -36,7 +36,14 @@
     "order_history": "Order History",
     "saved_addresses": "Saved Addressses",
     "log_out": "Log Out",
-    "invite_friends": "Invite Friends"
+    "invite_friends": "Invite Friends",
+    "address1": "Address Line 1",
+    "address2": "Address Line 2",
+    "country": "Country",
+    "city": "City",
+    "state": "State",
+    "zip": "Postal Code",
+    "phone": "Phone"
   },
   "product": {
     "add_to_cart": "Add to Cart",

@@ -1,24 +1,118 @@
-<div class="order">
+<div class="order content-medium">
   <a class="body2 return" href="/account">< Return to All Orders</a>
-  <h3>Order #{{ order.order_number }}</h3>
-  <table class="order-list">
+  <h3 class="item-table-header">Order #{{ order.order_number }}</h3>
+  <table class="order-list item-table">
     <tr>
-      <th>{{ order.created_at | date: format: 'month_day_year' }}</th>
-      <th>Qty.</th>
-      <th>Subtotal</th>
+      <th class="details">
+        {{ order.created_at | date: format: 'month_day_year' }}
+      </th>
+      <th class="quantity">
+        {{ 'cart.quantity' | t }}
+      </th>
+      <th class="subtotal">
+        {{ 'cart.subtotal' | t }}
+      </th>
     </tr>
     {% for item in order.line_items %}
+      {% assign color_index = -1 %}
+      {% assign size_index = -1 %}
+
+      {% for option in item.product.options %}
+        {% assign downcased_option = option | downcase %}
+        {% if downcased_option contains 'color' %}
+          {% assign color_index = forloop.index0 %}
+        {% elsif downcased_option contains 'size' %}
+          {% assign size_index = forloop.index0 %}
+        {% endif %}
+      {% endfor %}
+
       <tr>
-        <td>
-          {{ item.title }}
+        <td class="details">
+          <div class="item">
+            <div class="item-img-container">
+              <div class="item-img">
+                <img src="{{ item.image | img_url: '480x480' }}">
+              </div>
+            </div>
+            <div class="item-details">
+              <div class="body2">{{ item.product.title }}</div>
+              {% if size_index != -1 %}
+                <div class="body3 variant">
+                  Size: {{ item.variant.options[size_index] | capitalize }}
+                </div>
+              {% endif %}
+              {% if color_index != -1 %}
+                <div class="body3 variant">
+                  Color: {{ item.variant.options[color_index] | capitalize }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
         </td>
-        <td>
+        <td class="quantity">
           {{ item.quantity }}
         </td>
-        <td>
+        <td class="subtotal">
           {{ item.price | money }}
         </td>
       </tr>
     {% endfor %}
   </table>
+  <div class="purchase-summary">
+    <div class="item">
+      <div class="label body3">Subtotal</div>
+      <div class="value body2">{{ order.subtotal_price | money }}</div>
+    </div>
+    <div class="item">
+      <div class="label body3">Tax</div>
+      <div class="value body2">$100</div>
+    </div>
+    <div class="item">
+      <div class="label body3">Shipping</div>
+      <div class="value body2">{{ order.shipping_price | money }}</div>
+    </div>
+    <div class="divider"></div>
+    <div class="item">
+      <div class="label body3">Total</div>
+      <div class="value body2">{{ order.total_price | money }}</div>
+    </div>
+  </div>
+  <div class="payment-address">
+    {% assign transaction = order.transactions[0] %}
+    <div class="item">
+      <div class="body3">Billing Information</div>
+      <div class="body2">
+        <div class="card-info">
+          {% include 'payment-logo' with logo_type: transaction.payment_details.credit_card_company %}
+          {{ transaction.payment_details.credit_card_last_four_digits }}
+        </div>
+        {% assign billing_address = order.billing_address %}
+        {{ billing_address.first_name }} {{ billing_address.last_name }}<br>
+        {{ billing_address.address1 }}<br>
+        {% if billing_address.address2 != "" %}
+          {{ billing_address.address2 }}<br>
+        {% endif %}
+        {{ billing_address.city }}<br>
+        {{ billing_address.province_code }} {{ billing_address.zip }}
+      </div>
+    </div>
+    <div class="item">
+      <div class="body3">Shipping Information</div>
+      <div class="body2">
+        {% assign shipping_address = order.shipping_address %}
+        {{ shipping_address.first_name }} {{ shipping_address.last_name }}<br>
+        {{ shipping_address.address1 }}<br>
+        {% if shipping_address.address2 != "" %}
+          {{ shipping_address.address2 }}<br>
+        {% endif %}
+        {{ shipping_address.city }}<br>
+        {{ shipping_address.province_code }} {{ shipping_address.zip }}
+      </div>
+    </div>
+    <div class="item button-container">
+      <button class="btn">Track your order</button>
+      <button class="btn outline">Return Items</button>
+    </div>
+  </div>
+  <a class="body2 return" href="/account">< Return to All Orders</a>
 </div>
