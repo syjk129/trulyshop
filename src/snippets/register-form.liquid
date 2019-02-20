@@ -34,6 +34,9 @@
       autocomplete="off"
       autocapitalize="off"
       required>
+    {% if form.errors["email"] %}
+      {{ form.errors.messages["email"] }}
+    {% endif %}
 
     <input type="password"
       name="customer[password]"
@@ -48,11 +51,6 @@
     </div>
     <input type="submit" class="btn large" value="{{ 'customer.create_account' | t }}">
     {{ form.errors | default_errors }}
-    {% for error in form.errors %}
-      {{ error }}
-      {{ error | default_errors }}
-      {{ form.errors[error] }}
-    {% endfor %}
     <a class="body3 toggle" href="/account/login">{{ 'customer.have_account' | t }}</a>
   {% endform %}
 </div>
