@@ -13,14 +13,16 @@
       id="FirstName"
       placeholder="{{ 'customer.first_name' | t }}*"
       autofocus
-      {% if form.first_name %}value="{{ form.first_name }}"{% endif %}>
+      {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
+      required>
 
     <input type="text"
       class="form-input"
       name="customer[last_name]"
       id="LastName"
       placeholder="{{ 'customer.last_name' | t }}*"
-      {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
+      {% if form.last_name %}value="{{ form.last_name }}"{% endif %}
+      required>
 
     <input type="email"
       name="customer[email]"
@@ -30,13 +32,15 @@
       value="{% if form.email %}{{ form.email }}{% endif %}"
       spellcheck="false"
       autocomplete="off"
-      autocapitalize="off">
+      autocapitalize="off"
+      required>
 
     <input type="password"
       name="customer[password]"
       id="CreatePassword"
       class="form-input {% if form.errors contains 'password' %}input-error{% endif %}"
-      placeholder="{{ 'customer.password' | t }}*">
+      placeholder="{{ 'customer.password' | t }}*"
+      required>
 
     <div class="optin">
       {% include 'checkbox' with name: "customer[accepts_marketing]" %}
@@ -44,6 +48,11 @@
     </div>
     <input type="submit" class="btn large" value="{{ 'customer.create_account' | t }}">
     {{ form.errors | default_errors }}
+    {% for error in form.errors %}
+      {{ error }}
+      {{ error | default_errors }}
+      {{ form.errors[error] }}
+    {% endfor %}
     <a class="body3 toggle" href="/account/login">{{ 'customer.have_account' | t }}</a>
   {% endform %}
 </div>

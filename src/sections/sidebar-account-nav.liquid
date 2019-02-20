@@ -1,7 +1,7 @@
 <div class="sidebar-nav">
   <div class="callout sidebar-header">{{ 'customer.my_account' | t }}</div>
   <a class="child-link {% if request.path == '/account' %}selected{% endif %}" href="/account">{{ 'customer.order_history' | t }}</a>
-  <a class="child-link" href="/account/addresses">{{ 'customer.saved_addresses' | t }}</a>
+  <a class="child-link {% if request.path == '/account/addresses' %}selected{% endif %}" href="/account/addresses">{{ 'customer.saved_addresses' | t }}</a>
   <a class="child-link" href="/account#invite">{{ 'customer.invite_friends' | t }}</a>
   <a class="child-link" href="/account/logout">{{ 'customer.log_out' | t }}</a>
 </div>

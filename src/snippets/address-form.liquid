@@ -11,19 +11,21 @@
       <div class="half">
         <label class="input-label" for="AddressFirstNameNew">{{ 'customer.first_name' | t }}*</label>
         <input type="text"
-          clas="form-input"
+          clas="form-input {% if form.errors contains 'first' %}input-error{% endif %}"
           name="address[first_name]"
           id="AddressFirstNameNew"
           autofocus
-          value="{{ form.first_name }}">
+          value="{{ form.first_name }}"
+          required>
       </div>
       <div class="half">
         <label class="input-label" for="AddressFirstNameNew">{{ 'customer.last_name' | t }}*</label>
         <input type="text"
-          clas="form-input"
+          clas="form-input {% if form.errors contains 'last' %}input-error{% endif %}"
           name="address[last_name]"
           id="AddressFirstNameNew"
-          value="{{ form.last_name }}">
+          value="{{ form.last_name }}"
+          required>
         </div>
     </div>
     <label class="input-label" for="AddressCountryNew">{{ 'customer.country' | t }}*</label>
@@ -40,7 +42,8 @@
       clas="form-input"
       name="address[address1]"
       id="AddressAddress1New"
-      value="{{ form.address1 }}">
+      value="{{ form.address1 }}"
+      required>
     <label class="input-label" for="AddressAddress2New">{{ 'customer.address2' | t }}</label>
     <input type="text"
       clas="form-input"
@@ -54,7 +57,8 @@
           clas="form-input"
           name="address[city]"
           id="AddressCityNew"
-          value="{{ form.city }}">
+          value="{{ form.city }}"
+          required>
       </div>
       <div class="small">
         <label class="input-label" for="AddressProvinceNew">{{ 'customer.state' | t }}*</label>
@@ -62,7 +66,8 @@
           class="form-input"
           name="address[province]"
           id="AddressProvinceNew"
-          data-default="{{ form.province }}">
+          data-default="{{ form.province }}"
+          required>
       </div>
     </div>
     <div class="grouped-address-input">
@@ -72,10 +77,11 @@
           clas="form-input"
           name="address[zip]"
           id="AddressZipNew"
-          value="{{ form.zip }}">
+          value="{{ form.zip }}"
+          required>
       </div>
       <div class="large">
-        <label class="input-label" for="AddressPhoneNew">{{ 'customer.phone' | t }}*</label>
+        <label class="input-label" for="AddressPhoneNew">{{ 'customer.phone' | t }}</label>
         <input type="text"
           clas="form-input"
           name="address[phone]"
@@ -83,6 +89,7 @@
           value="{{ form.phone }}">
       </div>
     </div>
+    {{ form.errors | default_errors }}
     <input type="submit"
       class="btn large"
       value="Save">
