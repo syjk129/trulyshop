@@ -18,16 +18,23 @@
         autocomplete="off"
         autocapitalize="off"
         autofocus>
+      <span class="input-error-label">
+        {{ form.errors.messages["email"] }}
+      </span>
 
       <input type="password"
         name="customer[password]"
         id="CustomerPassword"
         class="form-input {% if form.errors contains 'password' %}input-error{% endif %}"
         placeholder="{{ 'customer.password' | t }}*">
+      <span class="input-error-label">
+        {{ form.errors.messages["password"] }}
+      </span>
 
       <input type="submit" class="btn large" value="{{ 'customer.log_in' | t }}">
-
-      {{ form.errors | default_errors }}
+      <span class="input-error-label">
+        {{ form.errors.messages["form"] }}
+      </span>
 
       {% if form.password_needed %}
         <a id="RecoverPassword" class="body3 toggle" href="/account/login#recover">{{ 'customer.forgot_password' | t }}</a>
@@ -42,18 +49,24 @@
     {% form 'recover_customer_password' %}
       {{ form.errors | default_errors }}
       <input type="email"
-        class="form-input"
+        class="form-input {% if form.errors contains 'email' %}input-error{% endif %}"
         name="email"
         id="RecoverEmail"
         placeholder="{{ 'customer.email' | t }}"
         spellcheck="false"
         autocomplete="off"
         autocapitalize="off">
+      <span class="input-error-label">
+        {{ form.errors.messages["email"] }}
+      </span>
 
       <input type="submit" class="btn large" value="{{ 'customer.submit' | t }}">
       <button class="btn large outline cancel-btn" type="button" id="HideRecoverPasswordLink">
         {{ 'customer.cancel' | t }}
       </button>
+      <span class="input-error-label">
+        {{ form.errors.messages["form"] }}
+      </span>
     {% endform %}
   </div>
 </div>

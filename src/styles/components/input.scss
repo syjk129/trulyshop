@@ -17,7 +17,7 @@ input {
     border-color: $color-green;
   }
 
-  &.error {
+  &.input-error {
     border-color: $color-red;
   }
 }
@@ -28,5 +28,11 @@ input {
   color: $color-grey-1;
   font-size: $font-size-6;
   letter-spacing: 0.15px;
+}
+
+.input-error-label {
+  display: block;
+  color: red;
+  font-size: $font-size-5;
   margin-bottom: 5px;
 }
