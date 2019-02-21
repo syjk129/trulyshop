@@ -15,6 +15,9 @@
       autofocus
       {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
       required>
+    <span class="input-error-label">
+      {{ form.errors.messages["first_name"] }}
+    </span>
 
     <input type="text"
       class="form-input"
@@ -23,6 +26,9 @@
       placeholder="{{ 'customer.last_name' | t }}*"
       {% if form.last_name %}value="{{ form.last_name }}"{% endif %}
       required>
+    <span class="input-error-label">
+      {{ form.errors.messages["last_name"] }}
+    </span>
 
     <input type="email"
       name="customer[email]"
@@ -34,9 +40,9 @@
       autocomplete="off"
       autocapitalize="off"
       required>
-    {% if form.errors["email"] %}
+    <span class="input-error-label">
       {{ form.errors.messages["email"] }}
-    {% endif %}
+    </span>
 
     <input type="password"
       name="customer[password]"
@@ -44,13 +50,16 @@
       class="form-input {% if form.errors contains 'password' %}input-error{% endif %}"
       placeholder="{{ 'customer.password' | t }}*"
       required>
+    <span class="input-error-label">
+      {{ form.errors.messages["password"] }}
+    </span>
 
     <div class="optin">
       {% include 'checkbox' with name: "customer[accepts_marketing]" %}
       <span class="body3">I want to receive emails</span>
     </div>
     <input type="submit" class="btn large" value="{{ 'customer.create_account' | t }}">
-    {{ form.errors | default_errors }}
+
     <a class="body3 toggle" href="/account/login">{{ 'customer.have_account' | t }}</a>
   {% endform %}
 </div>
