@@ -116,5 +116,8 @@
     <input type="submit"
       class="btn large"
       value="Save">
+    <span class="input-error-label">
+      {{ form.errors.messages["form"] }}
+    </span>
   {% endform %}
 </div>

@@ -64,6 +64,9 @@
       <button class="btn large outline cancel-btn" type="button" id="HideRecoverPasswordLink">
         {{ 'customer.cancel' | t }}
       </button>
+      <span class="input-error-label">
+        {{ form.errors.messages["form"] }}
+      </span>
     {% endform %}
   </div>
 </div>

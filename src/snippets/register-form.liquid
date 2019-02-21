@@ -59,6 +59,9 @@
       <span class="body3">I want to receive emails</span>
     </div>
     <input type="submit" class="btn large" value="{{ 'customer.create_account' | t }}">
+    <span class="input-error-label">
+      {{ form.errors.messages["form"] }}
+    </span>
 
     <a class="body3 toggle" href="/account/login">{{ 'customer.have_account' | t }}</a>
   {% endform %}
