@@ -11,25 +11,25 @@
       <div class="half">
         <label class="input-label" for="AddressFirstNameNew">{{ 'customer.first_name' | t }}*</label>
         <input type="text"
-          class="form-input {% if form.errors contains 'first_name' %}input-error{% endif %}"
+          class="form-input {% if form.errors contains 'first_name' %}error{% endif %}"
           name="address[first_name]"
           id="AddressFirstNameNew"
           autofocus
           value="{{ form.first_name }}"
           required>
-        <span class="input-error-label">
+        <span class="form-input-error">
           {{ form.errors.messages["first_name"] }}
         </span>
       </div>
       <div class="half">
         <label class="input-label" for="AddressFirstNameNew">{{ 'customer.last_name' | t }}*</label>
         <input type="text"
-          class="form-input {% if form.errors contains 'last_name' %}input-error{% endif %}"
+          class="form-input {% if form.errors contains 'last_name' %}error{% endif %}"
           name="address[last_name]"
           id="AddressFirstNameNew"
           value="{{ form.last_name }}"
           required>
-        <span class="input-error-label">
+        <span class="form-input-error">
           {{ form.errors.messages["last_name"] }}
         </span>
       </div>
@@ -45,45 +45,45 @@
     </div>
     <label class="input-label" for="AddressAddress1New">{{ 'customer.address1' | t }}*</label>
     <input type="text"
-      class="form-input {% if form.errors contains 'address1' %}input-error{% endif %}"
+      class="form-input {% if form.errors contains 'address1' %}error{% endif %}"
       name="address[address1]"
       id="AddressAddress1New"
       value="{{ form.address1 }}"
       required>
-    <span class="input-error-label">
+    <span class="form-input-error">
       {{ form.errors.messages["address1"] }}
     </span>
     <label class="input-label" for="AddressAddress2New">{{ 'customer.address2' | t }}</label>
     <input type="text"
       class="form-input"
-      name="address[address2] {% if form.errors contains 'address2' %}input-error{% endif %}"
+      name="address[address2] {% if form.errors contains 'address2' %}error{% endif %}"
       id="AddressAddress2New"
       value="{{ form.address2 }}">
-    <span class="input-error-label">
+    <span class="form-input-error">
       {{ form.errors.messages["address2"] }}
     </span>
     <div class="grouped-address-input">
       <div class="large">
         <label class="input-label" for="AddressCityNew">{{ 'customer.city' | t }}*</label>
         <input type="text"
-          class="form-input {% if form.errors contains 'city' %}input-error{% endif %}"
+          class="form-input {% if form.errors contains 'city' %}error{% endif %}"
           name="address[city]"
           id="AddressCityNew"
           value="{{ form.city }}"
           required>
-        <span class="input-error-label">
+        <span class="form-input-error">
           {{ form.errors.messages["city"] }}
         </span>
       </div>
       <div class="small">
         <label class="input-label" for="AddressProvinceNew">{{ 'customer.state' | t }}*</label>
         <input type="text"
-          class="form-input {% if form.errors contains 'province' %}input-error{% endif %}"
+          class="form-input {% if form.errors contains 'province' %}error{% endif %}"
           name="address[province]"
           id="AddressProvinceNew"
           data-default="{{ form.province }}"
           required>
-        <span class="input-error-label">
+        <span class="form-input-error">
           {{ form.errors.messages["province"] }}
         </span>
       </div>
@@ -92,23 +92,23 @@
       <div class="small">
         <label class="input-label" for="AddressZipNew">{{ 'customer.zip' | t }}*</label>
         <input type="text"
-          class="form-input {% if form.errors contains 'zip' %}input-error{% endif %}"
+          class="form-input {% if form.errors contains 'zip' %}error{% endif %}"
           name="address[zip]"
           id="AddressZipNew"
           value="{{ form.zip }}"
           required>
-        <span class="input-error-label">
+        <span class="form-input-error">
           {{ form.errors.messages["zip"] }}
         </span>
       </div>
       <div class="large">
         <label class="input-label" for="AddressPhoneNew">{{ 'customer.phone' | t }}</label>
         <input type="text"
-          class="form-input {% if form.errors contains 'phone' %}input-error{% endif %}"
+          class="form-input {% if form.errors contains 'phone' %}error{% endif %}"
           name="address[phone]"
           id="AddressPhoneNew"
           value="{{ form.phone }}">
-        <span class="input-error-label">
+        <span class="form-input-error">
           {{ form.errors.messages["phone"] }}
         </span>
       </div>
@@ -116,7 +116,7 @@
     <input type="submit"
       class="btn large"
       value="Save">
-    <span class="input-error-label">
+    <span class="form-input-error">
       {{ form.errors.messages["form"] }}
     </span>
   {% endform %}

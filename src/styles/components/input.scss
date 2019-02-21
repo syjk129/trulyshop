@@ -28,11 +28,17 @@ input {
   color: $color-grey-1;
   font-size: $font-size-6;
   letter-spacing: 0.15px;
+  margin-bottom: 5px;
 }
 
-.input-error-label {
+.form-input-error {
   display: block;
   color: red;
   font-size: $font-size-5;
+  margin-bottom: 20px;
+}
+
+.form-input {
+  width: 100%;
   margin-bottom: 5px;
 }

@@ -15,7 +15,7 @@
       autofocus
       {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
       required>
-    <span class="input-error-label">
+    <span class="form-input-error">
       {{ form.errors.messages["first_name"] }}
     </span>
 
@@ -26,31 +26,31 @@
       placeholder="{{ 'customer.last_name' | t }}*"
       {% if form.last_name %}value="{{ form.last_name }}"{% endif %}
       required>
-    <span class="input-error-label">
+    <span class="form-input-error">
       {{ form.errors.messages["last_name"] }}
     </span>
 
     <input type="email"
       name="customer[email]"
       id="Email"
-      class="form-input {% if form.errors contains 'email' %}input-error{% endif %}"
+      class="form-input {% if form.errors contains 'email' %}error{% endif %}"
       placeholder="{{ 'customer.email' | t }}*"
       value="{% if form.email %}{{ form.email }}{% endif %}"
       spellcheck="false"
       autocomplete="off"
       autocapitalize="off"
       required>
-    <span class="input-error-label">
+    <span class="form-input-error">
       {{ form.errors.messages["email"] }}
     </span>
 
     <input type="password"
       name="customer[password]"
       id="CreatePassword"
-      class="form-input {% if form.errors contains 'password' %}input-error{% endif %}"
+      class="form-input {% if form.errors contains 'password' %}error{% endif %}"
       placeholder="{{ 'customer.password' | t }}*"
       required>
-    <span class="input-error-label">
+    <span class="form-input-error">
       {{ form.errors.messages["password"] }}
     </span>
 
@@ -59,7 +59,7 @@
       <span class="body3">I want to receive emails</span>
     </div>
     <input type="submit" class="btn large" value="{{ 'customer.create_account' | t }}">
-    <span class="input-error-label">
+    <span class="form-input-error">
       {{ form.errors.messages["form"] }}
     </span>
 
