@@ -60,3 +60,27 @@
     }
   }
 }
+
+.share {
+  display: none;
+  padding-top: 30px;
+  width: 100%;
+
+  .header {
+    margin-bottom: 30px;
+  }
+
+  .subheader {
+    margin-bottom: 15px;
+  }
+
+  input {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

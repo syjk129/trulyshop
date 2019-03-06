@@ -1,4 +1,4 @@
-<div class="account">
+<div class="account" id="account">
   <h3>Hi, {{ customer.first_name }}</h3>
   {% paginate customer.orders %}
     {% if customer.orders.size > 0 %}
@@ -41,4 +41,12 @@
       You do not have any orders
     {% endif %}
   {% endpaginate %}
+</div>
+<div class="share content-small" id="share" data-customer-email="{{ customer.email }}">
+  <div class="body2 header">Invite your friends and earn store credit.</div>
+  <div class="body2 grey subheader">Receive $25 when friends make their first purchase!</div>
+  <input id="share-code" value="" readonly>
+  <button class="btn large facebook">Share on Facebook</button>
+  <button class="btn large twitter">Share on Twitter</button>
+  <div class="body2 grey">0 friends have joined so far</div>
 </div>

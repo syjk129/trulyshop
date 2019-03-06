@@ -57,13 +57,12 @@ $small-swatch-content-size: 15px;
     &:after {
       content: "";
       position: absolute;
-      display: none;
       top: ($swatch-size - $swatch-content-size) / 2 - $swatch-border-size;
       left: ($swatch-size - $swatch-content-size) / 2 - $swatch-border-size;
       width: $swatch-content-size;
       height: $swatch-content-size;
       border-radius: 50%;
-      background: black;
+      background-image: var(--background-color-img);
     }
   }
 

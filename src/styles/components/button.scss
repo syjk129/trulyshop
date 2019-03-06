@@ -60,4 +60,22 @@
     background-color: $color-grey-4;
     cursor: not-allowed;
   }
+
+  &.facebook {
+    background-color: $color-facebook;
+
+    &:hover {
+      color: white;
+      background-color: $color-facebook-dark;
+    }
+  }
+
+  &.twitter {
+    background-color: $color-twitter;
+
+    &:hover {
+      color: white;
+      background-color: $color-twitter-dark;
+    }
+  }
 }
