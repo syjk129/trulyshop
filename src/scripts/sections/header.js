@@ -1,21 +1,25 @@
-const header = document.getElementById("header-container");
-const placeholder = document.getElementById("header-placeholder");
+import $ from "jquery";
 
-placeholder.style.height = `${header.getBoundingClientRect().height}px`;
+$(document).ready(() => {
+  const header = document.getElementById("header-container");
+  const placeholder = document.getElementById("header-placeholder");
 
-// Footer
-const footer = document.getElementById("footer");
-const body = document.getElementsByTagName("body")[0];
-body.style.paddingBottom = `${footer.getBoundingClientRect().height}px`;
-body.style.minHeight = `${window.innerHeight - footer.getBoundingClientRect().height}px`;
+  placeholder.style.height = `${header.getBoundingClientRect().height}px`;
 
-// Sidebar
-const sidebarOverlay = document.getElementById("sidebar-overlay");
+  // Footer
+  const footer = document.getElementById("footer");
+  const body = document.getElementsByTagName("body")[0];
+  body.style.paddingBottom = `${footer.getBoundingClientRect().height}px`;
+  body.style.minHeight = `${window.innerHeight - footer.getBoundingClientRect().height}px`;
 
-const cartButton = document.getElementById("header-cart");
-cartButton.onclick = () => {
-  toggleSidebar("sidebar-cart");
-}
+  // Sidebar
+  const sidebarOverlay = document.getElementById("sidebar-overlay");
+
+  const cartButton = document.getElementById("header-cart");
+  cartButton.onclick = () => {
+    toggleSidebar("sidebar-cart");
+  }
+});
 
 function toggleSidebar(sidebarId) {
   const sidebar = document.getElementById(sidebarId);

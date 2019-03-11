@@ -18,13 +18,15 @@
     {% endif %}
   {% endfor %}
 
+  {% assign color_variants = product.options_with_values[color_index].values %}
+
   <div class="product-card-img">
     <a href="{{ product.url }}">
       <img src="{{ product.featured_image | img_url: '260x343' }}">
     </a>
-    <button class="btn quick-add" data-quick-add>Quick Add +</button>
+    <button class="btn quick-add desktop" data-quick-add>Quick Add +</button>
     {% unless size_index == -1 %}
-      <div class="quick-add-size" data-quick-add-size-container>
+      <div class="quick-add-size desktop" data-quick-add-size-container>
         {% assign values = '' %}
         {% for variant in product.variants %}
           {% assign value = variant.options[size_index] %}
@@ -48,8 +50,14 @@
       </span>
     </a>
 
+    {% unless color_variants.size <= 1 %}
+      <div class="body3 mobile grey">
+        {{ color_variants.size }} colors available
+      </div>
+    {% endunless %}
+
     {% unless color_index == -1 %}
-      <div class="body3 variant-name">
+      <div class="body3 variant-name desktop">
         {{ product.variants[0].options[color_index] | capitalize }}
       </div>
       {% include 'color-swatch' with product: product, small: true %}

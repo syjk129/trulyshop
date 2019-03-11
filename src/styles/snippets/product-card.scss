@@ -75,4 +75,18 @@
       margin-bottom: 10px;
     }
   }
+
+  @media(max-width: $mobile-width-break) {
+    .color-swatch {
+      display: none;
+    }
+
+    .name-price {
+      flex-direction: column;
+    }
+
+    .product-card-img {
+      margin-bottom: 5px;
+    }
+  }
 }

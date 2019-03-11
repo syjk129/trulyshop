@@ -3,8 +3,9 @@
 .menu-icon {
   $menu-color: black;
   $menu-line-width: 25px;
+  $menu-line-width-mobile: 20px;
   $menu-line-height: 2px;
-  $menu-line-gap: 8px;
+  $menu-line-gap: 6px;
 
   width: $menu-line-width;
 
@@ -22,19 +23,25 @@
   /* Change this later */
   &:hover {
     &:before {
-      transform: translateY(10px) rotate(135deg);
+      transform: translateY($menu-line-gap + $menu-line-height) rotate(135deg);
     }
 
     &:after {
-      transform: translateY(-10px) rotate(-135deg);
+      transform: translateY(-($menu-line-gap + $menu-line-height)) rotate(-135deg);
     }
 
     div {
       transform: scale(0);
     }
   }
+
+  @media (max-width: $mobile-width-break) {
+    width: $menu-line-width-mobile;
+  }
 }
 
 .icon-button {
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }

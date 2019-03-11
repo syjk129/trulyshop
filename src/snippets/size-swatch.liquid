@@ -23,8 +23,7 @@
           type="radio"
           name="size-option"
           value="{{ value | escape }}"
-          {% if forloop.first %}checked{% endif %}
-          {% unless variant.available %}disabled{% endunless %}>
+          {% if forloop.first %}checked{% endif %}>
         <div class="swatch-content">
           {{ value }}
         </div>

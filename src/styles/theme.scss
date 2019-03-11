@@ -35,6 +35,9 @@
 @import './templates/customers/addresses';
 @import './templates/customers/order';
 
+// Libraries
+@import './libraries/slick';
+
 html {
   margin: 0;
   padding: 0;
@@ -45,11 +48,4 @@ body {
   margin: 0;
   position: relative;
   min-height: 100%;
-}
-
-.content {
-  display: flex;
-  max-width: $max-screen-width;
-  margin: auto;
-  padding: 40px;
 }

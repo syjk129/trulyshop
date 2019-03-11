@@ -24,8 +24,7 @@
           type="radio"
           name="color-option"
           value="{{ value | escape }}"
-          {% if forloop.first %}checked{% endif %}
-          {% unless variant.available %}disabled{% endunless %}>
+          {% if forloop.first %}checked{% endif %}>
         <span
           class="swatch-content"
           style="--background-color-img: url({{ value | handle | append: '.' | append: file_extension | asset_url }})"></span>

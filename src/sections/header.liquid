@@ -2,11 +2,14 @@
   {%- if section.settings.announcement_bar_enabled -%}
     <div class="announcement-bar">
       <div class="announcement-bar-content">
-        <div class="callout regular">
+        <div class="callout regular desktop">
           {{ section.settings.announcement_bar_text }}
         </div>
+        <a  href="{{ section.settings.announcement_bar_link }}" class="callout regular mobile no-underline">
+          {{ section.settings.announcement_bar_text_mobile }}
+        </a>
         {%- if section.settings.announcement_bar_link -%}
-          <a href="{{ section.settings.announcement_bar_link }}">
+          <a class="desktop" href="{{ section.settings.announcement_bar_link }}">
             {{ section.settings.announcement_bar_link_text }}
           </a>
         {%- endif -%}
@@ -18,18 +21,29 @@
       <div class="action">
         {% include 'menu-icon' %}
       </div>
-      {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
-      <a href="/">
-        <img class="logo"
-          src="{{ section.settings.logo | img_url: image_size }}"
-          srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
-          alt="{{ section.settings.logo.alt | default: shop.name }}">
-      </a>
+      <div class="desktop">
+        {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
+        <a href="/">
+          <img class="logo"
+            src="{{ section.settings.logo | img_url: image_size }}"
+            srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+            alt="{{ section.settings.logo.alt | default: shop.name }}">
+        </a>
+      </div>
+      <div class="mobile">
+        {% capture image_size_mobile %}{{ section.settings.logo_max_width_mobile }}x{% endcapture %}
+        <a href="/">
+          <img class="logo"
+            src="{{ section.settings.logo | img_url: image_size_mobile }}"
+            srcset="{{ section.settings.logo | img_url: image_size_mobile }} 1x, {{ section.settings.logo | img_url: image_size_mobile, scale: 2 }} 2x"
+            alt="{{ section.settings.logo.alt | default: shop.name }}">
+        </a>
+      </div>
       <div class="action user-actions">
-        {% include 'icon-button' with
+        {% comment %} {% include 'icon-button' with
           icon: 'search',
           button_id: 'header-search'
-        %}
+        %} {% endcomment %}
         <div class="cart-icon">
           {% include 'icon-button' with
             icon: 'bag',
@@ -45,19 +59,21 @@
             </span>
           {% endif %}
         </div>
-        {% if customer %}
-          {% include 'icon-button' with
-            icon: 'account',
-            button_id: 'header-account',
-            redirect_link: '/account'
-          %}
-        {% else %}
-          {% include 'icon-button' with
-            icon: 'account',
-            button_id: 'header-account',
-            redirect_link: '/account/login'
-          %}
-        {% endif %}
+        <div class="desktop">
+          {% if customer %}
+            {% include 'icon-button' with
+              icon: 'account',
+              button_id: 'header-account',
+              redirect_link: '/account'
+            %}
+          {% else %}
+            {% include 'icon-button' with
+              icon: 'account',
+              button_id: 'header-account',
+              redirect_link: '/account/login'
+            %}
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>
@@ -93,6 +109,12 @@
         "default": "<p><b>10% off</b> your first order with code <b>welcome</b></p>"
       },
       {
+        "type": "richtext",
+        "id": "announcement_bar_text_mobile",
+        "label": "Mobile - Announcement bar text",
+        "default": "<p><b>10% off first order with code 'WELCOME'</b></p>"
+      },
+      {
         "type": "text",
         "id": "announcement_bar_link_text",
         "label": "Announcement bar link text",
@@ -117,11 +139,21 @@
         "type": "range",
         "id": "logo_max_width",
         "min": 50,
-        "max": 450,
+        "max": 250,
         "step": 10,
         "unit": "px",
         "label": "Custom logo width",
-        "default": 250
+        "default": 140
+      },
+      {
+        "type": "range",
+        "id": "logo_max_width_mobile",
+        "min": 50,
+        "max": 150,
+        "step": 10,
+        "unit": "px",
+        "label": "Mobile - Custom logo width",
+        "default": 100
       },
       {
         "type": "link_list",

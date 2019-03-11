@@ -79,6 +79,10 @@ a {
   text-decoration: underline;
   cursor: pointer;
   color: black;
+
+  &.no-underline {
+    text-decoration: none;
+  }
 }
 
 .text-right {

@@ -26,6 +26,11 @@
         right: 0;
         bottom: 0;
       }
+
+      @media (max-width: $mobile-width-break) {
+        margin: 0 (-$page-padding-mobile);
+        width: auto;
+      }
     }
   }
 
@@ -33,5 +38,10 @@
     display: grid;
     grid-gap: 25px;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+
+    @media (max-width: $mobile-width-break) {
+      grid-gap: 15px;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
   }
 }
