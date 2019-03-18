@@ -10,12 +10,23 @@
   .address-list {
     margin-bottom: 100px;
 
+    @media (max-width: $mobile-width-break) {
+      margin-bottom: 50px;
+    }
+
     .address {
       position: relative;
       display: inline-block;
       width: 50%;
       max-width: 160px;
       margin-right: 50px;
+
+      @media (max-width: $mobile-width-break) {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+        max-width: none;
+      }
 
       .address-delete-form {
         position: absolute;
@@ -27,6 +38,12 @@
           color: $color-grey-2;
           font-size: 15px;
           cursor: pointer;
+          background-color: transparent;
+
+          @media (max-width: $mobile-width-break) {
+            font-weight: 200;
+            font-size: 20px;
+          }
         }
       }
     }
@@ -41,6 +58,38 @@
   max-width: 450px;
   width: 100%;
   padding: 70px;
+
+  @media (max-width: $mobile-width-break) {
+    padding: 0;
+  }
+
+  .mobile-modal-header {
+    position: relative;
+    padding: 25px;
+    box-shadow: $default-drop-shadow;
+    text-align: center;
+
+    .close {
+      position: absolute;
+      top: 25px;
+      right: $page-padding-mobile;
+      font-size: 40px;
+      font-weight: 200;
+      cursor: pointer;
+    }
+  }
+  
+  .mobile {
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-modal-content {
+    overflow-y: scroll;
+    padding: 25px $page-padding-mobile;
+  }
 }
 
 .address-form {
@@ -49,6 +98,10 @@
   .select-container {
     width: 100%;
     margin-bottom: 20px;
+
+    @media (max-width: $mobile-width-break) {
+      margin-bottom: 10px;
+    }
   }
 
   input {
@@ -60,6 +113,10 @@
 
     &:not(:last-of-type) {
       margin-bottom: 20px;
+
+      @media (max-width: $mobile-width-break) {
+        margin-bottom: 10px;
+      }
     }
   }
 
@@ -81,6 +138,10 @@
 
     .small {
       width: 40%;
+    }
+
+    @media (max-width: $mobile-width-break) {
+      margin-bottom: 0;
     }
   }
 }

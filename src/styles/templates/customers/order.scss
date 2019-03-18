@@ -4,12 +4,52 @@
   .order-list {
     text-align: left;
     width: 100%;
+
+    .item-image {
+      width: 50%;
+      margin-right: 10px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .order-list-item {
+      display: flex;
+      flex-grow: 1;
+    }
+
+    .item-details {
+      .body2:last-child {
+        margin-bottom: 10px;
+      }
+    }
+
+    @media (max-width: $mobile-width-break) {
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid $color-grey-3;
+    }
+  }
+
+  .order-item-header {
+    margin-bottom: 15px;
+
+    &.date {
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid $color-grey-3;
+    }
   }
 
   .return {
     display: block;
     text-decoration: none;
     margin-bottom: 30px;
+
+    @media (max-width: $mobile-width-break) {
+      margin-bottom: 15px;
+    }
   }
 
   .button-container {
@@ -65,6 +105,23 @@
 
       .payment-logo {
         margin-right: 10px;
+      }
+    }
+
+    @media (max-width: $mobile-width-break) {
+      flex-direction: column;
+
+      .item {
+        margin-bottom: 20px;
+
+        &:not(:last-child) {
+          padding-bottom: 20px;
+          border-bottom: 1px solid $color-grey-3;
+        }
+
+        .card-info {
+          margin-bottom: 10px;
+        }
       }
     }
   }

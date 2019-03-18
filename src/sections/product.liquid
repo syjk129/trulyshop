@@ -16,14 +16,16 @@
   <div class="product">
     <div class="product-images desktop">
       {% for image in product.images %}
-        <img src="{{ image | img_url: '480x480' }}">
+        <img src="{{ image | img_url: '600x600' }}">
       {% endfor %}
     </div>
-    <div>
+    <div class="breadcrumb mobile">
+      Collections / {{ product.collections[0].description }} / {{ product.title }}
+    </div>
     <div class="product-images mobile">
       <div class="product-image-slider">
         {% for image in product.images %}
-          <img src="{{ image | img_url: '480x480' }}">
+          <img class="slider-image" src="{{ image | img_url: '500x500' }}">
         {% endfor %}
       </div>
     </div>
@@ -31,15 +33,15 @@
       <div class="callout">{{ product.vendor }}</div>
       <h3>{{ product.title }}</h3>
       <div class="body1 price">{{ product.price | money }}</div>
-      <div class="divider"></div>
+      <div class="divider desktop"></div>
       <form action="/cart/add" method="post" enctype="multipart/form-data">
         <div class="js">
           <div class="body2 select-label">{{ 'product.choose_color' | t }}</div>
           {% include 'color-swatch' %}
-          <div class="divider"></div>
+          <div class="divider desktop"></div>
           <div class="body2 select-label">{{ 'product.choose_size' | t }}</div>
           {% include 'size-swatch' %}
-          <div class="divider"></div>
+          <div class="divider desktop"></div>
         </div>
         <div class="no-js">
           <select name="id" class="no-js" data-product-select>
@@ -81,17 +83,23 @@
       </div>
     </div>
   </div>
-</div>
 
-<script>
-  const selectCallback = (variant, selector) => {
-    console.log("select callback");
-  }
-</script>
+  <div class="other-products">
+    <h3>Other Items from the Collection</h3>
+    <div class="other-product-item-list">
+      {% for item in product.collections[0].products %}
+        {% unless item.id == product.id %}
+          <a href="{{ item.url }}" class="ratio-image r4x3">
+            <img src="{{ item.featured_image | img_url: '400x400' }}">
+          </a>
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
 
 {% schema %}
   {
-    "name": "Product pages",
     "settings": [
       {
         "type": "checkbox",

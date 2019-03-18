@@ -9,21 +9,24 @@
 @import './components/button';
 @import './components/checkbox';
 @import './components/icon';
+@import './components/image';
 @import './components/input';
 @import './components/item-table';
 @import './components/modal';
 @import './components/select';
+@import './components/slider';
 @import './components/swatch';
 @import './components/switch';
 
 // Sections
 @import './sections/footer';
 @import './sections/header';
+@import './sections/menu';
 @import './sections/product';
 @import './sections/sidebar';
-@import './sections/sidebar-nav';
 
 // Snippets
+@import './snippets/menu-cart';
 @import './snippets/payment-logo';
 @import './snippets/product-card';
 
@@ -48,4 +51,8 @@ body {
   margin: 0;
   position: relative;
   min-height: 100%;
+}
+
+#preview-bar-iframe {
+  display: none !important;
 }

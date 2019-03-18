@@ -14,6 +14,7 @@ $medium-content-width: 735px;
 
   @media(max-width: $mobile-width-break) {
     padding: $page-padding-mobile;
+    padding-top: 20px;
     margin-bottom: 50px;
   }
 }
@@ -37,12 +38,12 @@ $medium-content-width: 735px;
 
 .desktop {
   @media (max-width: $mobile-width-break) {
-    display: none;
+    display: none !important;
   }
 }
 
 .mobile {
   @media (min-width: $mobile-width-break + 1) {
-    display: none;
+    display: none !important;
   }
 }

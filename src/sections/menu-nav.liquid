@@ -1,0 +1,90 @@
+<div class="menu left menu-nav" id="menu-nav">
+  <span class="menu-close">&times;</span>
+  <span class="menu-back" id="menu-nav-back">
+    <img src="{{ 'back.png' | asset_url }}">
+  </span>
+  <div class="menu-header">
+    {% capture image_size %}{{ section.settings.menu_nav_logo_max_width }}x{% endcapture %}
+    <img class="logo"
+      src="{{ section.settings.menu_nav_logo | img_url: image_size }}"
+      srcset="{{ section.settings.menu_nav_logo | img_url: image_size }} 1x, {{ section.settings.menu_nav_logo | img_url: image_size, scale: 2 }} 2x"
+      alt="{{ section.settings.menu_nav_logo.alt | default: shop.name }}">
+  </div>
+  <div class="menu-content-container">
+    <div class="menu-content menu-nav-content" id="menu-nav-main">
+        {%- assign menu_nav_list = section.settings.menu_nav_list -%}
+        {% if linklists[menu_nav_list].links.size > 0 %}
+          {% for link in linklists[menu_nav_list].links %}
+            {% if forloop.first %}
+              <div class="new-collection">
+                <a class="nav-item callout" href="{{ link.url }}">{{ link.title }}</a>
+                <img src="{{ 'star_blue.png' | asset_url }}">
+              </div>
+            {% else %}
+              <a class="nav-item callout" href="{{ link.url }}">{{ link.title }}</a>
+            {% endif %}
+            {% if link.links != blank %}
+              {% for child in link.links %}
+                <a class="body2 grey nav-item" href="{{ child.url }}">{{ child.title }}</a>
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        {% if customer %}
+          <button class="nav-item callout" id="account-menu-btn">My Account</button>
+        {% endif %}
+    </div>
+    <div class="menu-content menu-nav-content" id="menu-nav-account">
+      <a id="sidebar-account-link" class="body2 grey nav-item {% if request.path == '/account' %}selected{% endif %}" href="/account">{{ 'customer.order_history' | t }}</a>
+      <a class="body2 grey nav-item {% if request.path == '/account/addresses' %}selected{% endif %}" href="/account/addresses">{{ 'customer.saved_addresses' | t }}</a>
+      <a id="sidebar-share-link" class="body2 grey nav-item" href="/account?share=1">{{ 'customer.invite_friends' | t }}</a>
+      <a class="body2 grey nav-item" href="/account/logout">{{ 'customer.log_out' | t }}</a>
+    </div>
+    <div class="menu-actions">
+      <div class="desktop">
+        {% if customer %}
+          <a href="/account/logout" class="btn large">Log Out</a>
+        {% else %}
+          <button class="btn large outline">Sign In</button>
+          <button class="btn large">Sign Up</button>
+        {% endif %}
+      </div>
+      <div class="mobile">
+        {% if customer %}
+          <a href="/account/logout" class="btn">Log Out</a>
+        {% else %}
+          <a class="btn outline" href="account/login">Sign In</a>
+          <a class="btn" href="account/register">Sign Up</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Menu Navigation",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "menu_nav_logo",
+        "label": "Logo image"
+      },
+      {
+        "type": "range",
+        "id": "menu_nav_logo_max_width",
+        "min": 50,
+        "max": 150,
+        "step": 10,
+        "unit": "px",
+        "label": "Custom logo width",
+        "default": 100
+      },
+      {
+        "type": "link_list",
+        "id": "menu_nav_list",
+        "label": "Menu Navigation List"
+      }
+    ]
+  }
+{% endschema %}

@@ -5,6 +5,13 @@ $font-size-4: 20px;
 $font-size-5: 17px;
 $font-size-6: 13px;
 
+$mobile-font-size-1: 30px;
+$mobile-font-size-2: 25px;
+$mobile-font-size-3: 20px;
+$mobile-font-size-4: 16px;
+$mobile-font-size-5: 13px;
+$mobile-font-size-6: 11px;
+
 $line-height-5: 23px;
 
 $font-size-link: $font-size-6;
@@ -46,3 +53,5 @@ $mobile-width-break: 768px;
 
 $page-padding-desktop: 40px;
 $page-padding-mobile: 15px;
+
+$default-drop-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.25);

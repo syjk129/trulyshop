@@ -20,6 +20,11 @@ input {
   &.input-error {
     border-color: $color-red;
   }
+
+  @media (max-width: $mobile-width-break) {
+    padding: 10px 15px;
+    font-size: $mobile-font-size-5;
+  }
 }
 
 .input-label {
@@ -36,6 +41,11 @@ input {
   color: red;
   font-size: $font-size-5;
   margin-bottom: 20px;
+
+  @media (max-width: $mobile-width-break) {
+    font-size: $mobile-font-size-5;
+    margin-bottom: 10px;
+  }
 }
 
 .form-input {

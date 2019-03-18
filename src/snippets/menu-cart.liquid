@@ -1,0 +1,77 @@
+<div class="menu menu-cart" id="menu-cart">
+  <span class="menu-close">&times;</span>
+  <div class="menu-header">
+    <div class="body1">My Cart ({{ cart.item_count }})</div>
+  </div>
+  <div class="menu-content-container">
+    <form action="/cart" method="post" novalidate>
+      <div class="menu-content">
+        {% for item in cart.items %}
+          {% assign color_index = -1 %}
+          {% assign size_index = -1 %}
+
+          {% for option in item.product.options %}
+            {% assign downcased_option = option | downcase %}
+            {% if downcased_option contains 'color' %}
+              {% assign color_index = forloop.index0 %}
+            {% elsif downcased_option contains 'size' %}
+              {% assign size_index = forloop.index0 %}
+            {% endif %}
+          {% endfor %}
+
+          <div class="cart-item">
+            <div class="cart-item-img">
+              <div class="ratio-image r4x3">
+                {{ item.image | img_url: '250x250' | img_tag }}
+              </div>
+            </div>
+            <div class="cart-item-content">
+              <span class="cart-remove" data-id="{{ item.id }}">&times;</span>
+              <div class="body2 title">{{ item.product.title }}</div>
+              <div class="body3 price">{{ item.product.price | money }}</div>
+              <div class="quantity-selector">
+                <span
+                  class="body3 cart-quantity-btn cart-decrement"
+                  data-id="{{ item.id }}"
+                  data-quantity="{{ item.quantity }}">-</span>
+                <div class="body3">{{ item.quantity }}</div>
+                <span
+                  class="body3 cart-quantity-btn cart-increment"
+                  data-id="{{ item.id }}"
+                  data-quantity="{{ item.quantity }}">+</span>
+              </div>
+              {% if size_index != -1 %}
+                <div class="body3 variant">
+                  Size: {{ item.variant.options[size_index] | capitalize }}
+                </div>
+              {% endif %}
+              {% if color_index != -1 %}
+                <div class="body3 variant">
+                  Color: {{ item.variant.options[color_index] | capitalize }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+        <div class="subtotal desktop">
+          <span class="body2">Subtotal</span>
+          <span class="body2">{{ cart.total_price | money }}</span>
+        </div>
+      </div>
+      <div class="menu-actions">
+        <div class="subtotal mobile">
+          <span class="body2">Subtotal</span>
+          <span class="body2">{{ cart.total_price | money }}</span>
+        </div>
+        <div class="body3">
+          Complimentary shipping on all orders
+        </div>
+        <a class="btn large outline" href="account/login">Keep Shopping</a>
+        <input class="btn large" type="submit" name="checkout" value="{{ 'cart.checkout' | t}}">
+        <div class="body3">
+          By checking out, I agree to the Terms of Use
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
