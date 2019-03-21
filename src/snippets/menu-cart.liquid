@@ -1,7 +1,7 @@
 <div class="menu menu-cart" id="menu-cart">
   <span class="menu-close">&times;</span>
   <div class="menu-header">
-    <div class="body1">My Cart ({{ cart.item_count }})</div>
+    <div class="body1">{{ 'cart.my_cart' | t }} ({{ cart.item_count }})</div>
   </div>
   <div class="menu-content-container">
     <form action="/cart" method="post" novalidate>
@@ -54,19 +54,17 @@
           </div>
         {% endfor %}
         <div class="subtotal desktop">
-          <span class="body2">Subtotal</span>
+          <span class="body2">{{ 'cart.subtotal' | t }}</span>
           <span class="body2">{{ cart.total_price | money }}</span>
         </div>
       </div>
       <div class="menu-actions">
         <div class="subtotal mobile">
-          <span class="body2">Subtotal</span>
+          <span class="body2">{{ 'cart.subtotal' | t }}</span>
           <span class="body2">{{ cart.total_price | money }}</span>
         </div>
-        <div class="body3">
-          Complimentary shipping on all orders
-        </div>
-        <a class="btn large outline" href="account/login">Keep Shopping</a>
+        <div class="body3">{{ 'cart.complimentary_shipping' | t }}</div>
+        <a class="btn large outline" href="account/login">{{ 'cart.keep_shopping' | t }}</a>
         <input class="btn large" type="submit" name="checkout" value="{{ 'cart.checkout' | t}}">
         <div class="body3">
           By checking out, I agree to the Terms of Use

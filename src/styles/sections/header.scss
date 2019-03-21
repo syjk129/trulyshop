@@ -12,6 +12,10 @@
   .header {
     background-color: white;
     box-shadow: $default-drop-shadow;
+
+    h1 {
+      margin: 0;
+    }
   }
 }
 

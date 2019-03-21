@@ -14,14 +14,18 @@ $(document).ready(() => {
   }
 });
 
-menuNavAccountBtn.onclick = () => {
-  menuNavBack.style.display = "block";
-  mainMenu.style.display = "none";
-  accountMenu.style.display = "flex";
+if (menuNavAccountBtn) {
+  menuNavAccountBtn.onclick = () => {
+    menuNavBack.style.display = "block";
+    mainMenu.style.display = "none";
+    accountMenu.style.display = "flex";
+  }
 }
 
-menuNavBack.onclick = () => {
-  menuNavBack.style.display = "none";
-  mainMenu.style.display = "flex";
-  accountMenu.style.display = "none";
+if (menuNavBack) {
+  menuNavBack.onclick = () => {
+    menuNavBack.style.display = "none";
+    mainMenu.style.display = "flex";
+    accountMenu.style.display = "none";
+  }
 }

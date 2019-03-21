@@ -1,14 +1,17 @@
 @import "../variables";
 
-.product {
-  display: flex;
+.product-container {
   padding-bottom: 100px;
   margin-bottom: 50px;
   border-bottom: 1px solid $color-grey-3;
+}
+
+.product {
+  display: flex;
 
   .product-images {
-    width: 450px;
-    max-width: 100vw;
+    max-width: 450px;
+    width: 60%;
     margin-right: 25px;
     flex-shrink: 0;
 
@@ -23,6 +26,15 @@
   }
 
   .product-details {
+    width: 100%;
+    will-change: min-height;
+
+    .sidebar__inner {
+      transform: translate(0, 0); /* For browsers don't support translate3d. */
+      transform: translate3d(0, 0, 0);
+      will-change: position, transform;
+    }
+
     .callout {
       margin-bottom: 30px;
     }
@@ -64,6 +76,8 @@
     .product-images {
       margin: 0 (-$page-padding-mobile);
       margin-bottom: 20px;
+      width: calc(100% + #{$page-padding-mobile * 2});
+      max-width: 100vw;
     }
 
     .product-details {

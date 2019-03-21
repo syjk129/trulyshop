@@ -16,29 +16,31 @@
       </div>
     </div>  
   {%- endif -%}
-  <div class="header">
+  <header role="banner" class="header">
     <div class="header-content">
       <div class="action mobile">
         <div class="menu-icon" id="header-menu-btn"><div></div></div>
       </div>
-      <div class="desktop">
-        {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
-        <a href="/">
-          <img class="logo"
-            src="{{ section.settings.logo | img_url: image_size }}"
-            srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
-            alt="{{ section.settings.logo.alt | default: shop.name }}">
-        </a>
-      </div>
-      <div class="mobile">
-        {% capture image_size_mobile %}{{ section.settings.logo_max_width_mobile }}x{% endcapture %}
-        <a href="/">
-          <img class="logo"
-            src="{{ section.settings.logo | img_url: image_size_mobile }}"
-            srcset="{{ section.settings.logo | img_url: image_size_mobile }} 1x, {{ section.settings.logo | img_url: image_size_mobile, scale: 2 }} 2x"
-            alt="{{ section.settings.logo.alt | default: shop.name }}">
-        </a>
-      </div>
+      <h1>
+        <div class="desktop">
+          {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
+          <a href="/">
+            <img class="logo"
+              src="{{ section.settings.logo | img_url: image_size }}"
+              srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+              alt="{{ section.settings.logo.alt | default: shop.name }}">
+          </a>
+        </div>
+        <div class="mobile">
+          {% capture image_size_mobile %}{{ section.settings.logo_max_width_mobile }}x{% endcapture %}
+          <a href="/">
+            <img class="logo"
+              src="{{ section.settings.logo | img_url: image_size_mobile }}"
+              srcset="{{ section.settings.logo | img_url: image_size_mobile }} 1x, {{ section.settings.logo | img_url: image_size_mobile, scale: 2 }} 2x"
+              alt="{{ section.settings.logo.alt | default: shop.name }}">
+          </a>
+        </div>
+      </h1>
       <div class="action user-actions">
         {% comment %} {% include 'icon-button' with
           icon: 'search',
@@ -76,7 +78,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </header>
 </section>
 <div id="header-placeholder"></div>
 <div class="menu-overlay" id="menu-overlay"></div>
@@ -164,3 +166,26 @@
     ]
   }
 {% endschema %}
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "{{ shop.name }}",
+  {% if section.settings.logo %}
+    {% assign image_size = section.settings.logo.width | append:'x' %}
+    "logo": "https:{{ section.settings.logo | img_url: image_size }}",
+  {% endif %}
+  "sameAs": [
+    "{{ settings.social_twitter_link }}",
+    "{{ settings.social_facebook_link }}",
+    "{{ settings.social_pinterest_link }}",
+    "{{ settings.social_instagram_link }}",
+    "{{ settings.social_tumblr_link }}",
+    "{{ settings.social_snapchat_link }}",
+    "{{ settings.social_youtube_link }}",
+    "{{ settings.social_vimeo_link }}"
+  ],
+  "url": "{{ shop.url }}{{ page.url }}"
+}
+</script>

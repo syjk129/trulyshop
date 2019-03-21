@@ -32,12 +32,14 @@ function toggleSidebar(sidebarId) {
   const close = sidebar.getElementsByClassName("menu-close")[0];
   if (sidebar.getBoundingClientRect().right > window.innerWidth) {
     sidebarOverlay.style.display = "block";
-    sidebar.style.right = "0";
+    sidebar.style.right = 0;
+    sidebar.style.transform = "none";
     sidebarOverlay.addEventListener("click", sidebarClickOutside(sidebar));
     close.addEventListener("click", sidebarClickOutside(sidebar));
   } else if (sidebar.getBoundingClientRect().left < 0) {
     sidebarOverlay.style.display = "block";
     sidebar.style.left = 0;
+    sidebar.style.transform = "none";
     sidebarOverlay.addEventListener("click", sidebarClickOutside(sidebar));
     close.addEventListener("click", sidebarClickOutside(sidebar));
   } else {

@@ -22,7 +22,8 @@
   max-width: 100%;
   z-index: 2;
   top: 0;
-  right: -($sidebar-width);
+  right: 0;
+  transform: translateX(100%);
   background-color: white;
   overflow-x: hidden;
   transition: $base-transition-duration ease-in-out;
@@ -30,7 +31,8 @@
   box-sizing: border-box;
 
   &.left {
-    left: -($sidebar-width);
+    transform: translateX(-100%);
+    left: 0;
     right: auto;
   }
 
@@ -128,6 +130,7 @@
   @media (max-width: $mobile-width-break) {
     padding: 0;
     overflow: hidden;
+    width: 100%;
 
     .menu-header {
       padding: 25px;

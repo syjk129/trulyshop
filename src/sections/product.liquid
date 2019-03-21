@@ -1,4 +1,4 @@
-<div data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
+<div class="product-container" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
 
   {%- assign current_variant = product.selected_or_first_available_variant -%}
   {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
@@ -13,7 +13,7 @@
     {% endunless %}
   {% endfor %}
 
-  <div class="product">
+  <div class="product" id="product-content">
     <div class="product-images desktop">
       {% for image in product.images %}
         <img src="{{ image | img_url: '600x600' }}">
@@ -29,63 +29,65 @@
         {% endfor %}
       </div>
     </div>
-    <div class="product-details">
-      <div class="callout">{{ product.vendor }}</div>
-      <h3>{{ product.title }}</h3>
-      <div class="body1 price">{{ product.price | money }}</div>
-      <div class="divider desktop"></div>
-      <form action="/cart/add" method="post" enctype="multipart/form-data">
-        <div class="js">
-          <div class="body2 select-label">{{ 'product.choose_color' | t }}</div>
-          {% include 'color-swatch' %}
-          <div class="divider desktop"></div>
-          <div class="body2 select-label">{{ 'product.choose_size' | t }}</div>
-          {% include 'size-swatch' %}
-          <div class="divider desktop"></div>
-        </div>
-        <div class="no-js">
-          <select name="id" class="no-js" data-product-select>
-            {% for variant in product.variants %}
-              <option
-                {% if variant == current_variant %}selected="selected"{% endif %}
-                {% unless variant.available %}disabled="disabled"{% endunless %}
-                value="{{ variant.id }}">
-                  {{ variant.title }}
-              </option>
-            {% endfor %}
-          </select>
-        </div>
-        <div class="body2 select-label">{{ 'product.quantity' | t }}</div>
-        <input class="quantity" type="number" id="Quantity" name="quantity" value="1" min="1">
-        <button
-          class="btn large add-to-cart"
-          type="submit"
-          name="add"
-          {% unless current_variant.available %}disabled="disabled"{% endunless %}>
-            <span data-add-to-cart-text>
-              {% if current_variant.available %}
-                {{ 'product.add_to_cart' | t }}
-              {% else %}
-                {{ 'product.sold_out' | t }}
-              {% endif %}
-            </span>
-        </button>
-      </form>
+    <div class="product-details" id="product-details">
+      <div class="sidebar__inner">
+        <div class="callout">{{ product.vendor }}</div>
+        <h3>{{ product.title }}</h3>
+        <div class="body1 price">{{ product.price | money }}</div>
+        <div class="divider desktop"></div>
+        <form action="/cart/add" method="post" enctype="multipart/form-data">
+          <div class="js">
+            <div class="body2 select-label">{{ 'product.choose_color' | t }}</div>
+            {% include 'color-swatch' %}
+            <div class="divider desktop"></div>
+            <div class="body2 select-label">{{ 'product.choose_size' | t }}</div>
+            {% include 'size-swatch' %}
+            <div class="divider desktop"></div>
+          </div>
+          <div class="no-js">
+            <select name="id" class="no-js" data-product-select>
+              {% for variant in product.variants %}
+                <option
+                  {% if variant == current_variant %}selected="selected"{% endif %}
+                  {% unless variant.available %}disabled="disabled"{% endunless %}
+                  value="{{ variant.id }}">
+                    {{ variant.title }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="body2 select-label">{{ 'product.quantity' | t }}</div>
+          <input class="quantity" type="number" id="Quantity" name="quantity" value="1" min="1">
+          <button
+            class="btn large add-to-cart"
+            type="submit"
+            name="add"
+            {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+              <span data-add-to-cart-text>
+                {% if current_variant.available %}
+                  {{ 'product.add_to_cart' | t }}
+                {% else %}
+                  {{ 'product.sold_out' | t }}
+                {% endif %}
+              </span>
+          </button>
+        </form>
 
-      <div class="callout">{{ 'product.details' | t }}</div>
-      <div class="rte product-description">{{ product.description }}</div>
+        <div class="callout">{{ 'product.details' | t }}</div>
+        <div class="rte product-description">{{ product.description }}</div>
 
-      {% unless product == empty %}
-        <script type="application/json" data-product-json>
-          {{ product | json }}
-        </script>
-      {% endunless %}
+        {% unless product == empty %}
+          <script type="application/json" data-product-json>
+            {{ product | json }}
+          </script>
+        {% endunless %}
+        </div>
       </div>
     </div>
   </div>
 
   <div class="other-products">
-    <h3>Other Items from the Collection</h3>
+    <h3>{{ 'product.other_items_from_collection' | t }}</h3>
     <div class="other-product-item-list">
       {% for item in product.collections[0].products %}
         {% unless item.id == product.id %}
@@ -100,6 +102,7 @@
 
 {% schema %}
   {
+    "class": "full-width",
     "settings": [
       {
         "type": "checkbox",

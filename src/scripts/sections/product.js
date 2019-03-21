@@ -7,6 +7,7 @@
 import $ from 'jquery';
 import Variants from '@shopify/theme-variants';
 import { load, register } from '@shopify/theme-sections';
+import "../libraries/sticky-sidebar";
 
 const selectors = {
   addToCart: '[data-add-to-cart]',
@@ -30,6 +31,21 @@ const cssClasses = {
 
 document.addEventListener('DOMContentLoaded', () => {
   load('*');
+});
+
+$(document).ready(() => {
+  if (document.getElementById("product-details") && $(window).width() > 768) {
+    const header = document.getElementById("header-container");
+    const sticky = new StickySidebar("#product-details", {
+      containerSelector: "#product-content",
+      innerWrapperSelector: ".sidebar__inner",
+      topSpacing: header.getBoundingClientRect().height + 20
+    });
+
+    window.addEventListener("resize", () => {
+      sticky.updateSticky();
+    });
+  }
 });
 
 register('product', {
@@ -85,4 +101,4 @@ register('product', {
   onUnload() {
     this.$container.off(this.namespace);
   },
-})
+});

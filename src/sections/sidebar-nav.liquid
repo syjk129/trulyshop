@@ -1,23 +1,25 @@
-<div class="sidebar desktop">
-  {%- assign sidebar_nav_list = section.settings.sidebar_nav_list -%}
-  {% if linklists[sidebar_nav_list].links.size > 0 %}
-    {% for link in linklists[sidebar_nav_list].links %}
-      {% if forloop.first %}
-        <div class="new-collection">
+<nav role="navigation">
+  <div class="sidebar desktop">
+    {%- assign sidebar_nav_list = section.settings.sidebar_nav_list -%}
+    {% if linklists[sidebar_nav_list].links.size > 0 %}
+      {% for link in linklists[sidebar_nav_list].links %}
+        {% if forloop.first %}
+          <div class="new-collection">
+            <a class="callout" href="{{ link.url }}">{{ link.title }}</a>
+            <img src="{{ 'star_blue.png' | asset_url }}">
+          </div>
+        {% else %}
           <a class="callout" href="{{ link.url }}">{{ link.title }}</a>
-          <img src="{{ 'star_blue.png' | asset_url }}">
-        </div>
-      {% else %}
-        <a class="callout" href="{{ link.url }}">{{ link.title }}</a>
-      {% endif %}
-      {% if link.links != blank %}
-        {% for child in link.links %}
-          <a class="child-link" href="{{ child.url }}">{{ child.title }}</a>
-        {% endfor %}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-</div>
+        {% endif %}
+        {% if link.links != blank %}
+          {% for child in link.links %}
+            <a class="child-link" href="{{ child.url }}">{{ child.title }}</a>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
+</nav>
 
 {% schema %}
   {

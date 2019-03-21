@@ -11,7 +11,8 @@
       alt="{{ section.settings.menu_nav_logo.alt | default: shop.name }}">
   </div>
   <div class="menu-content-container">
-    <div class="menu-content menu-nav-content" id="menu-nav-main">
+    <nav role="navigation">
+      <div class="menu-content menu-nav-content" id="menu-nav-main">
         {%- assign menu_nav_list = section.settings.menu_nav_list -%}
         {% if linklists[menu_nav_list].links.size > 0 %}
           {% for link in linklists[menu_nav_list].links %}
@@ -31,33 +32,34 @@
           {% endfor %}
         {% endif %}
         {% if customer %}
-          <button class="nav-item callout" id="account-menu-btn">My Account</button>
-        {% endif %}
-    </div>
-    <div class="menu-content menu-nav-content" id="menu-nav-account">
-      <a id="sidebar-account-link" class="body2 grey nav-item {% if request.path == '/account' %}selected{% endif %}" href="/account">{{ 'customer.order_history' | t }}</a>
-      <a class="body2 grey nav-item {% if request.path == '/account/addresses' %}selected{% endif %}" href="/account/addresses">{{ 'customer.saved_addresses' | t }}</a>
-      <a id="sidebar-share-link" class="body2 grey nav-item" href="/account?share=1">{{ 'customer.invite_friends' | t }}</a>
-      <a class="body2 grey nav-item" href="/account/logout">{{ 'customer.log_out' | t }}</a>
-    </div>
-    <div class="menu-actions">
-      <div class="desktop">
-        {% if customer %}
-          <a href="/account/logout" class="btn large">Log Out</a>
-        {% else %}
-          <button class="btn large outline">Sign In</button>
-          <button class="btn large">Sign Up</button>
+          <button class="nav-item callout" id="account-menu-btn">{{ 'navigation.my_account' | t }}</button>
         {% endif %}
       </div>
-      <div class="mobile">
-        {% if customer %}
-          <a href="/account/logout" class="btn">Log Out</a>
-        {% else %}
-          <a class="btn outline" href="account/login">Sign In</a>
-          <a class="btn" href="account/register">Sign Up</a>
-        {% endif %}
+      <div class="menu-content menu-nav-content" id="menu-nav-account">
+        <a id="sidebar-account-link" class="body2 grey nav-item {% if request.path == '/account' %}selected{% endif %}" href="/account">{{ 'customer.order_history' | t }}</a>
+        <a class="body2 grey nav-item {% if request.path == '/account/addresses' %}selected{% endif %}" href="/account/addresses">{{ 'customer.saved_addresses' | t }}</a>
+        <a id="sidebar-share-link" class="body2 grey nav-item" href="/account?share=1">{{ 'customer.invite_friends' | t }}</a>
+        <a class="body2 grey nav-item" href="/account/logout">{{ 'customer.log_out' | t }}</a>
       </div>
-    </div>
+      <div class="menu-actions">
+        <div class="desktop">
+          {% if customer %}
+            <a href="/account/logout" class="btn large">{{ 'navigation.log_out' | t }}</a>
+          {% else %}
+            <a class="btn large outline" href="account/login">{{ 'navigation.sign_in' | t }}</a>
+            <a class="btn large" href="account/register">{{ 'navigation.sign_up' | t }}</a>
+          {% endif %}
+        </div>
+        <div class="mobile">
+          {% if customer %}
+            <a href="/account/logout" class="btn">{{ 'navigation.log_out' | t }}</a>
+          {% else %}
+            <a class="btn outline" href="account/login">{{ 'navigation.sign_in' | t }}</a>
+            <a class="btn" href="account/register">{{ 'navigation.sign_up' | t }}</a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
   </div>
 </div>
 
