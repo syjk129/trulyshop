@@ -56,7 +56,7 @@
     display: flex;
     flex-direction: column;
 
-    button:not(:last-of-type) {
+    a {
       margin-bottom: 10px;
     }
   }
