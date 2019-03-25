@@ -1,15 +1,37 @@
 <section class="main-collection-grid">
   <div class="left">
-    <img src="{{ main_collection_grid_vertical_img1 }}">
+    <div class="ratio-image r4x3">
+      <img
+        src="{{ section.settings.main_collection_grid_vertical_img1 | img_url: '500x500' }}"
+        alt="{{ section.settings.main_collection_grid_vertical_img1.alt | default: shop.name }}">
+    </div>
+    <div class="ratio-box r5x7">
+      <div class="ratio-box-content quote-box">
+        <div class="quote-box-content">
+          <h3>{{ section.settings.main_collection_grid_title }}</h3>
+          <div class="body3 grey">{{ section.settings.main_collection_grid_subtext }}</div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="right">
-    <img src="{{ main_collection_grid_horizontal_img1 }}">
+    <div class="ratio-image r5x7">
+      <img 
+        src="{{ section.settings.main_collection_grid_vertical_img2 | img_url: '500x500' }}"
+        alt="{{ section.settings.main_collection_grid_vertical_img2.alt | default: shop.name }}">
+    </div>
+    <div class="ratio-image r4x3">
+      <img 
+        src="{{ section.settings.main_collection_grid_vertical_img2 | img_url: '500x500' }}"
+        alt="{{ section.settings.main_collection_grid_vertical_img2.alt | default: shop.name }}">
+    </div>
   </div>
 </section>
 
 {% schema %}
   {
     "name": "Main Collection Grid",
+    "class": "full-width",
     "settings": [
       {
         "type": "image_picker",

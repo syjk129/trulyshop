@@ -2,9 +2,22 @@
 
 .main-collection-grid {
   display: flex;
+  width: 100%;
 
   .left,
   .right {
     width: 50%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .left {
+    margin-right: 10px;
+  }
+
+  .ratio-image {
+    margin-bottom: 10px;
   }
 }
