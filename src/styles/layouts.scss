@@ -5,7 +5,7 @@ $medium-content-width: 735px;
 
 .content {
   display: flex;
-  max-width: $max-screen-width;
+  max-width: $max-content-width;
   width: 100%;
   box-sizing: border-box;
   margin: auto;
