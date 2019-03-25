@@ -1,10 +1,10 @@
 <section class="full-screen-split-image">
   <div class="ratio-box r1x2">
     <div class="ratio-box-content">
-      <div style="width: {{ section.settings.image1_width_percentage }}px;">
+      <div style="width: {{ section.settings.image1_width_percentage }};">
         <img src="{{ section.settings.image1 | img_url: '500x500' }}">
       </div>
-      <div style="width: {{ section.settings.image2_width_percentage }}px;">
+      <div style="width: {{ section.settings.image2_width_percentage }};">
         <img src="{{ section.settings.image2 | img_url: '500x500' }}">
       </div>
     </div>
@@ -24,7 +24,8 @@
       {
         "type": "text",
         "id": "image1_width_percentage",
-        "label": "Image 1 Width Percentage"
+        "label": "Image 1 Width Percentage",
+        "default": "50%"
       },
       {
         "type": "image_picker",
@@ -34,7 +35,8 @@
       {
         "type": "text",
         "id": "image2_width_percentage",
-        "label": "Image 2 Width Percentage"
+        "label": "Image 2 Width Percentage",
+        "default": "50%"
       }
     ],
     "presets": [
