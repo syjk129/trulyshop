@@ -1,0 +1,41 @@
+<section class="full-screen-split-image">
+  <div class="ratio-box r1x2">
+    <div class="ratio-box-content">
+      <div style="width: {{ section.settings.image1_width_percentage }}px;">
+        <img src="{{ section.settings.image1 | img_url: 500x500 }}">
+      </div>
+      <div style="width: {{ section.settings.image2_width_percentage }}px;">
+        <img src="{{ section.settings.image2 | img_url: 500x500 }}">
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Full Screen Split Image",
+    "class": "full-width",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image1",
+        "label": "Image 1"
+      },
+      {
+        "type": "text",
+        "id": "image1_width_percentage",
+        "label": "Image 1 Width Percentage"
+      },
+      {
+        "type": "image_picker",
+        "id": "image2",
+        "label": "Image 2"
+      },
+      {
+        "type": "text",
+        "id": "image2_width_percentage",
+        "label": "Image 2 Width Percentage"
+      }
+    ]
+  }
+{% endschema %}

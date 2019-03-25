@@ -33,7 +33,9 @@
     %}
       {% section "sidebar-account-nav" %}
     {% endif %}
-    {{ content_for_layout }}
+    <div class="full-width">
+      {{ content_for_layout }}
+    </div>
   </div>
   {% section "footer" %}
 </body>

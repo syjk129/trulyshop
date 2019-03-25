@@ -1,0 +1,11 @@
+@import "../variables";
+
+.full-screen-split-image {
+  .ratio-box-content {
+    display: flex;
+
+    div {
+      margin-right: 10px;
+    }
+  }
+}
