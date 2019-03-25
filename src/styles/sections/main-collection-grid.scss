@@ -1,0 +1,10 @@
+@import "../variables";
+
+.main-collection-grid {
+  display: flex;
+
+  .left,
+  .right {
+    width: 50%;
+  }
+}

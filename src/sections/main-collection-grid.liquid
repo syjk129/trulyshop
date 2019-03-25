@@ -1,0 +1,47 @@
+<section class="main-collection-grid">
+  <div class="left">
+    <img src="{{ main_collection_grid_vertical_img1 }}">
+  </div>
+  <div class="right">
+    <img src="{{ main_collection_grid_horizontal_img1 }}">
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Main Collection Grid",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "main_collection_grid_vertical_img1",
+        "label": "Vertical Image 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "main_collection_grid_vertical_img2",
+        "label": "Vertical Image 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "main_collection_grid_horizontal_img1",
+        "label": "Horizontal Image"
+      },
+      {
+        "type": "text",
+        "id": "main_collection_grid_title"
+        "label": "Main Collection Grid Title"
+      },
+      {
+        "type": "text",
+        "id": "main_collection_grid_subtext"
+        "label": "Main Collection Grid Subtext"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Main Collection Grid",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}
