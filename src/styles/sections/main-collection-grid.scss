@@ -20,4 +20,24 @@
   .ratio-image {
     margin-bottom: 10px;
   }
+
+  .quote-box-content {
+    position: relative;
+    text-align: center;
+
+    .star {
+      height: 23px;
+      width: 23px;
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .view-collection {
+      position: absolute;
+      bottom: 30px;
+      text-align: center;
+    }
+  }
 }

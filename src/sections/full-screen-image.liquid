@@ -1,0 +1,31 @@
+<section class="full-screen-image">
+  <div class="ratio-image {{ section.settings.image_ratio_class }}">
+    <img src="{{ section.settings.image | img_url: '1000x1000' }}">
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Full Screen Image",
+    "class": "full-width",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "image_ratio_class",
+        "label": "Image Ratio Class",
+        "default": "r2x1"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Full Screen Image",
+        "category": "Custom Content"
+      }
+    ]
+  }
+{% endschema %}
