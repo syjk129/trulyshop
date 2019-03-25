@@ -1,0 +1,27 @@
+@import "../variables";
+
+.full-screen-image {
+  margin-bottom: 10px;
+}
+
+.full-screen-split-image {
+  .ratio-box-content {
+    display: flex;
+
+    div {
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.full-screen-quote {
+  padding: 20px;
+}

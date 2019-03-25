@@ -1,0 +1,24 @@
+<section class="quote-box">
+  <div class="quote-box-content">
+    <h3>{{ section.settings.full_screen_quote_title }}</h3>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Full Screen Quote",
+    "class": "full-width",
+    "settings": [
+      {
+        "type": "text",
+        "id": "full_screen_quote_title",
+        "label": "Full Screen Quote Title"
+      },
+      {
+        "type": "text",
+        "id": "full_screen_quote_subtext",
+        "label": "Full Screen Quote Subtext"
+      }
+    ]
+  }
+{% endschema %}
