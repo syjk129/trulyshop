@@ -1,5 +1,8 @@
 <section class="full-screen-split-image">
   <div class="ratio-box r1x2 desktop">
+    {% if collection %}
+      <a href="{{ section.settings.collection.url }}">
+    {% endif %}
     <div class="ratio-box-content">
       <div style="width: {{ section.settings.image1_width_percentage }};">
         <img src="{{ section.settings.image1 | img_url: '500x500' }}">
@@ -8,8 +11,14 @@
         <img src="{{ section.settings.image2 | img_url: '500x500' }}">
       </div>
     </div>
+    {% if collection %}
+      </a>
+    {% endif %}
   </div>
   <div class="ratio-box r2x3 mobile">
+    {% if collection %}
+      <a href="{{ section.settings.collection.url }}">
+    {% endif %}
     <div class="ratio-box-content">
       <div class="mobile" style="width: 50%;">
         <img src="{{ section.settings.image1 | img_url: '500x500' }}">
@@ -18,6 +27,9 @@
         <img src="{{ section.settings.image2 | img_url: '500x500' }}">
       </div>
     </div>
+    {% if collection %}
+      </a>
+    {% endif %}
   </div>
 </section>
 
@@ -47,6 +59,12 @@
         "id": "image2_width_percentage",
         "label": "Image 2 Width Percentage",
         "default": "50%"
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection",
+        "info": "Optional"
       }
     ],
     "presets": [
