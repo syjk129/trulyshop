@@ -1,5 +1,25 @@
 <section class="featured-social-images">
-  <img src="{{ social_content_img1 }}">
+  <h3>{{ section.settings.title }}</h3>
+  <div class="featured-social-image-content">
+    <a href="{{ section.settings.social_link1 }}" class="item">
+      <div class="ratio-image square">
+        <img src="{{ section.settings.social_content_img1 | img_url: '500x500' }}">
+      </div>
+      <div class="body2 grey">{{ section.settings.social_handle1 }}</div>
+    </a>
+    <a href="{{ section.settings.social_link2 }}" class="item">
+      <div class="ratio-image square">
+        <img src="{{ section.settings.social_content_img2 | img_url: '500x500' }}">
+      </div>
+      <div class="body2 grey">{{ section.settings.social_handle2 }}</div>
+    </a>
+    <a href="{{ section.settings.social_link3 }}" class="item">
+      <div class="ratio-image square">
+        <img src="{{ section.settings.social_content_img3 | img_url: '500x500' }}">
+      </div>
+      <div class="body2 grey">{{ section.settings.social_handle3 }}</div>
+    </a>
+  </div>
 </section>
 
 {% schema %}

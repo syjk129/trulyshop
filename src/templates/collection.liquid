@@ -1,17 +1,24 @@
-{% paginate collection.products by 9 %}
-  <div class="collection">
-    <header role="banner">
-      <div class="body3">
-        {{ collection.description }}
-      </div>
-      <div class="cover">
-        {{ collection.image | img_url: '830x275' | img_tag}}
-      </div>
-    </header>
-    <div class="collection-products">
-      {% for product in collection.products %}
-        {% include 'product-card' with product: product %}
-      {% endfor %}
+<div class="collection">
+  <header role="banner">
+    <div class="body3">
+      {{ collection.description }}
     </div>
+    <div class="cover">
+      {% comment %} {{ collection.image | img_url: '830x275' | img_tag}} {% endcomment %}
+      <iframe
+        src="https://player.vimeo.com/video/326422567?background=1&autoplay=1&loop=1"
+        width="640"
+        height="360"
+        frameborder="0"
+        allow=autoplay
+        webkitallowfullscreen
+        mozallowfullscreen
+        allowfullscreen></iframe>
+    </div>
+  </header>
+  <div class="collection-products">
+    {% for product in collection.products %}
+      {% include 'product-card' with product: product %}
+    {% endfor %}
   </div>
-{% endpaginate %}
+</div>

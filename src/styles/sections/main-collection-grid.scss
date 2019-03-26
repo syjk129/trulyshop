@@ -4,6 +4,22 @@
   display: flex;
   width: 100%;
 
+  @media (max-width: $mobile-width-break) {
+    flex-direction: column;
+  }
+
+  .mobile-half {
+    display: flex;
+    
+    .half {
+      width: 50%;
+
+      &:not(:last-child) {
+        margin-right: 5px;
+      }
+    }
+  }
+
   .left,
   .right {
     width: 50%;
@@ -17,8 +33,20 @@
     margin-right: 10px;
   }
 
+  .ratio-box {
+    margin-bottom: 10px;
+
+    @media (max-width: $mobile-width-break) {
+      margin-bottom: 5px;
+    }
+  }
+
   .ratio-image {
     margin-bottom: 10px;
+
+    @media (max-width: $mobile-width-break) {
+      margin-bottom: 5px;
+    }
   }
 
   .quote-box-content {

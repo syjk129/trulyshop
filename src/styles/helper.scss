@@ -1,3 +1,5 @@
+@import "./variables";
+
 // Only show when JS is not supported
 .no-js:not(html) {
   display: none;
@@ -60,6 +62,10 @@
     padding-top: 133%;
   }
 
+  &.r2x3 {
+    padding-top: 66%;
+  }
+
   &.r2x1 {
     padding-top: 200%;
   }
@@ -77,6 +83,11 @@
   background-color: #F8F8F8;
   padding: 20px;
   box-sizing: border-box;
+  margin-bottom: 10px;
+
+  @media (max-width: $mobile-width-break) {
+    margin-bottom: 5px;
+  }
 
   .quote-box-content {
     background-color: white;

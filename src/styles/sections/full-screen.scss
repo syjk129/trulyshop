@@ -2,10 +2,18 @@
 
 .full-screen-image {
   margin-bottom: 10px;
+
+  @media (max-width: $mobile-width-break) {
+    margin-bottom: 5px;
+  }
 }
 
 .full-screen-split-image {
   margin-bottom: 10px;
+
+  @media (max-width: $mobile-width-break) {
+    margin-bottom: 5px;
+  }
 
   .ratio-box-content {
     display: flex;
@@ -13,6 +21,10 @@
     div {
       &:not(:last-child) {
         margin-right: 10px;
+
+        @media (max-width: $mobile-width-break) {
+          margin-right: 5px;
+        }
       }
       
       img {
