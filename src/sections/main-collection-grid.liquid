@@ -1,20 +1,21 @@
+{%- assign collection = collections[section.settings.collection] -%}
 <section class="main-collection-grid desktop">
   <div class="left">
     <div class="ratio-image r4x3">
-      <a href="{{ section.settings.collection.url }}">
+      <a href="{{ collection.url }}">
         <img
           src="{{ section.settings.main_collection_grid_vertical_img1 | img_url: '500x500' }}"
           alt="{{ section.settings.main_collection_grid_vertical_img1.alt | default: shop.name }}">
       </a>
     </div>
     <div class="ratio-box r5x7">
-      <a class="no-underline" href="{{ section.settings.collection.url }}">
+      <a class="no-underline" href="{{ collection.url }}">
         <div class="ratio-box-content quote-box">
           <div class="quote-box-content">
             <img class="star" src="{{ 'star_black.png' | asset_url }}">
             <h3>{{ section.settings.main_collection_grid_title }}</h3>
             <div class="body3 grey">{{ section.settings.main_collection_grid_subtext }}</div>
-            <a class="no-underline callout view-collection">View Collection</a>
+            <a class="no-underline callout view-collection" href="{{ collection.url }}">View Collection</a>
           </div>
         </div>
       </a>
@@ -22,14 +23,14 @@
   </div>
   <div class="right">
     <div class="ratio-image r5x7">
-      <a href="{{ section.settings.collection.url }}">
+      <a href="{{ collection.url }}">
         <img 
           src="{{ section.settings.main_collection_grid_vertical_img2 | img_url: '500x500' }}"
           alt="{{ section.settings.main_collection_grid_vertical_img2.alt | default: shop.name }}">
       </a>
     </div>
     <div class="ratio-image r4x3">
-      <a href="{{ section.settings.collection.url }}">
+      <a href="{{ collection.url }}">
         <img 
           src="{{ section.settings.main_collection_grid_vertical_img2 | img_url: '500x500' }}"
           alt="{{ section.settings.main_collection_grid_vertical_img2.alt | default: shop.name }}">
@@ -41,7 +42,7 @@
   <div class="mobile-half">
     <div class="half">
       <div class="ratio-image r4x3">
-        <a href="{{ section.settings.collection.url }}">
+        <a href="{{ collection.url }}">
           <img
             src="{{ section.settings.main_collection_grid_vertical_img1 | img_url: '500x500' }}"
             alt="{{ section.settings.main_collection_grid_vertical_img1.alt | default: shop.name }}">
@@ -50,7 +51,7 @@
     </div>
     <div class="half">
       <div class="ratio-image r4x3">
-        <a href="{{ section.settings.collection.url }}">
+        <a href="{{ collection.url }}">
           <img
             src="{{ section.settings.main_collection_grid_vertical_img2 | img_url: '500x500' }}"
             alt="{{ section.settings.main_collection_grid_vertical_img2.alt | default: shop.name }}">
@@ -59,7 +60,7 @@
     </div>
   </div>
   <div class="ratio-box r5x7">
-    <a class="no-underline" href="{{ section.settings.collection.url }}">
+    <a class="no-underline" href="{{ collection.url }}">
       <div class="ratio-box-content quote-box">
         <div class="quote-box-content">
           <img class="star" src="{{ 'star_black.png' | asset_url }}">
@@ -71,7 +72,7 @@
     </a>
   </div>
   <div class="ratio-image r5x7">
-    <a href="{{ section.settings.collection.url }}">
+    <a href="{{ collection.url }}">
       <img 
         src="{{ section.settings.main_collection_grid_vertical_img2 | img_url: '500x500' }}"
         alt="{{ section.settings.main_collection_grid_vertical_img2.alt | default: shop.name }}">

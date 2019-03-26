@@ -1,7 +1,8 @@
 <section class="full-screen-split-image">
+  {%- assign collection = collections[section.settings.collection] -%}
   <div class="ratio-box r1x2 desktop">
     {% if collection %}
-      <a href="{{ section.settings.collection.url }}">
+      <a href="{{ collection.url }}">
     {% endif %}
     <div class="ratio-box-content">
       <div style="width: {{ section.settings.image1_width_percentage }};">
@@ -17,7 +18,7 @@
   </div>
   <div class="ratio-box r2x3 mobile">
     {% if collection %}
-      <a href="{{ section.settings.collection.url }}">
+      <a href="{{ collection.url }}">
     {% endif %}
     <div class="ratio-box-content">
       <div class="mobile" style="width: 50%;">
