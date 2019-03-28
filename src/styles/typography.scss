@@ -108,6 +108,14 @@ a {
   text-align: center;
 }
 
+.error {
+  color: $color-red;
+}
+
+.success {
+  color: $color-green;
+}
+
 .body1,
 .body2,
 .body3 {

@@ -21,6 +21,27 @@ input {
     border-color: $color-red;
   }
 
+  &.underline {
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: transparent;
+    padding-left: 0;
+  }
+
+  &.blank {
+    background-color: transparent;
+    border: none;
+  }
+
+  &.white {
+    color: white;
+    border-color: white;
+
+    &::placeholder {
+      color: white;
+    }
+  }
+
   @media (max-width: $mobile-width-break) {
     padding: 10px 15px;
     font-size: $mobile-font-size-5;

@@ -1,21 +1,30 @@
 <footer id="footer" role="contentinfo" data-section-id="{{ section.id }}" data-section-type="footer-section">
   <div class="footer-content">
-    <div class="footer-links">
-      <div class="footer-column">
-        {%- assign footer_list = section.settings.footer_list -%}
-        {% if linklists[footer_list].links.size > 0 %}
-          <ul>
-            {% for link in linklists[footer_list].links %}
-              <li><a class="body2" href="{{ link.url }}">{{ link.title }}</a></li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-      </div>
+    <div class="footer-links desktop">
+      {%- assign footer_list = section.settings.footer_list -%}
+      {% if linklists[footer_list].links.size > 0 %}
+        <ul>
+          {% for link in linklists[footer_list].links %}
+            <li><a class="body2" href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    <div class="footer-subscribe">
+      <h3>Sign up to our newsletter!</h3>
+      <form class="subscribe-input" id="footer-subscribe">
+        <input name="email" class="body1 blank white" placeholder="Enter your email here">
+        <div class="subscribe-button">
+          <input class="img" type="image" name="submit" src="{{ 'arrow_white.png' | asset_url }}">
+        </div>
+      </form>
+      <div class="footer-subscribe-error" id="footer-subscribe-error">&nbsp;</div>
+      <div class="body3 desktop">© 2018 TRULY. All Rights Reserved.</div>
     </div>
     <div class="footer-follow">
       <div class="footer-follow-content">
-        <div class="column-header">
-          Follow Us
+        <div class="body2 column-header">
+          Connect with us
         </div>
         <div class="social-icons">
           <a class="social-icon" href="">
@@ -35,10 +44,20 @@
           </a>
         </div>
       </div>
-      <div class="footer-legal">
-        True Brands Group, Inc.<br>
-        © 2018 TRULY. All Rights Reserved.
-      </div>
+    </div>
+    <div class="footer-links mobile">
+      {%- assign footer_list = section.settings.footer_list -%}
+      {% if linklists[footer_list].links.size > 0 %}
+        <ul>
+          {% for link in linklists[footer_list].links %}
+            <li><a class="body2" href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    <div class="mobile mobile-legal">
+      <img src="{{ 'logo_white.png' | asset_url }}">
+      <div class="body3">© 2018 TRULY. All Rights Reserved.</div>
     </div>
   </div>
 </footer>

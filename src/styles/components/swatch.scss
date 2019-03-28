@@ -7,6 +7,7 @@ $small-swatch-size: 25px;
 $small-swatch-content-size: 15px;
 
 .swatch-container {
+  display: flex;
   margin-bottom: 10px;
 }
 
@@ -17,8 +18,11 @@ $small-swatch-content-size: 15px;
   user-select: none;
   padding-left: $swatch-size;
   margin-bottom: $swatch-size;
-  margin-right: 10px;
   font-size: 22px;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
 
   input {
     position: absolute;

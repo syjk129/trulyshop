@@ -1,24 +1,34 @@
 <div class="collection">
-  <header role="banner">
-    <div class="body3">
-      {{ collection.description }}
-    </div>
-    <div class="cover">
-      {% comment %} {{ collection.image | img_url: '830x275' | img_tag}} {% endcomment %}
-      <iframe
-        src="https://player.vimeo.com/video/326422567?background=1&autoplay=1&loop=1"
-        width="640"
-        height="360"
-        frameborder="0"
-        allow=autoplay
-        webkitallowfullscreen
-        mozallowfullscreen
-        allowfullscreen></iframe>
+  <header role="banner" class="ratio-box">
+    <div class="ratio-box-content banner-content">
+      <div class="collection-info">
+        <div class="callout">SPRING 2019</div>
+        <h3>{{ collection.title }}</h3>
+        <div class="body2 grey">
+          On a lazy Sunday morning, Gabriella does this copy is to be determined. About this length should be good.
+          {% comment %} {{ collection.description }} {% endcomment %}
+        </div>
+        <a class="btn outline">In the making</a>
+      </div>
+      <div class="video-container">
+        <div class="ratio-box r9x16">
+          <div class="ratio-box-content">
+            <iframe
+              class="collection-video ratio-box-content"
+              src="https://player.vimeo.com/video/326422567?background=1&autoplay=1&loop=1"
+              frameborder="0"
+              allow=autoplay
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
-  <div class="collection-products">
+  <div class="product-cards">
     {% for product in collection.products %}
-      {% include 'product-card' with product: product %}
+      {% include 'product-card' with product: product, index: forloop.index0 %}
     {% endfor %}
   </div>
 </div>

@@ -46,6 +46,18 @@ $(document).ready(() => {
       sticky.updateSticky();
     });
   }
+
+  // See how style
+  const seeHowStyles = document.getElementsByClassName("see-how-style");
+  seeHowStyles[1].style.display = "none";
+  seeHowStyles[0].getElementsByClassName("btn")[0].onclick = () => {
+    seeHowStyles[0].style.display = "none";
+    seeHowStyles[1].style.display = "flex";
+  }
+  seeHowStyles[1].getElementsByClassName("btn")[0].onclick = () => {
+    seeHowStyles[0].style.display = "flex";
+    seeHowStyles[1].style.display = "none";
+  }
 });
 
 register('product', {

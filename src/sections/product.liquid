@@ -4,17 +4,30 @@
   {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
 
   {% assign product_models = "" | split: "|" %}
+  {% assign product_models_fits = "" | split: "|" %}
 
   {% for image in product.images %}
     {% assign alt_values = image.alt | split: "|" %}
     {% unless product_models contains alt_values[0] %}
       {% assign model_name = alt_values[0] | split: "|" %}
-      {% assign product_models = product_models | concat: model_name %}
+      {% assign model_fit = alt_values[1] | split: "|" %}
+      {% unless alt_values[0] contains "Campaign" %}
+        {% assign product_models = product_models | concat: model_name %}
+        {% asssign product_models_fits = product_models_fits | concat: model_fit %}
+      {% endunless %}
     {% endunless %}
   {% endfor %}
 
   <div class="product" id="product-content">
     <div class="product-images desktop">
+      <div class="see-how-style" data-model="{{ product_models[0] }}">
+        <div class="body3">{{ product_models[0] }} is 5'8", size 8, wearing a Small</div>
+        <button class="btn outline">See how {{ product_models[1] }} Wears it</button>
+      </div>
+      <div class="see-how-style" data-model="{{ product_models[1] }}">
+        <div class="body3">{{ product_models[1] }} is 5'8", size 8, wearing a Small</div>
+        <button class="btn outline">See how {{ product_models[0] }} Wears it</button>
+      </div>
       {% for image in product.images %}
         <img src="{{ image | img_url: '600x600' }}">
       {% endfor %}

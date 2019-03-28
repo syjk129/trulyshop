@@ -3,70 +3,98 @@
 
   Accepts:
   - product: Product for the card
+  - index: Index of the product in collection
 {%- endcomment -%}
 
-<div id="product-card-{{ product.id }}" class="product-card" data-product-card>
-  {% assign color_index = -1 %}
-  {% assign size_index = -1 %}
-
-  {% for option in product.options %}
-    {% assign downcased_option = option | downcase %}
-    {% if downcased_option contains 'color' %}
-      {% assign color_index = forloop.index0 %}
-    {% elsif downcased_option contains 'size' %}
-      {% assign size_index = forloop.index0 %}
+<div class="product-card-container">
+  {% assign mod = index | modulo:2 %}
+  {% assign campaign_image = "wtf" %}
+  {% for image in product.images %}
+    {% assign alt_values = image.alt | split: "|" %}
+    {% if alt_values[0] contains "Campaign" %}
+      {% assign campaign_image = image %}
     {% endif %}
   {% endfor %}
+  <a class="product-campaign-img mobile" href="{{ product.url }}">
+    <img src="{{ campaign_image | img_url: '400x400' }}">
+  </a>
+  <div class="body1 product-title">{{ product.title }}</div>
+  <div class="body2 grey product-description">A classic cami - updated in clean silk.</div>
+  <div class="product-card-content">
+    {% if mod == 1 %}
+      <a class="product-campaign-img desktop" href="{{ product.url }}">
+        <img src="{{ campaign_image | img_url: '400x400' }}">
+      </a>
+    {% endif %}
 
-  {% assign color_variants = product.options_with_values[color_index].values %}
+    <div id="product-card-{{ product.id }}" class="product-card" data-product-card>
+      {% assign color_index = -1 %}
+      {% assign size_index = -1 %}
 
-  <div class="product-card-img">
-    <a href="{{ product.url }}">
-      <img src="{{ product.featured_image | img_url: '260x343' }}">
-    </a>
-    <button class="btn quick-add desktop" data-quick-add>Quick Add +</button>
-    {% unless size_index == -1 %}
-      <div class="quick-add-size desktop" data-quick-add-size-container>
-        {% assign values = '' %}
-        {% for variant in product.variants %}
-          {% assign value = variant.options[size_index] %}
-          {% unless values contains value %}
-            {% assign values = values | join: ',' %}
-            {% assign values = values | append: ',' | append: value %}
-            {% assign values = values | split: ',' %}
-            <button class="quick-add-size-btn" data-value="{{ value }}" data-quick-add-size>{{ value }}</button>
-          {% endunless %}
-        {% endfor %}
+      {% for option in product.options %}
+        {% assign downcased_option = option | downcase %}
+        {% if downcased_option contains 'color' %}
+          {% assign color_index = forloop.index0 %}
+        {% elsif downcased_option contains 'size' %}
+          {% assign size_index = forloop.index0 %}
+        {% endif %}
+      {% endfor %}
+
+      {% assign color_variants = product.options_with_values[color_index].values %}
+
+      <div class="product-card-img">
+        <a href="{{ product.url }}">
+          <img src="{{ product.featured_image | img_url: '400x400' }}">
+        </a>
+        <button class="btn white quick-add desktop" data-quick-add>Quick Add +</button>
+        {% unless size_index == -1 %}
+          <div class="quick-add-size desktop" data-quick-add-size-container>
+            {% assign values = '' %}
+            {% for variant in product.variants %}
+              {% assign value = variant.options[size_index] %}
+              {% unless values contains value %}
+                {% assign values = values | join: ',' %}
+                {% assign values = values | append: ',' | append: value %}
+                {% assign values = values | split: ',' %}
+                <button class="quick-add-size-btn" data-value="{{ value }}" data-quick-add-size>{{ value }}</button>
+              {% endunless %}
+            {% endfor %}
+          </div>
+        {% endunless %}
       </div>
-    {% endunless %}
+      <div class="product-card-details">
+        <a href="{{ product.url }}" class="name-price">
+          <span class="body3 desktop">{{ product.price | money }}</span>
+          <span class="body2 mobile">{{ product.price | money }}</span>
+          <div class="color-select">
+            {% unless color_index == -1 %}
+              <div class="body3 variant-name desktop">
+                {{ product.variants[0].options[color_index] | capitalize }}
+              </div>
+              {% include 'color-swatch' with product: product, small: true %}
+            {% endunless %}
+          </div>
+        </a>
+
+        {% unless color_variants.size <= 1 %}
+          <div class="body2 mobile grey available-colors">
+            {{ color_variants.size }} colors available
+          </div>
+        {% endunless %}
+
+      </div>
+
+      {% unless product == empty %}
+        <script type="application/json" data-product-json>
+          {{ product | json }}
+        </script>
+      {% endunless %}
+    </div>
+
+    {% if mod == 0 %}
+      <a class="product-campaign-img desktop" href="{{ product.url }}">
+        <img src="{{ campaign_image | img_url: '400x400' }}">
+      </a>
+    {% endif %}
   </div>
-  <div class="product-card-details">
-    <a href="{{ product.url }}" class="name-price">
-      <span class="body3">
-        {{ product.title }}
-      </span>
-      <span class="body3">
-        {{ product.price | money }}
-      </span>
-    </a>
-
-    {% unless color_variants.size <= 1 %}
-      <div class="body3 mobile grey">
-        {{ color_variants.size }} colors available
-      </div>
-    {% endunless %}
-
-    {% unless color_index == -1 %}
-      <div class="body3 variant-name desktop">
-        {{ product.variants[0].options[color_index] | capitalize }}
-      </div>
-      {% include 'color-swatch' with product: product, small: true %}
-    {% endunless %}
-  </div>
-
-  {% unless product == empty %}
-    <script type="application/json" data-product-json>
-      {{ product | json }}
-    </script>
-  {% endunless %}
 </div>

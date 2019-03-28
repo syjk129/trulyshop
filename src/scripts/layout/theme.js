@@ -4,4 +4,5 @@ import "../../styles/theme.scss.liquid";
 import "../components";
 import "../libraries/slick";
 import "../sections";
+import "../snippets";
 import "../templates";
