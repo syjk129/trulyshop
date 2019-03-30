@@ -35,21 +35,25 @@ h3 {
 h1 {
   font-size: $font-size-1;
   font-weight: $font-weight-bold;
+  line-height: $line-height-1;
 }
 h2 {
   font-size: $font-size-2;
   font-weight: $font-weight-bold;
+  line-height: $line-height-2;
 }
 h3 {
   font-size: $font-size-3;
   font-weight: $font-weight-semibold;
   letter-spacing: 0.25px;
+  line-height: $line-height-3;
 }
 
 .body1 {
   font-size: $font-size-4;
   font-weight: $font-weight-semibold;
   letter-spacing: 0.25px;
+  line-height: $line-height-4;
 }
 
 .body2 {
@@ -63,6 +67,7 @@ h3 {
   font-size: $font-size-6;
   font-weight: $font-weight-regular;
   letter-spacing: 0.15px;
+  line-height: $line-height-6;
 }
 
 .callout {

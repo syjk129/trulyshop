@@ -18,28 +18,14 @@
 @import './components/swatch';
 @import './components/switch';
 
-// Sections
-@import './sections/featured-social-images';
-@import './sections/footer';
-@import './sections/full-screen';
-@import './sections/header';
-@import './sections/main-collection-grid';
-@import './sections/menu';
-@import './sections/product';
-@import './sections/sidebar';
-
 // Snippets
 @import './snippets/menu-cart';
 @import './snippets/payment-logo';
 @import './snippets/product-card';
 
-// Templates
-@import './templates/auth';
-@import './templates/cart';
-@import './templates/collection';
-@import './templates/customers/account';
-@import './templates/customers/addresses';
-@import './templates/customers/order';
+// Folders
+@import "./sections/index";
+@import "./templates/index";
 
 // Libraries
 @import './libraries/slick';
