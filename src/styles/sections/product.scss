@@ -9,6 +9,17 @@
 .product {
   display: flex;
 
+  .breadcrumb {
+    padding: $page-padding-mobile;
+    padding-top: 20px;
+    padding-bottom: 0;
+    margin: 0;
+
+    .collections {
+      margin-bottom: 25px;
+    }
+  }
+
   .see-how-style {
     display: flex;
     justify-content: space-between;
@@ -17,6 +28,12 @@
 
     @media (max-width: $mobile-width-break) {
       flex-direction: column;
+      align-items: initial;
+    }
+
+    .body2 {
+      margin-bottom: 15px;
+      color: black;
     }
 
     button {
@@ -42,6 +59,7 @@
 
   .product-details {
     width: 100%;
+    box-sizing: border-box;
     will-change: min-height;
 
     .sidebar__inner {
@@ -94,6 +112,8 @@
     }
 
     .product-details {
+      padding: $page-padding-mobile;
+
       .callout {
         margin-bottom: 10px;
       }
@@ -102,6 +122,10 @@
 }
 
 .other-products {
+  @media (max-width: $mobile-width-break) {
+    padding: $page-padding-mobile;
+  }
+
   h3 {
     margin-bottom: 30px
   }

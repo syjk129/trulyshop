@@ -11,7 +11,6 @@ $(document).ready(() => {
     for (let j = 0; j < productCampaignImgs.length; j++) {
       if ($(productCampaignImgs[j]).is(":visible")) {
         productCampaignImg = productCampaignImgs[j];
-        console.log("bruh");
       }
     }
 

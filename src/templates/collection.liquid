@@ -1,6 +1,23 @@
 <div class="collection">
-  <header role="banner" class="ratio-box">
-    <div class="ratio-box-content banner-content">
+  <header role="banner">
+    <div class="collection-image mobile ratio-image square">
+      <img src="{{ collection.image | img_url: '500x500' }}">
+    </div>
+    <div class="ratio-box r9x16 desktop">
+      <div class="ratio-box-content">
+        <iframe
+          class="collection-video"
+          src="https://player.vimeo.com/video/326422567?background=1&autoplay=1&loop=1"
+          frameborder="0"
+          allow=autoplay
+          width="600"
+          height="300"
+          webkitallowfullscreen
+          mozallowfullscreen
+          allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="collection-info-container">
       <div class="collection-info">
         <div class="callout">SPRING 2019</div>
         <h3>{{ collection.title }}</h3>
@@ -10,19 +27,8 @@
         </div>
         <a class="btn outline">In the making</a>
       </div>
-      <div class="video-container">
-        <div class="ratio-box r9x16">
-          <div class="ratio-box-content">
-            <iframe
-              class="collection-video ratio-box-content"
-              src="https://player.vimeo.com/video/326422567?background=1&autoplay=1&loop=1"
-              frameborder="0"
-              allow=autoplay
-              webkitallowfullscreen
-              mozallowfullscreen
-              allowfullscreen></iframe>
-          </div>
-        </div>
+      <div class="collection-image desktop">
+        <img src="{{ collection.image | img_url: '500x500' }}">
       </div>
     </div>
   </header>

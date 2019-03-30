@@ -31,10 +31,6 @@ $small-swatch-content-size: 15px;
 
     &:checked ~ .swatch-content {
       border-color: black;
-
-      &:after {
-        display: block;
-      }
     }
   }
 
@@ -52,6 +48,13 @@ $small-swatch-content-size: 15px;
 
     &:hover {
       border-color: $color-grey-1;
+    }
+  }
+
+  &.unavailable {
+    .swatch-content {
+      opacity: 0.5;
+      cursor: default;
     }
   }
 }
@@ -93,5 +96,38 @@ $small-swatch-content-size: 15px;
     text-align: center;
     line-height: $swatch-size;
     font-size: $font-size-5;
+  }
+}
+
+.soldout {
+  $soldout-thickness: 1px;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+  z-index: 2;
+
+  &::before,
+  &::after {
+    content: " ";
+    position: absolute;
+    display: block;
+    background-color: black;
+    z-index: 2;
+  }
+
+  &::before {
+    top: 50%;
+    width: 100%;
+    height: $soldout-thickness;
+  }
+
+  &::after {
+    left: 50%;
+    width: $soldout-thickness;
+    height: 100%;
   }
 }

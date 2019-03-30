@@ -52,12 +52,13 @@
             {% assign values = '' %}
             {% for variant in product.variants %}
               {% assign value = variant.options[size_index] %}
-              {% unless values contains value %}
-                {% assign values = values | join: ',' %}
-                {% assign values = values | append: ',' | append: value %}
-                {% assign values = values | split: ',' %}
-                <button class="quick-add-size-btn" data-value="{{ value }}" data-quick-add-size>{{ value }}</button>
-              {% endunless %}
+              <button class="quick-add-size-btn {% unless variant.available %}unavailable{% endunless %}"
+                data-quick-add-size-color="{{ variant.options[color_index] }}">
+                {{ value }}
+                {% unless variant.available %}
+                  <div class="soldout"></div>
+                {% endunless %}
+              </button>
             {% endfor %}
           </div>
         {% endunless %}
@@ -69,9 +70,9 @@
           <div class="color-select">
             {% unless color_index == -1 %}
               <div class="body3 variant-name desktop">
-                {{ product.variants[0].options[color_index] | capitalize }}
+                {{ product.variants[0].options[color_index] }}
               </div>
-              {% include 'color-swatch' with product: product, small: true %}
+              {% include 'product-card-color-swatch' with product: product %}
             {% endunless %}
           </div>
         </a>

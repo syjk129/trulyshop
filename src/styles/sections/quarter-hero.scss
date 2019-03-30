@@ -1,0 +1,10 @@
+@import "../variables";
+
+.quarter-hero {
+  padding: 90px 0;
+  display: flex;
+
+  .quarter-hero-item {
+    width: 25%;
+  }
+}

@@ -1,7 +1,12 @@
 @import "../variables";
 
 .cart {
+  box-sizing: border-box;
   padding-bottom: 50px;
+
+  @media (max-width: $mobile-width-break) {
+    padding: $page-padding-mobile;
+  }
 
   .update-subtotal {
     display: flex;
@@ -11,6 +16,7 @@
     input {
       border: none;
       text-decoration: underline;
+      background-color: transparent;
       cursor: pointer;
       padding: 0;
       color: $color-grey-1;
@@ -37,11 +43,79 @@
     .outline {
       margin-right: 25px;
     }
+
+    @media (max-width: $mobile-width-break) {
+      flex-direction: column;
+
+      .btn {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
   }
 
   .cart-table {
-    td:not(:last-of-type) {
+    td {
       border-bottom: 1px solid $color-grey-3;
+    }
+  }
+}
+
+.cart-content {
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  padding: 20px 0;
+  border-bottom: 1px solid $color-grey-3;
+
+  .cart-item-img {
+    width: 50%;
+    flex-shrink: 0;
+    margin-right: 15px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .cart-item-content {
+    width: 100%;
+    position: relative;
+
+    .title {
+      margin-bottom: 5px;
+    }
+
+    .price {
+      margin-bottom: 10px;
+    }
+
+    .variant {
+      color: $color-grey-1;
+    }
+
+    .cart-remove {
+      position: absolute;
+      cursor: pointer;
+      right: 0;
+      font-weight: $font-weight-light;
+      font-size: 25px;
+    }
+
+    .quantity-selector {
+      display: flex;
+      margin-bottom: 5px;
+
+      .cart-quantity-btn {
+        cursor: pointer;
+        color: $color-grey-1;
+      }
+
+      *:not(:last-child) {
+        margin-right: 15px;
+      }
     }
   }
 }
