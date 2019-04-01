@@ -68,11 +68,14 @@ function updateColorLabel(productCard) {
 // Hide irrelevant size swatches
 function updateSizeSwatch(productCard) {
   $(selectors.quickAddSizeColor, productCard).each((index, quickAddSizeColor) => {
-    const currentVariantColor = $(selectors.variantName, productCard)[0].innerHTML;
-    if (currentVariantColor.trim().toLowerCase() != quickAddSizeColor.dataset.quickAddSizeColor.toLowerCase()) {
-      quickAddSizeColor.style.display = "none";
-    } else {
-      quickAddSizeColor.style.display = "block";
+    const variantEl = $(selectors.variantName, productCard);
+    if (variantEl && variantEl.length > 0) {
+      const currentVariantColor = variantEl[0].innerHTML;
+      if (currentVariantColor.trim().toLowerCase() != quickAddSizeColor.dataset.quickAddSizeColor.toLowerCase()) {
+        quickAddSizeColor.style.display = "none";
+      } else {
+        quickAddSizeColor.style.display = "block";
+      }
     }
   });
 }
