@@ -1,0 +1,71 @@
+@import "../variables";
+
+.main-collection-grid {
+  display: flex;
+  width: 100%;
+
+  @include phone {
+    flex-direction: column;
+  }
+
+  .mobile-half {
+    display: flex;
+    
+    .half {
+      width: 50%;
+
+      &:not(:last-child) {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .left,
+  .right {
+    width: 50%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .left {
+    margin-right: 10px;
+  }
+
+  .ratio-box {
+    margin-bottom: 10px;
+
+    @include phone {
+      margin-bottom: 5px;
+    }
+  }
+
+  .ratio-image {
+    margin-bottom: 10px;
+
+    @include phone {
+      margin-bottom: 5px;
+    }
+  }
+
+  .quote-box-content {
+    position: relative;
+    text-align: center;
+
+    .star {
+      height: 23px;
+      width: 23px;
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .view-collection {
+      position: absolute;
+      bottom: 30px;
+      text-align: center;
+    }
+  }
+}

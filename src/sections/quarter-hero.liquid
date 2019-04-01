@@ -1,0 +1,145 @@
+<section class="quarter-hero">
+  <h3>{{ section.settings.main_text }}</h3>
+  <div class="quarter-hero-content tablet-up">
+    <div class="quarter-hero-item">
+      <img src="{{ section.settings.image1 | img_url: '100x100' }}">
+      <div class="callout">{{ section.settings.title1 }}</div>
+      <div class="body2 grey">{{ section.settings.subtitle1 }}</div>
+    </div>
+    <div class="quarter-hero-item">
+      <img src="{{ section.settings.image2 | img_url: '100x100' }}">
+      <div class="callout">{{ section.settings.title2 }}</div>
+      <div class="body2 grey">{{ section.settings.subtitle2 }}</div>
+    </div>
+    <div class="quarter-hero-item">
+      <img src="{{ section.settings.image3 | img_url: '100x100' }}">
+      <div class="callout">{{ section.settings.title3 }}</div>
+      <div class="body2 grey">{{ section.settings.subtitle3 }}</div>
+    </div>
+    <div class="quarter-hero-item">
+      <img src="{{ section.settings.image4 | img_url: '100x100' }}">
+      <div class="callout">{{ section.settings.title4 }}</div>
+      <div class="body2 grey">{{ section.settings.subtitle4 }}</div>
+    </div>
+  </div>
+  <div class="quarter-hero-content phone">
+    <div class="quarter-hero-slider">
+      <div class="quarter-hero-item">
+        <img src="{{ section.settings.image1 | img_url: '100x100' }}">
+        <div class="callout">{{ section.settings.title1 }}</div>
+        <div class="body2 grey">{{ section.settings.subtitle1 }}</div>
+      </div>
+      <div class="quarter-hero-item">
+        <img src="{{ section.settings.image2 | img_url: '100x100' }}">
+        <div class="callout">{{ section.settings.title2 }}</div>
+        <div class="body2 grey">{{ section.settings.subtitle2 }}</div>
+      </div>
+      <div class="quarter-hero-item">
+        <img src="{{ section.settings.image3 | img_url: '100x100' }}">
+        <div class="callout">{{ section.settings.title3 }}</div>
+        <div class="body2 grey">{{ section.settings.subtitle3 }}</div>
+      </div>
+      <div class="quarter-hero-item">
+        <img src="{{ section.settings.image4 | img_url: '100x100' }}">
+        <div class="callout">{{ section.settings.title4 }}</div>
+        <div class="body2 grey">{{ section.settings.subtitle4 }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Quarter Hero",
+    "class": "full-width",
+    "settings": [
+      {
+        "type": "text",
+        "id": "main_text",
+        "label": "Main Text"
+      },
+      {
+        "type": "header",
+        "content": "Hero 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "image1",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "title1",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "subtitle1",
+        "label": "Subtitle"
+      },
+      {
+        "type": "header",
+        "content": "Hero 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "image2",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "title2",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "subtitle2",
+        "label": "Subtitle"
+      },
+      {
+        "type": "header",
+        "content": "Hero 3"
+      },
+      {
+        "type": "image_picker",
+        "id": "image3",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "title3",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "subtitle3",
+        "label": "Subtitle"
+      },
+      {
+        "type": "header",
+        "content": "Hero 4"
+      },
+      {
+        "type": "image_picker",
+        "id": "image4",
+        "label": "Image 4"
+      },
+      {
+        "type": "text",
+        "id": "title4",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "subtitle4",
+        "label": "Subtitle"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Quarter Hero",
+        "category": "Hero Widgets"
+      }
+    ]
+  }
+{% endschema %}

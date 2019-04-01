@@ -1,37 +1,69 @@
 @import "../variables";
 
 .collection {
+  $collection-banner-height-ratio: 9;
+  $collection-banner-width-ratio: 16;
   width: 100%;
+  margin-top: -$page-padding-desktop;
+
+  @media (max-width: $mobile-width-break) {
+    margin-top: 0;
+  }
+
+  .collection-image {
+    width: 100%;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    &.tablet-up img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 
   header {
     margin-bottom: 50px;
 
-    .body3 {
-      color: $color-grey-1;
-      margin-bottom: 10px;
+    .banner-content {
+      display: flex;
     }
 
-    .cover {
+    .collection-info-container {
+      display: flex;
       width: 100%;
-      padding-top: 33%;
-      position: relative;
+    }
 
-      img {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+    .collection-info {
+      padding: 70px 35px;
+      background-color: #F8F8F8;
+
+      @include phone {
+        padding: 30px 25px;
       }
+
+      h3 {
+        margin-bottom: 20px;
+      }
+
+      .body2 {
+        margin-bottom: 15px;
+      }
+
+      .callout {
+        margin-bottom: 15px;
+      }
+    }
+
+    .collection-video {
+      width: 100%;
+      height: 100%;
     }
   }
 
-  .collection-products {
-    display: grid;
-    grid-gap: 25px;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  .product-cards {
+    padding: $page-padding-mobile;
   }
 }

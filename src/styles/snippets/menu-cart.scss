@@ -1,0 +1,27 @@
+@import "../variables";
+
+.menu-cart {
+  display: flex;
+  flex-direction: column;
+
+  .subtotal {
+    display: flex;
+    justify-content: space-between;
+
+    &.desktop {
+      margin-top: 20px;
+    }
+
+    &.mobile {
+      margin-bottom: 20px;
+    }
+  }
+
+  @media (max-width: $mobile-width-break) {
+    .cart-item {
+      border: none;
+      padding: 0;
+      margin-bottom: 15px;
+    }
+  }
+}

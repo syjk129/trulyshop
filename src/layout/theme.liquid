@@ -7,7 +7,7 @@
   <meta name="theme-color" content="">
   <link rel="canonical" href="{{ canonical_url }}">
   <link href="https://s3.us-east-2.amazonaws.com/thetrulystore/fonts/fonts_campton.css" rel="stylesheet" type="text/CSS">
-  <title>{{ shop.name }}</title>
+  <title>TRULY | Fashion-forward collections co-created by women, for women.</title>
 
   <meta name="description" content="">
 
@@ -19,11 +19,13 @@
 
 <body>
   {% section "header" %}
+  {% section "menu-nav" %}
   <div class="content">
     {% if
       template contains 'index' or
       template contains 'product' or
-      template contains 'collection'
+      template contains 'collection' or
+      template contains 'page'
     %}
       {% section "sidebar-nav" %}
     {% elsif
@@ -32,7 +34,9 @@
     %}
       {% section "sidebar-account-nav" %}
     {% endif %}
-    {{ content_for_layout }}
+    <div class="full-width main-content">
+      {{ content_for_layout }}
+    </div>
   </div>
   {% section "footer" %}
 </body>

@@ -3,6 +3,22 @@
 $small-content-width: 450px;
 $medium-content-width: 735px;
 
+.content {
+  display: flex;
+  max-width: $max-content-width;
+  width: 100%;
+  box-sizing: border-box;
+  margin: auto;
+  padding: $page-padding-desktop;
+  margin-bottom: 100px;
+
+  @media(max-width: $mobile-width-break) {
+    padding: $page-padding-mobile;
+    padding-top: 20px;
+    margin-bottom: 40px;
+  }
+}
+
 .content-small {
   width: 100%;
   max-width: $small-content-width;
@@ -18,4 +34,47 @@ $medium-content-width: 735px;
   width: 100%;
   max-width: $medium-content-width;
   margin: auto;
+}
+
+// .desktop {
+//   @media (max-width: $mobile-width-break) {
+//     display: none !important;
+//   }
+// }
+
+.desktop {
+  @media (max-width: $desktop-width-break) {
+    display: none !important;
+  }
+}
+
+.tablet-up {
+  @media (max-width: $phone-width-break) {
+    display: none !important;
+  }
+}
+
+.table-only {
+  @media (min-width: $phone-width-break + 1), (max-width: $phone-width-break) {
+    display: none !important;
+  }
+}
+
+.mobile {
+  @media (min-width: $desktop-width-break + 1) {
+    display: none !important;
+  }
+}
+
+.phone {
+  @media (min-width: $phone-width-break + 1) {
+    display: none !important;
+  }
+}
+
+.main-content {
+  @include phone {
+    width: calc(100% + 30px);
+    margin: -15px;
+  }
 }

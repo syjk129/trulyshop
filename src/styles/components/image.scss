@@ -1,0 +1,41 @@
+@import "../variables";
+
+.ratio-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  padding-top: 50%;
+
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &.square {
+    padding-top: 100%;
+  }
+
+  &.r4x3 {
+    padding-top: 133%;
+  }
+
+  &.r2x1 {
+    padding-top: 200%;
+  }
+
+  &.r5x7 {
+    padding-top: 71%;
+  }
+
+  &.r1x2 {
+    padding-top: 50%;
+  }
+}

@@ -1,0 +1,44 @@
+<section class="full-screen-image">
+  {%- assign collection = collections[section.settings.collection] -%}
+  {% if collection %}
+    <a href="{{ collection.url }}">
+  {% endif %}
+  <div class="ratio-image {{ section.settings.image_ratio_class }}">
+    <img src="{{ section.settings.image | img_url: '1000x1000' }}">
+  </div>
+  {% if collection %}
+    </a>
+  {% endif %}
+</section>
+
+{% schema %}
+  {
+    "name": "Full Screen Image",
+    "class": "full-width",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "image_ratio_class",
+        "label": "Image Ratio Class",
+        "default": "r1x2"
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection",
+        "info": "Optional"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Full Screen Image",
+        "category": "Custom Content"
+      }
+    ]
+  }
+{% endschema %}

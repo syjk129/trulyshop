@@ -15,6 +15,10 @@ html {
   font-size: $font-size-5;
   font-weight: $font-weight-regular;
   line-height: $line-height-5;
+
+  @media (max-width: $mobile-width-break) {
+    font-size: $mobile-font-size-5;
+  }
 }
 
 p {
@@ -31,21 +35,25 @@ h3 {
 h1 {
   font-size: $font-size-1;
   font-weight: $font-weight-bold;
+  line-height: $line-height-1;
 }
 h2 {
   font-size: $font-size-2;
   font-weight: $font-weight-bold;
+  line-height: $line-height-2;
 }
 h3 {
   font-size: $font-size-3;
   font-weight: $font-weight-semibold;
   letter-spacing: 0.25px;
+  line-height: $line-height-3;
 }
 
 .body1 {
   font-size: $font-size-4;
   font-weight: $font-weight-semibold;
   letter-spacing: 0.25px;
+  line-height: $line-height-4;
 }
 
 .body2 {
@@ -59,6 +67,7 @@ h3 {
   font-size: $font-size-6;
   font-weight: $font-weight-regular;
   letter-spacing: 0.15px;
+  line-height: $line-height-6;
 }
 
 .callout {
@@ -72,6 +81,13 @@ h3 {
   font-weight: $font-weight-regular;
 }
 
+.breadcrumb {
+  font-size: $font-size-6;
+  font-weight: $font-weight-regular;
+  letter-spacing: 0.15px;
+  color: $color-grey-1;
+}
+
 a {
   font-size: $font-size-6;
   font-weight: $font-weight-bold;
@@ -79,6 +95,10 @@ a {
   text-decoration: underline;
   cursor: pointer;
   color: black;
+
+  &.no-underline {
+    text-decoration: none;
+  }
 }
 
 .text-right {
@@ -93,6 +113,14 @@ a {
   text-align: center;
 }
 
+.error {
+  color: $color-red;
+}
+
+.success {
+  color: $color-green;
+}
+
 .body1,
 .body2,
 .body3 {
@@ -102,5 +130,41 @@ a {
 
   &.grey {
     color: $color-grey-1;
+  }
+}
+
+@media (max-width: $mobile-width-break) {
+  html {
+    font-size: $mobile-font-size-5;
+  }
+
+  h1 {
+    font-size: $mobile-font-size-1;
+  }
+
+  h2 {
+    font-size: $mobile-font-size-2;
+  }
+
+  h3 {
+    font-size: $mobile-font-size-3;
+  }
+
+  .body1 {
+    font-size: $mobile-font-size-4;
+  }
+
+  .body2 {
+    font-size: $mobile-font-size-5;
+  }
+
+  .body3 {
+    font-size: $mobile-font-size-6;
+  }
+
+  .breadcrumb {
+    font-size: $mobile-font-size-6;
+    line-height: $mobile-font-size-6;
+    margin-bottom: 20px;
   }
 }

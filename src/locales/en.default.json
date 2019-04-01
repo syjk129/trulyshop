@@ -3,6 +3,7 @@
   },
   "cart": {
     "shopping_cart": "Your Cart",
+    "my_cart": "My Cart",
     "checkout": "Checkout",
     "empty": "Your cart is empty",
     "item": "Item",
@@ -14,7 +15,8 @@
     "update_cart": "Update Cart",
     "keep_shopping": "Keep Shopping",
     "agree_to_terms": "By checking out, I agree to the Terms of Use and acknowledge that I have read the Privacy Policy.",
-    "calculated_at_checkout": "Shipping and promotions calculated in checkout"
+    "calculated_at_checkout": "Shipping and promotions calculated in checkout",
+    "complimentary_shipping": "Complimentary shipping on all orders"
   },
   "customer": {
     "dont_have_account": "Don't have an account with us?",
@@ -51,9 +53,16 @@
     "sold_out": "Sold Out",
     "quantity": "Quantity",
     "choose_color": "Choose a color",
-    "choose_size": "Choose a size"
+    "choose_size": "Choose a size",
+    "other_items_from_collection": "Other Items from the Collection"
   },
   "date_formats": {
     "month_day_year": "%B %d, %Y"
+  },
+  "navigation": {
+    "log_out": "Log Out",
+    "sign_in": "Sign In",
+    "sign_up": "Sign Up",
+    "my_account": "My Account"
   }
 }

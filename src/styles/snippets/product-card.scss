@@ -1,5 +1,76 @@
 @import "../variables";
 
+.product-card-container {
+  padding-bottom: 50px;
+  margin-bottom: 50px;
+
+  @include phone {
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $color-grey-3;
+  }
+
+  .product-title {
+    margin-bottom: 5px;
+
+    @include phone {
+      text-align: center;
+    }
+  }
+
+  .product-description {
+    margin-bottom: 20px;
+
+    @include phone {
+      text-align: center;
+    }
+  }
+
+  .product-campaign-img {
+    display: block;
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @include phone {
+      margin-bottom: 30px;
+    }
+  }
+
+  .product-card-content {
+    display: flex;
+
+    .product-card,
+    .product-campaign-img {
+      &:not(:last-child) {
+        margin-right: 25px;
+      }
+    }
+
+    .product-card {
+      flex-shrink: 0;
+      min-width: 250px;
+      width: 40%;
+    }
+
+    @include phone {
+      flex-direction: column;
+
+      .product-card {
+        width: 100%;
+      }
+    }
+  }
+}
+
 .product-card {
   display: inline-block;
 
@@ -37,19 +108,23 @@
 
     .quick-add-size {
       display: none;
-      background-color: black;
-      height: 42px;
+      background-color: white;
+      border: 1px solid white;
+      height: 45px;
       justify-content: center;
       align-items: center;
+      box-sizing: border-box;
 
       .quick-add-size-btn {
+        position: relative;
         height: 25px;
+        line-height: 23px;
         width: 25px;
         border-radius: 50%;
         background-color: transparent;
         outline: none;
-        color: white;
-        border: 1px solid white;
+        color: black;
+        border: 1px solid black;
         cursor: pointer;
 
         &:not(:last-child) {
@@ -57,14 +132,39 @@
         }
 
         &:hover {
-          background-color: $color-grey-5;
+          background-color: black;
+          color: white;
+        }
+
+        &.unavailable {
+          cursor: not-allowed;
+          opacity: 0.5;
+          pointer-events: none;
         }
       }
     }
   }
 
   .product-card-details {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .color-select {
+      display: flex;
+
+      .variant-name {
+        text-transform: capitalize;
+        margin-right: 10px;
+      }
+    }
+
+    .available-colors {
+      flex-shrink: 0;
+    }
+
     .name-price {
+      width: 100%;
       display: flex;
       justify-content: space-between;
       text-decoration: none;
@@ -73,6 +173,20 @@
     .variant-name {
       color: $color-grey-1;
       margin-bottom: 10px;
+    }
+  }
+
+  @include phone {
+    .color-swatch {
+      display: none;
+    }
+
+    .name-price {
+      flex-direction: column;
+    }
+
+    .product-card-img {
+      margin-bottom: 15px;
     }
   }
 }

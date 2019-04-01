@@ -1,0 +1,36 @@
+@import "../variables";
+
+.slick-slider {
+  .slider-image {
+    display: block;
+  }
+
+  .slick-dots {
+    $slider-dot-size: 10px;
+    $slider-dot-spacing: 10px;
+
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    list-style-type: none;
+
+    li {
+      width: $slider-dot-size;
+      height: $slider-dot-size;
+      border-radius: 50%;
+      background-color: $color-grey-1;
+      margin-right: $slider-dot-spacing;
+      transition: $base-transition-duration;
+
+      &.slick-active {
+        background-color: $color-blue;
+      }
+
+      button {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import "../variables";
+
+.featured-social-images {
+  h3 {
+    text-align: center;
+    margin-bottom: 30px;
+
+    @include phone {
+      margin-bottom: 20px;
+    }
+  }
+
+  .featured-social-image-content {
+    display: flex;
+
+    .ratio-image {
+      margin-bottom: 15px;
+    }
+
+    a {
+      width: 33%;
+      text-decoration: none;
+
+      &:not(:last-child) {
+        margin-right: 25px;
+
+        @include phone {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}

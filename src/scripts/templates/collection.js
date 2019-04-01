@@ -3,10 +3,13 @@ import $ from 'jquery';
 const selectors = {
   productCard: '[data-product-card]',
   productJson: '[data-product-json]',
+  colorSwatch: '[data-product-card-color-swatch]',
   quickAdd: '[data-quick-add]',
   quickAddSize: '[data-quick-add-size]',
   quickAddSizeContainer: '[data-quick-add-size-container]',
+  quickAddSizeColor: '[data-quick-add-size-color]',
   sizeValue: '[data-size-value]',
+  variantName: '.variant-name'
 }
 
 $(selectors.productCard).each((index, productCard) => {
@@ -30,14 +33,19 @@ $(selectors.productCard).each((index, productCard) => {
     }
   });
 
+  updateColorLabel(productCard);
+  updateSizeSwatch(productCard);
+
   // Click handler for individual sizes
   $(selectors.quickAddSize, productCard).each((index, button) => {
     button.addEventListener("click", () => {
-      const color = document.querySelector('input[name = "color-option"]:checked').value;
+      const color = productCard.querySelector('input:checked').value;
       const size = button.dataset.value;
       const variant = productObject.variants.find(variant => {
         return variant.options.includes(color) && variant.options.includes(size);
       });
+
+      console.log(variant);
 
       $.post("/cart/add.js", {
         quantity: 1,
@@ -46,6 +54,28 @@ $(selectors.productCard).each((index, productCard) => {
     })
   });
 });
+
+// Update Color Label
+function updateColorLabel(productCard) {
+  $(selectors.colorSwatch, productCard).each((index, swatch) => {
+    $(swatch).change(evt => {
+      $(selectors.variantName, productCard)[0].innerHTML = evt.target.value;
+      updateSizeSwatch();
+    })
+  })
+}
+
+// Hide irrelevant size swatches
+function updateSizeSwatch(productCard) {
+  $(selectors.quickAddSizeColor, productCard).each((index, quickAddSizeColor) => {
+    const currentVariantColor = $(selectors.variantName, productCard)[0].innerHTML;
+    if (currentVariantColor.trim().toLowerCase() != quickAddSizeColor.dataset.quickAddSizeColor.toLowerCase()) {
+      quickAddSizeColor.style.display = "none";
+    } else {
+      quickAddSizeColor.style.display = "block";
+    }
+  });
+}
 
 
 // When the user clicks outide the size selector

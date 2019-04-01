@@ -1,0 +1,78 @@
+<section class="full-screen-split-image">
+  {%- assign collection = collections[section.settings.collection] -%}
+  <div class="ratio-box r1x2 tablet-up">
+    {% if collection %}
+      <a href="{{ collection.url }}">
+    {% endif %}
+    <div class="ratio-box-content">
+      <div style="width: {{ section.settings.image1_width_percentage }};">
+        <img src="{{ section.settings.image1 | img_url: '500x500' }}">
+      </div>
+      <div style="width: {{ section.settings.image2_width_percentage }};">
+        <img src="{{ section.settings.image2 | img_url: '500x500' }}">
+      </div>
+    </div>
+    {% if collection %}
+      </a>
+    {% endif %}
+  </div>
+  <div class="ratio-box r2x3 phone">
+    {% if collection %}
+      <a href="{{ collection.url }}">
+    {% endif %}
+    <div class="ratio-box-content">
+      <div class="phone" style="width: 50%;">
+        <img src="{{ section.settings.image1 | img_url: '500x500' }}">
+      </div>
+      <div class="phone" style="width: 50%;">
+        <img src="{{ section.settings.image2 | img_url: '500x500' }}">
+      </div>
+    </div>
+    {% if collection %}
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Full Screen Split Image",
+    "class": "full-width",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image1",
+        "label": "Image 1"
+      },
+      {
+        "type": "text",
+        "id": "image1_width_percentage",
+        "label": "Image 1 Width Percentage",
+        "default": "50%"
+      },
+      {
+        "type": "image_picker",
+        "id": "image2",
+        "label": "Image 2"
+      },
+      {
+        "type": "text",
+        "id": "image2_width_percentage",
+        "label": "Image 2 Width Percentage",
+        "default": "50%"
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection",
+        "info": "Optional"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Full Screen Split Image",
+        "category": "Custom Content"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,18 +1,41 @@
-{% assign option_index = 0 %}
+{% assign size_index = 0 %}
+{% assign color_index = 0 %}
 
 {% for option in product.options %}
   {% assign downcased_option = option | downcase %}
   {% if downcased_option contains 'size' %}
-    {% assign option_index = forloop.index0 %}
+    {% assign size_index = forloop.index0 %}
+  {% endif %}
+  {% if downcased_option contains 'color' %}
+    {% assign color_index = forloop.index0 %}
   {% endif %}
 {% endfor %}
 
 <div class="swatch-container"
-  data-index="{{ option_index }}"
+  data-index="{{ size_index }}"
   data-single-option-selector>
   {% assign values = '' %}
   {% for variant in product.variants %}
-    {% assign value = variant.options[option_index] %}
+    {% assign value = variant.options[size_index] %}
+    <label
+      data-value="{{ value | escape }}"
+      class="swatch size-swatch {% unless variant.available %}unavailable{% endunless %}"
+      data-color="{{ variant.options[color_index] }}">
+      <input
+        id="size-swatch-{{ value | handle }}"
+        type="radio"
+        name="size-option"
+        value="{{ value | escape }}"
+        data-color="{{ variant.options[color_index] }}"
+        {% if forloop.first %}checked{% endif %}>
+      <div class="swatch-content">
+        {{ value }}
+        {% unless variant.available %}
+          <div class="soldout"></div>
+        {% endunless %}
+      </div>
+    </label>
+    {% comment %} {% assign value = variant.options[option_index] %}
     {% unless values contains value %}
       {% assign values = values | join: ',' %}
       {% assign values = values | append: ',' | append: value %}
@@ -23,12 +46,11 @@
           type="radio"
           name="size-option"
           value="{{ value | escape }}"
-          {% if forloop.first %}checked{% endif %}
-          {% unless variant.available %}disabled{% endunless %}>
+          {% if forloop.first %}checked{% endif %}>
         <div class="swatch-content">
           {{ value }}
         </div>
       </label>
-    {% endunless %}
+    {% endunless %} {% endcomment %}
   {% endfor %}
 </div>

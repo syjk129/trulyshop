@@ -12,27 +12,27 @@
       <input type="email"
         name="customer[email]"
         id="CustomerEmail"
-        class="form-input {% if form.errors contains 'email' %}input-error{% endif %}"
+        class="form-input {% if form.errors contains 'email' %}error{% endif %}"
         placeholder="{{ 'customer.email' | t }}*"
         spellcheck="false"
         autocomplete="off"
         autocapitalize="off"
         autofocus>
-      <span class="input-error-label">
+      <span class="form-input-error">
         {{ form.errors.messages["email"] }}
       </span>
 
       <input type="password"
         name="customer[password]"
         id="CustomerPassword"
-        class="form-input {% if form.errors contains 'password' %}input-error{% endif %}"
+        class="form-input {% if form.errors contains 'password' %}error{% endif %}"
         placeholder="{{ 'customer.password' | t }}*">
-      <span class="input-error-label">
+      <span class="form-input-error">
         {{ form.errors.messages["password"] }}
       </span>
 
       <input type="submit" class="btn large" value="{{ 'customer.log_in' | t }}">
-      <span class="input-error-label">
+      <span class="form-input-error">
         {{ form.errors.messages["form"] }}
       </span>
 
@@ -49,14 +49,14 @@
     {% form 'recover_customer_password' %}
       {{ form.errors | default_errors }}
       <input type="email"
-        class="form-input {% if form.errors contains 'email' %}input-error{% endif %}"
+        class="form-input {% if form.errors contains 'email' %}error{% endif %}"
         name="email"
         id="RecoverEmail"
         placeholder="{{ 'customer.email' | t }}"
         spellcheck="false"
         autocomplete="off"
         autocapitalize="off">
-      <span class="input-error-label">
+      <span class="form-input-error">
         {{ form.errors.messages["email"] }}
       </span>
 
@@ -64,7 +64,7 @@
       <button class="btn large outline cancel-btn" type="button" id="HideRecoverPasswordLink">
         {{ 'customer.cancel' | t }}
       </button>
-      <span class="input-error-label">
+      <span class="form-input-error">
         {{ form.errors.messages["form"] }}
       </span>
     {% endform %}

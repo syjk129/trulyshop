@@ -5,7 +5,19 @@ $font-size-4: 20px;
 $font-size-5: 17px;
 $font-size-6: 13px;
 
+$mobile-font-size-1: 30px;
+$mobile-font-size-2: 25px;
+$mobile-font-size-3: 20px;
+$mobile-font-size-4: 16px;
+$mobile-font-size-5: 13px;
+$mobile-font-size-6: 11px;
+
+$line-height-1: 55px;
+$line-height-2: 45px;
+$line-height-3: 30px;
+$line-height-4: 25px;
 $line-height-5: 23px;
+$line-height-6: 20px;
 
 $font-size-link: $font-size-6;
 
@@ -25,6 +37,11 @@ $color-purple: #cfb0ff;
 $color-red: #ed5a4f;
 $color-green: #50e3c1;
 
+$color-facebook: #3C5A99;
+$color-facebook-dark: #29487D;
+$color-twitter: #55ACEE;
+$color-twitter-dark: #1a8fe8;
+
 $color-grey-1: #9b9b9b;
 $color-grey-2: #c6c6c6;
 $color-grey-3: #d8d8d8;
@@ -33,6 +50,49 @@ $color-grey-5: #5a5a5a;
 
 $base-padding: 10px;
 
-$max-screen-width: 1195px;
+$max-screen-width: 1400px;
+$max-content-width: 1195px;
 
 $base-transition-duration: .2s;
+
+$mobile-width-break: 768px;
+
+$page-padding-desktop: 40px;
+$page-padding-mobile: 15px;
+
+$default-drop-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.25);
+
+// Layout
+$desktop-width-break: 1024px;
+$tablet-width-break: 768px;
+$phone-width-break: 600px;
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width-break}) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: #{$phone-width-break}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$phone-width-break}) and (max-width: #{$desktop-width-break}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$desktop-width-break}) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media (max-width: #{$phone-width-break}) {
+    @content;
+  }
+}

@@ -1,126 +1,46 @@
 @import "../variables";
 
-.sidebar-overlay {
-  position: fixed;
-  display: none;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 1;
-}
-
 .sidebar {
-  $sidebar-padding: 40px;
-  $sidebar-width: 435px;
-
-  position: fixed;
-  height: 100%;
-  width: $sidebar-width;
-  z-index: 2;
-  top: 0;
-  right: -1 * $sidebar-width;
-  background-color: white;
-  overflow-x: hidden;
-  transition: $base-transition-duration ease-in-out;
-  padding: $sidebar-padding;
-  box-sizing: border-box;
-
-  &.sidebar-cart {
-    display: flex;
-    flex-direction: column;
+  width: 250px;
+  margin-right: 40px;
+  margin-top: 30px;
+  
+  a {
+    display: block;
+    text-decoration: none;
+    margin-bottom: 25px;
   }
 
-  .sidebar-content {
-    flex-grow: 1;
+  .new-collection {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+
+    a {
+      margin-bottom: 0;
+      margin-right: 5px;
+    }
+
+    img {
+      width: 15px;
+      height: 15px;
+      object-fit: contain;
+    }
   }
 
-  .sidebar-close {
-    position: absolute;
-    top: $sidebar-padding;
-    right: $sidebar-padding;
-    font-size: 40px;
-    font-weight: 200;
-    cursor: pointer;
+  .child-link {
+    font-size: $font-size-5;
+    font-weight: $font-weight-regular;
+    letter-spacing: 0.2px;
+    color: $color-grey-1;
   }
 
   .sidebar-header {
-    text-align: center;
-    border-bottom: 1px solid $color-grey-3;
-    padding-bottom: 30px;
+    margin-bottom: 25px;
   }
 
-  .cart-item {
-    display: flex;
-    padding: 20px 0;
-    border-bottom: 1px solid $color-grey-3;
-
-    img {
-      width: 125px;
-      height: 125px;
-      flex-shrink: 0;
-      margin-right: 15px;
-    }
-
-    .cart-item-content {
-      width: 100%;
-      position: relative;
-
-      .title {
-        margin-bottom: 5px;
-      }
-
-      .price {
-        margin-bottom: 10px;
-      }
-
-      .variant {
-        color: $color-grey-1;
-      }
-
-      .cart-remove {
-        position: absolute;
-        cursor: pointer;
-        right: 0;
-        font-weight: $font-weight-light;
-        font-size: 25px;
-      }
-
-      .quantity-selector {
-        display: flex;
-        margin-bottom: 5px;
-
-        .cart-quantity-btn {
-          cursor: pointer;
-          color: $color-grey-1;
-        }
-
-        *:not(:last-child) {
-          margin-right: 15px;
-        }
-      }
-    }
-  }
-
-  .cart-content {
-    .subtotal {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-    }
-  }
-
-  .cart-actions {
-    text-align: center;
-    color: $color-grey-1;
-
-    button {
-      width: 100%;
-      margin-bottom: 10px;
-    }
+  .selected {
+    text-decoration: underline;
+    color: black;
   }
 }

@@ -1,4 +1,4 @@
-<div class="account">
+<div class="account" id="account">
   <h3>Hi, {{ customer.first_name }}</h3>
   {% paginate customer.orders %}
     {% if customer.orders.size > 0 %}
@@ -7,7 +7,7 @@
         <div class="order-item">
           <div class="body2 order-date">{{ order.created_at | date: format: 'month_day_year' }}</div>
           <div class="order-details">
-            <table>
+            <table class="tablet-up">
               <tr>
                 <td class="order-detail-item">
                   <div class="body3">Order Number</div>
@@ -26,19 +26,45 @@
                 </td>
               </tr>
             </table>
+            <div class="phone">
+              <div class="order-detail-item">
+                  <div class="body3">Order Number</div>
+                  <div class="body2">{{ order.name }}</div>
+                </div>
+                <div class="order-detail-item">
+                  <div class="body3">Order Status</div>
+                  <div class="body2">{{ order.financial_status_label }}</div>
+                </div>
+                <div class="order-detail-item">
+                  <div class="body3">Total Amount</div>
+                  <div class="body2">{{ order.total_price | money }}</div>
+                </div>
+            </div>
           </div>
           <div class="body3 summary-label">Item Summary</div>
           <div class="items">
             {% for item in order.line_items %}
-              <a href="{{ item.url }}">
+              <a class="body2 grey" href="{{ item.url }}">
                 {{ item.quantity }} x {{ item.title }}
               </a>
             {% endfor %}
           </div>
+          <a class="btn outline phone" href="{{ order.customer_url }}">See Order Details</a>
+          {% if forloop.last != true %}
+            <div class="divider phone"></div>
+          {% endif %}
         </div>
       {% endfor %}
     {% else %}
       You do not have any orders
     {% endif %}
   {% endpaginate %}
+</div>
+<div class="share content-small" id="share" data-customer-email="{{ customer.email }}">
+  <div class="body2 header">Invite your friends and earn store credit.</div>
+  <div class="body2 grey subheader">Receive $25 when friends make their first purchase!</div>
+  <input id="share-code" value="" readonly>
+  <button class="btn large facebook">Share on Facebook</button>
+  <button class="btn large twitter">Share on Twitter</button>
+  <div class="body2 grey">0 friends have joined so far</div>
 </div>

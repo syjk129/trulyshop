@@ -1,7 +1,9 @@
 <div class="order content-medium">
   <a class="body2 return" href="/account">< Return to All Orders</a>
-  <h3 class="item-table-header">Order #{{ order.order_number }}</h3>
-  <table class="order-list item-table">
+  <h3 class="item-table-header tablet-up">Order #{{ order.order_number }}</h3>
+  <div class="body1 order-item-header phone">Order #{{ order.order_number }}</div>
+  <div class="body2 order-item-header date phone">{{ order.created_at | date: format: 'month_day_year' }}</div>
+  <table class="order-list item-table tablet-up">
     <tr>
       <th class="details">
         {{ order.created_at | date: format: 'month_day_year' }}
@@ -37,12 +39,12 @@
             <div class="item-details">
               <div class="body2">{{ item.product.title }}</div>
               {% if size_index != -1 %}
-                <div class="body3 variant">
+                <div class="body3 grey">
                   Size: {{ item.variant.options[size_index] | capitalize }}
                 </div>
               {% endif %}
               {% if color_index != -1 %}
-                <div class="body3 variant">
+                <div class="body3 grey">
                   Color: {{ item.variant.options[color_index] | capitalize }}
                 </div>
               {% endif %}
@@ -58,6 +60,44 @@
       </tr>
     {% endfor %}
   </table>
+  <div class="order-list phone">
+    {% for item in order.line_items %}
+      {% assign color_index = -1 %}
+      {% assign size_index = -1 %}
+
+      {% for option in item.product.options %}
+        {% assign downcased_option = option | downcase %}
+        {% if downcased_option contains 'color' %}
+          {% assign color_index = forloop.index0 %}
+        {% elsif downcased_option contains 'size' %}
+          {% assign size_index = forloop.index0 %}
+        {% endif %}
+      {% endfor %}
+
+      <div class="order-list-item">
+        <div class="item-image">
+          <img src="{{ item.image | img_url: '480x480' }}">
+        </div>
+        <div class="item-details">
+          <div class="body2">{{ item.product.title }}</div>
+          <div class="body2">{{ item.price | money }}</div>
+          {% if size_index != -1 %}
+            <div class="body3 grey variant">
+              Size: {{ item.variant.options[size_index] | capitalize }}
+            </div>
+          {% endif %}
+          {% if color_index != -1 %}
+            <div class="body3 grey variant">
+              Color: {{ item.variant.options[color_index] | capitalize }}
+            </div>
+          {% endif %}
+          <div class="body3 grey variant">
+            Quantity: {{ item.quantity }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
   <div class="purchase-summary">
     <div class="item">
       <div class="label body3">Subtotal</div>
@@ -65,7 +105,7 @@
     </div>
     <div class="item">
       <div class="label body3">Tax</div>
-      <div class="value body2">$100</div>
+      <div class="value body2">{{ order.tax_price | money }}</div>
     </div>
     <div class="item">
       <div class="label body3">Shipping</div>
@@ -110,7 +150,7 @@
       </div>
     </div>
     <div class="item button-container">
-      <button class="btn">Track your order</button>
+      <a href="{{ order.order_status_url }}" class="btn">Track your order</a>
       <button class="btn outline">Return Items</button>
     </div>
   </div>
