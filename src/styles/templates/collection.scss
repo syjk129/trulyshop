@@ -18,10 +18,9 @@
       width: 100%;
     }
 
-    &.desktop img {
+    &.tablet-up img {
       height: 100%;
       object-fit: cover;
-      max-height: 350px;
     }
   }
 
@@ -41,7 +40,7 @@
       padding: 70px 35px;
       background-color: #F8F8F8;
 
-      @media (max-width: $mobile-width-break) {
+      @include phone {
         padding: 30px 25px;
       }
 

@@ -1,6 +1,12 @@
 @import "../../variables";
 
 .order {
+  box-sizing: border-box;
+
+  @include phone {
+    padding: $page-padding-mobile;
+  }
+
   .order-list {
     text-align: left;
     width: 100%;
@@ -25,7 +31,7 @@
       }
     }
 
-    @media (max-width: $mobile-width-break) {
+    @include phone { 
       padding-bottom: 20px;
       margin-bottom: 20px;
       border-bottom: 1px solid $color-grey-3;
@@ -47,7 +53,7 @@
     text-decoration: none;
     margin-bottom: 30px;
 
-    @media (max-width: $mobile-width-break) {
+    @include phone { 
       margin-bottom: 15px;
     }
   }
@@ -108,7 +114,7 @@
       }
     }
 
-    @media (max-width: $mobile-width-break) {
+    @include phone { 
       flex-direction: column;
 
       .item {

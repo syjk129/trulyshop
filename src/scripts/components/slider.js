@@ -5,4 +5,9 @@ $(document).ready(function(){
     arrows: false,
     dots: true
   });
+
+  $('.quarter-hero-slider').slick({
+    arrows: false,
+    dots: true
+  });
 });

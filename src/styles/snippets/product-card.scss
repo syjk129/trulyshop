@@ -4,7 +4,7 @@
   padding-bottom: 50px;
   margin-bottom: 50px;
 
-  @media (max-width: $mobile-width-break) {
+  @include phone {
     padding-bottom: 30px;
     margin-bottom: 30px;
   }
@@ -16,7 +16,7 @@
   .product-title {
     margin-bottom: 5px;
 
-    @media (max-width: $mobile-width-break) {
+    @include phone {
       text-align: center;
     }
   }
@@ -24,7 +24,7 @@
   .product-description {
     margin-bottom: 20px;
 
-    @media (max-width: $mobile-width-break) {
+    @include phone {
       text-align: center;
     }
   }
@@ -40,7 +40,7 @@
       display: block;
     }
 
-    @media (max-width: $mobile-width-break) {
+    @include phone {
       margin-bottom: 30px;
     }
   }
@@ -61,7 +61,7 @@
       width: 40%;
     }
 
-    @media (max-width: $mobile-width-break) {
+    @include phone {
       flex-direction: column;
 
       .product-card {
@@ -176,7 +176,7 @@
     }
   }
 
-  @media(max-width: $mobile-width-break) {
+  @include phone {
     .color-swatch {
       display: none;
     }

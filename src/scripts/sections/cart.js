@@ -21,6 +21,8 @@ function onCartChange() {
 }
 
 function changeItem(itemId, quantity) {
+  console.log("yo");
+
   $.post("/cart/change.js", {
     quantity: quantity,
     id: itemId

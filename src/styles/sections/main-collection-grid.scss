@@ -4,7 +4,7 @@
   display: flex;
   width: 100%;
 
-  @media (max-width: $mobile-width-break) {
+  @include phone {
     flex-direction: column;
   }
 
@@ -36,7 +36,7 @@
   .ratio-box {
     margin-bottom: 10px;
 
-    @media (max-width: $mobile-width-break) {
+    @include phone {
       margin-bottom: 5px;
     }
   }
@@ -44,7 +44,7 @@
   .ratio-image {
     margin-bottom: 10px;
 
-    @media (max-width: $mobile-width-break) {
+    @include phone {
       margin-bottom: 5px;
     }
   }

@@ -1,7 +1,9 @@
 @import "../variables";
 
 .rte {
-  padding-top: 70px;
+  @include tablet-up {
+    padding-top: 30px;
+  }
 
   > :last-child {
     margin-bottom: 0 !important;

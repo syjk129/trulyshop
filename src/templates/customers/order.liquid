@@ -1,9 +1,9 @@
 <div class="order content-medium">
   <a class="body2 return" href="/account">< Return to All Orders</a>
-  <h3 class="item-table-header desktop">Order #{{ order.order_number }}</h3>
-  <div class="body1 order-item-header mobile">Order #{{ order.order_number }}</div>
-  <div class="body2 order-item-header date mobile">{{ order.created_at | date: format: 'month_day_year' }}</div>
-  <table class="order-list item-table desktop">
+  <h3 class="item-table-header tablet-up">Order #{{ order.order_number }}</h3>
+  <div class="body1 order-item-header phone">Order #{{ order.order_number }}</div>
+  <div class="body2 order-item-header date phone">{{ order.created_at | date: format: 'month_day_year' }}</div>
+  <table class="order-list item-table tablet-up">
     <tr>
       <th class="details">
         {{ order.created_at | date: format: 'month_day_year' }}
@@ -60,7 +60,7 @@
       </tr>
     {% endfor %}
   </table>
-  <div class="order-list mobile">
+  <div class="order-list phone">
     {% for item in order.line_items %}
       {% assign color_index = -1 %}
       {% assign size_index = -1 %}

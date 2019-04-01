@@ -1,8 +1,8 @@
 <div class="cart content-medium">
-  <h3 class="item-table-header desktop">{{ 'cart.shopping_cart' | t }}</h3>
-  <h3>{{ 'cart.shopping_cart' | t }}</h3>
+  <h3 class="item-table-header tablet-up">{{ 'cart.shopping_cart' | t }}</h3>
+  <h3 class="phone">{{ 'cart.shopping_cart' | t }}</h3>
   <form action="/cart" method="post" novalidate>
-    <table class="cart-table item-table desktop">
+    <table class="cart-table item-table tablet-up">
       <tr>
         <th class="body2 details">
           {{ 'cart.item' | t }}
@@ -58,6 +58,7 @@
               value="{{ item.quantity }}"
               min="0"
               aria-label="{{ cart.quantity | t }}">
+            <span class="cart-remove cart-remove-desktop body3 grey" data-id="{{ item.id }}">Remove</span>
           </td>
           <td class="body2 subtotal">
             {{ item.final_line_price | money }}
@@ -65,7 +66,7 @@
         </tr>
       {% endfor %}
     </table>
-    <div class="cart-content mobile">
+    <div class="cart-content phone">
       {% for item in cart.items %}
         <div class="cart-item">
           <div class="cart-item-img">

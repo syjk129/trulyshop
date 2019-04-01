@@ -2,7 +2,12 @@
 
 .account {
   padding-top: 30px;
+  box-sizing: border-box;
   width: 100%;
+
+  @include phone {
+    padding: $page-padding-mobile;
+  }
 
   .account-header {
     margin-bottom: 30px;

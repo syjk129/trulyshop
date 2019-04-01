@@ -5,6 +5,11 @@
   padding: 90px 0;
   text-align: center;
   width: 100%;
+  box-sizing: border-box;
+
+  @include phone {
+    padding: 50px $page-padding-mobile;
+  }
 
   h3 {
     margin-bottom: 50px;
@@ -13,14 +18,8 @@
   .quarter-hero-content {
     width: 100%;
 
-    @media (max-width: $mobile-width-break) {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      .quarter-hero-item {
-        margin-bottom: 50px;
-      }
+    @include phone {
+      margin-bottom: 30px;
     }
   }
 
@@ -29,6 +28,16 @@
     min-width: 180px;
     width: calc(25% - #{$hero-spacing + 2});
     vertical-align: top;
+    margin-bottom: 10px;
+
+    @include phone {
+      display: block;
+      width: 100%;
+
+      img {
+        width: 100%;
+      }
+    }
 
     &:not(:last-child) {
       margin-right: $hero-spacing;

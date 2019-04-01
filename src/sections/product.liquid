@@ -19,7 +19,7 @@
   {% endfor %}
 
   <div class="product" id="product-content">
-    <div class="product-images desktop">
+    <div class="product-images tablet-up">
       <div class="see-how-style" data-model="{{ product_models[0] }}">
         <div class="body3">{{ product_models[0] }} is 5'8", size 8, wearing a Small</div>
         <button class="btn outline">See how {{ product_models[1] }} Wears it</button>
@@ -45,20 +45,20 @@
         {% endfor %}
       </div>
     </div>
-    <div class="breadcrumb mobile">
+    <div class="breadcrumb phone">
       <div class="body3 grey collections">Collections / {{ product.collections[0].description }} / {{ product.title }}</div>
       <div class="see-how-style" data-model="{{ product_models[0] }}">
-        <div class="body3 desktop">{{ product_models[0] }} is 5'8", size 8, wearing a Small</div>
-        <div class="body2 mobile">{{ product_models[0] }} is 5'8", size 8, wearing a Small</div>
+        <div class="body3 tablet-up">{{ product_models[0] }} is 5'8", size 8, wearing a Small</div>
+        <div class="body2 phone">{{ product_models[0] }} is 5'8", size 8, wearing a Small</div>
         <button class="btn outline">See how {{ product_models[1] }} Wears it</button>
       </div>
       <div class="see-how-style" data-model="{{ product_models[1] }}">
-        <div class="body3 desktop">{{ product_models[1] }} is 5'8", size 8, wearing a Small</div>
-        <div class="body2 mobile">{{ product_models[1] }} is 5'8", size 8, wearing a Small</div>
+        <div class="body3 tablet-up">{{ product_models[1] }} is 5'8", size 8, wearing a Small</div>
+        <div class="body2 phone">{{ product_models[1] }} is 5'8", size 8, wearing a Small</div>
         <button class="btn outline">See how {{ product_models[0] }} Wears it</button>
       </div>
     </div>
-    <div class="product-images mobile">
+    <div class="product-images phone">
       <div class="product-image-slider" data-model="{{ product_models[0] }}">
         {% for image in product.images %}
           {% assign alt_values = image.alt | split: "|" %}
@@ -81,15 +81,15 @@
         <div class="callout">{{ product.vendor }}</div>
         <h3>{{ product.title }}</h3>
         <div class="body1 price">{{ product.price | money }}</div>
-        <div class="divider desktop"></div>
+        <div class="divider tablet-up"></div>
         <form action="/cart/add" method="post" enctype="multipart/form-data">
           <div class="js">
             <div class="body2 select-label">{{ 'product.choose_color' | t }}</div>
             {% include 'color-swatch' %}
-            <div class="divider desktop"></div>
+            <div class="divider tablet-up"></div>
             <div class="body2 select-label">{{ 'product.choose_size' | t }}</div>
             {% include 'size-swatch' %}
-            <div class="divider desktop"></div>
+            <div class="divider tablet-up"></div>
           </div>
           <div class="no-js">
             <select name="id" class="no-js" data-product-select>
@@ -121,7 +121,7 @@
         </form>
 
         <div class="callout">{{ 'product.details' | t }}</div>
-        <div class="rte product-description">{{ product.description }}</div>
+        <div class="product-description">{{ product.description }}</div>
 
         {% unless product == empty %}
           <script type="application/json" data-product-json>

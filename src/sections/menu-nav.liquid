@@ -42,7 +42,7 @@
         <a class="body2 grey nav-item" href="/account/logout">{{ 'customer.log_out' | t }}</a>
       </div>
       <div class="menu-actions">
-        <div class="desktop">
+        <div class="tablet-up">
           {% if customer %}
             <a href="/account/logout" class="btn large">{{ 'navigation.log_out' | t }}</a>
           {% else %}
@@ -50,7 +50,7 @@
             <a class="btn large" href="account/register">{{ 'navigation.sign_up' | t }}</a>
           {% endif %}
         </div>
-        <div class="mobile">
+        <div class="phone">
           {% if customer %}
             <a href="/account/logout" class="btn">{{ 'navigation.log_out' | t }}</a>
           {% else %}

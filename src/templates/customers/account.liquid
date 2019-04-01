@@ -7,7 +7,7 @@
         <div class="order-item">
           <div class="body2 order-date">{{ order.created_at | date: format: 'month_day_year' }}</div>
           <div class="order-details">
-            <table class="desktop">
+            <table class="tablet-up">
               <tr>
                 <td class="order-detail-item">
                   <div class="body3">Order Number</div>
@@ -26,7 +26,7 @@
                 </td>
               </tr>
             </table>
-            <div class="mobile">
+            <div class="phone">
               <div class="order-detail-item">
                   <div class="body3">Order Number</div>
                   <div class="body2">{{ order.name }}</div>
@@ -49,9 +49,9 @@
               </a>
             {% endfor %}
           </div>
-          <a class="btn outline mobile" href="{{ order.customer_url }}">See Order Details</a>
+          <a class="btn outline phone" href="{{ order.customer_url }}">See Order Details</a>
           {% if forloop.last != true %}
-            <div class="divider mobile"></div>
+            <div class="divider phone"></div>
           {% endif %}
         </div>
       {% endfor %}

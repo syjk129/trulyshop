@@ -26,7 +26,7 @@
     align-items: center;
     margin-bottom: 25px;
 
-    @media (max-width: $mobile-width-break) {
+    @include phone {
       flex-direction: column;
       align-items: initial;
     }
@@ -53,6 +53,16 @@
 
       &:not(:last-of-type) {
         margin-bottom: 10px;
+      }
+    }
+
+    @include phone {
+      max-width: none;
+    }
+
+    .product-image-slider {
+      .slick-dots {
+        bottom: 25px;
       }
     }
   }
@@ -103,7 +113,7 @@
     width: 100%;
   }
 
-  @media (max-width: $mobile-width-break) {
+  @include phone {
     flex-direction: column;
 
     .product-images {
@@ -122,7 +132,7 @@
 }
 
 .other-products {
-  @media (max-width: $mobile-width-break) {
+  @include phone {
     padding: $page-padding-mobile;
   }
 
@@ -135,7 +145,7 @@
     grid-gap: 25px;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 
-    @media (max-width: $mobile-width-break) {
+    @include phone {
       grid-gap: 15px;
       grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     }
