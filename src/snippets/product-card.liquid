@@ -16,14 +16,14 @@
     {% endif %}
   {% endfor %}
   <a class="product-campaign-img phone" href="{{ product.url }}">
-    <img src="{{ campaign_image | img_url: '600x600' }}">
+    <img src="{{ campaign_image | img_url: '900x900' }}">
   </a>
   <div class="body1 product-title">{{ product.title }}</div>
   <div class="body2 grey product-description">A classic cami - updated in clean silk.</div>
   <div class="product-card-content">
     {% if mod == 1 %}
       <a class="product-campaign-img tablet-up" href="{{ product.url }}">
-        <img src="{{ campaign_image | img_url: '600x600' }}">
+        <img src="{{ campaign_image | img_url: '900x900' }}">
       </a>
     {% endif %}
 
@@ -70,7 +70,7 @@
                       {% unless alt_values[0] contains "Campaign" or alt_values[0] contains "Video" %}
                         <img
                           class="product-card-image"
-                          src="{{ image | img_url: '600x600' }}"
+                          src="{{ image | img_url: '900x900' }}"
                           data-product-model="{{ model_name }}"
                           data-product-color="{{ color }}">
                         {% assign product_models = product_models | concat: model_name %}
@@ -130,7 +130,7 @@
 
     {% if mod == 0 %}
       <a class="product-campaign-img tablet-up" href="{{ product.url }}">
-        <img src="{{ campaign_image | img_url: '600x600' }}">
+        <img src="{{ campaign_image | img_url: '900x900' }}">
       </a>
     {% endif %}
   </div>
