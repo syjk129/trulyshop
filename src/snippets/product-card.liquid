@@ -8,7 +8,7 @@
 
 <div class="product-card-container">
   {% assign mod = index | modulo:2 %}
-  {% assign campaign_image = "wtf" %}
+  {% assign campaign_image = "" %}
   {% for image in product.images %}
     {% assign alt_values = image.alt | split: "|" %}
     {% if alt_values[0] contains "Campaign" %}
@@ -16,14 +16,14 @@
     {% endif %}
   {% endfor %}
   <a class="product-campaign-img phone" href="{{ product.url }}">
-    <img src="{{ campaign_image | img_url: '400x400' }}">
+    <img src="{{ campaign_image | img_url: '600x600' }}">
   </a>
   <div class="body1 product-title">{{ product.title }}</div>
   <div class="body2 grey product-description">A classic cami - updated in clean silk.</div>
   <div class="product-card-content">
     {% if mod == 1 %}
       <a class="product-campaign-img tablet-up" href="{{ product.url }}">
-        <img src="{{ campaign_image | img_url: '400x400' }}">
+        <img src="{{ campaign_image | img_url: '600x600' }}">
       </a>
     {% endif %}
 
@@ -31,6 +31,7 @@
       {% assign color_index = -1 %}
       {% assign size_index = -1 %}
 
+      {% comment %} Find Color and Size Index {% endcomment %}
       {% for option in product.options %}
         {% assign downcased_option = option | downcase %}
         {% if downcased_option contains 'color' %}
@@ -42,9 +43,44 @@
 
       {% assign color_variants = product.options_with_values[color_index].values %}
 
-      <div class="product-card-img">
-        <a href="{{ product.url }}">
-          <img src="{{ product.featured_image | img_url: '400x400' }}">
+      <div class="product-card-image-container">
+        <a class="product-card-images" href="{{ product.url }}">
+          {% assign all_colors = '' %}
+          {% for variant in product.variants %}
+            {% comment %} For each color {% endcomment %}
+            {% assign color = variant.options[color_index] %}
+            {% assign color = color | strip %}
+            {% unless all_colors contains color %}
+              {% assign all_colors = all_colors | join: ',' %}
+              {% assign all_colors = all_colors | append: ',' | append: color %}
+              {% assign all_colors = all_colors | split: ',' %}
+
+              <div class="product-card-image-flip" data-flip-color="{{ color }}">
+                <div class="product-card-image-hover-location">
+                  <div class="ratio-box square"><div class="ratio-box-content">&nbsp;</div></div>
+                </div>
+                {% assign product_models = "" | split: "|" %}
+                {% for image in product.images %}
+                  {% comment %} Find corresponding model images {% endcomment %}
+                  {% assign alt_values = image.alt | split: "|" %}
+                  {% assign image_color = alt_values[1] | strip %}
+                  {% if color == image_color %}
+                    {% unless product_models contains alt_values[0] %}
+                      {% assign model_name = alt_values[0] | split: "|" %}
+                      {% unless alt_values[0] contains "Campaign" %}
+                        <img
+                          class="product-card-image"
+                          src="{{ image | img_url: '600x600' }}"
+                          data-product-model="{{ model_name }}"
+                          data-product-color="{{ color }}">
+                        {% assign product_models = product_models | concat: model_name %}
+                      {% endunless %}
+                    {% endunless %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endunless %}
+          {% endfor %}
         </a>
         <button class="btn white quick-add tablet-up" data-quick-add>Quick Add +</button>
         {% unless size_index == -1 %}
@@ -53,7 +89,7 @@
             {% for variant in product.variants %}
               {% assign value = variant.options[size_index] %}
               <button class="quick-add-size-btn {% unless variant.available %}unavailable{% endunless %}"
-                data-quick-add-size-color="{{ variant.options[color_index] }}">
+                data-quick-add-size-color="{{ variant.options[color_index] }}" data-value="{{ value }}">
                 {{ value }}
                 {% unless variant.available %}
                   <div class="soldout"></div>
@@ -94,7 +130,7 @@
 
     {% if mod == 0 %}
       <a class="product-campaign-img tablet-up" href="{{ product.url }}">
-        <img src="{{ campaign_image | img_url: '400x400' }}">
+        <img src="{{ campaign_image | img_url: '600x600' }}">
       </a>
     {% endif %}
   </div>

@@ -47,13 +47,8 @@
     margin-right: 25px;
     flex-shrink: 0;
 
-    img {
-      display: block;
-      width: 100%;
-
-      &:not(:last-of-type) {
-        margin-bottom: 10px;
-      }
+    .ratio-image {
+      margin-bottom: 10px;
     }
 
     @include phone {

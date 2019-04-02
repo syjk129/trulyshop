@@ -8,27 +8,29 @@
   {% endif %}
 {% endfor %}
 
-<div class="swatch-container"
-  data-index="{{ option_index }}">
-  {% assign values = '' %}
-  {% for variant in product.variants %}
-    {% assign value = variant.options[option_index] %}
-    {% unless values contains value %}
-      {% assign values = values | join: ',' %}
-      {% assign values = values | append: ',' | append: value %}
-      {% assign values = values | split: ',' %}
-      <label data-value="{{ value | escape }}" class="swatch color-swatch {% unless variant.available %}unavailable{% endunless %} small">
-        <input
-          id="color-swatch-{{ value | handle }}"
-          type="radio"
-          name="color-option-{{ product.id }}"
-          value="{{ value | escape }}"
-          data-product-card-color-swatch
-          {% if forloop.first %}checked{% endif %}>
-        <span
-          class="swatch-content"
-          style="--background-color-img: url({{ value | handle | append: '.' | append: file_extension | asset_url }})"></span>
-      </label>
-    {% endunless %} 
-  {% endfor %}
-</div>
+{% unless option_index == 0 %}
+  <div class="swatch-container"
+    data-index="{{ option_index }}">
+    {% assign values = '' %}
+    {% for variant in product.variants %}
+      {% assign value = variant.options[option_index] %}
+      {% unless values contains value %}
+        {% assign values = values | join: ',' %}
+        {% assign values = values | append: ',' | append: value %}
+        {% assign values = values | split: ',' %}
+        <label data-value="{{ value | escape }}" class="swatch color-swatch {% unless variant.available %}unavailable{% endunless %} small">
+          <input
+            id="color-swatch-{{ value | handle }}"
+            type="radio"
+            name="color-option-{{ product.id }}"
+            value="{{ value | escape }}"
+            data-product-card-color-swatch
+            {% if forloop.first %}checked{% endif %}>
+          <span
+            class="swatch-content"
+            style="--background-color-img: url({{ value | handle | append: '.' | append: file_extension | asset_url }})"></span>
+        </label>
+      {% endunless %} 
+    {% endfor %}
+  </div>
+{% endunless %}

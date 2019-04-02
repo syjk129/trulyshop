@@ -12,13 +12,17 @@ $small-swatch-content-size: 15px;
 }
 
 .swatch {
-  display: inline-block;
   position: relative;
   cursor: pointer;
   user-select: none;
   padding-left: $swatch-size;
   margin-bottom: $swatch-size;
   font-size: 22px;
+
+  &.product-color-swatch,
+  &.product-size-swatch {
+    display: none;
+  }
 
   &:not(:last-child) {
     margin-right: 10px;
@@ -95,7 +99,7 @@ $small-swatch-content-size: 15px;
   .swatch-content {
     text-align: center;
     line-height: $swatch-size;
-    font-size: $font-size-5;
+    font-size: $font-size-6;
   }
 }
 

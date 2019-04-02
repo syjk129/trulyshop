@@ -4,7 +4,16 @@
   {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
 
   {%- assign product_models = "" | split: "|" -%}
-  {%- assign product_models_fits = "" | split: "|" -%}
+  {% assign product_models_fits = "" | split: "|" %}
+  {% assign color_index = -1 %}
+
+  {% comment %} Find Color and Size Index {% endcomment %}
+  {% for option in product.options %}
+    {% assign downcased_option = option | downcase %}
+    {% if downcased_option contains 'color' %}
+      {% assign color_index = forloop.index0 %}
+    {% endif %}
+  {% endfor %}
 
   {% for image in product.images %}
     {%- assign alt_values = image.alt | split: "|" -%}
@@ -18,7 +27,7 @@
     {% endunless %}
   {% endfor %}
 
-  <div class="product" id="product-content">
+  <div class="product" id="product-content" data-product-wrapper>
     <div class="product-images tablet-up">
       <div class="see-how-style" data-model="{{ product_models[0] }}">
         <div class="body3">{{ product_models[0] }} is 5'8", size 8, wearing a Small</div>
@@ -30,19 +39,26 @@
       </div>
       <div class="product-images-desktop" data-model="{{ product_models[0] }}">
         {% for image in product.images %}
-          {%- assign alt_values = image.alt | split: "|" -%}
-          {% if alt_values[0] == product_models[0] %}
+          {% assign alt_values = image.alt | split: "|" %}
+          <div class="ratio-image square"
+            data-model="{{ alt_values[0] }}"
+            data-color="{{ alt_values[1] }}"
+            data-product-image>
             <img src="{{ image | img_url: '600x600' }}">
-          {% endif %}
+          </div>
         {% endfor %}
       </div>
-      <div class="product-images-desktop" data-model="{{ product_models[1] }}">
-        {% for image in product.images %}
-          {%- assign alt_values = image.alt | split: "|" -%}
-          {% if alt_values[0] == product_models[1] %}
-            <img src="{{ image | img_url: '600x600' }}">
-          {% endif %}
-        {% endfor %}
+      <div class="ratio-box square">
+        <iframe
+          class="ratio-box-content"
+          src="https://player.vimeo.com/video/327788125?background=1&loop=1&autoplay=1"
+          frameborder="0"
+          allow=autoplay
+          width="600"
+          height="300"
+          webkitallowfullscreen
+          mozallowfullscreen
+          allowfullscreen></iframe>
       </div>
     </div>
     <div class="breadcrumb phone">
@@ -59,22 +75,48 @@
       </div>
     </div>
     <div class="product-images phone">
-      <div class="product-image-slider" data-model="{{ product_models[0] }}">
-        {% for image in product.images %}
-          {% assign alt_values = image.alt | split: "|" %}
-          {% if alt_values[0] == product_models[0] %}
-            <img class="slider-image" src="{{ image | img_url: '500x500' }}">
-          {% endif %}
-        {% endfor %}
-      </div>
-      <div class="product-image-slider" data-model="{{ product_models[1] }}">
-        {% for image in product.images %}
-          {% assign alt_values = image.alt | split: "|" %}
-          {% if alt_values[0] == product_models[1] %}
-            <img class="slider-image" src="{{ image | img_url: '500x500' }}">
-          {% endif %}
-        {% endfor %}
-      </div>
+      {% assign all_colors = '' %}
+      {% for variant in product.variants %}
+        {% assign color = variant.options[color_index] %}
+        {% assign color = color | strip %}
+
+        {% comment %} For each color {% endcomment %}
+        {% unless all_colors contains color %}
+          {% assign all_colors = all_colors | join: ',' %}
+          {% assign all_colors = all_colors | append: ',' | append: color %}
+          {% assign all_colors = all_colors | split: ',' %}
+
+          {% comment %} For each model {% endcomment %}
+          {% for model in product_models %}
+            {% assign model_name = model | strip %}
+            <div class="product-image-slider"
+              data-model="{{ model_name }}"
+              data-color="{{ color }}"
+              data-product-image-slider>
+              {% for image in product.images %}
+                {% assign alt_values = image.alt | split: "|" %}
+                {% assign current_model = alt_values[0] | strip %}
+                {% assign current_color = alt_values[1] | strip %}
+                {% if model_name == current_model and color == current_color %}
+                  <img class="slider-image" src="{{ image | img_url: '600x600' }}">
+                {% endif %}
+              {% endfor %}
+              <div class="ratio-box square">
+                <iframe
+                  class="ratio-box-content"
+                  src="https://player.vimeo.com/video/327788125?loop=1"
+                  frameborder="0"
+                  allow=autoplay
+                  width="600"
+                  height="300"
+                  webkitallowfullscreen
+                  mozallowfullscreen
+                  allowfullscreen></iframe>
+              </div>
+            </div>
+          {% endfor %}
+        {% endunless %}
+      {% endfor %}
     </div>
     <div class="product-details" id="product-details" data-product-details>
       <div class="sidebar__inner">

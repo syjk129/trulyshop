@@ -37,15 +37,17 @@ $(selectors.productCard).each((index, productCard) => {
   updateSizeSwatch(productCard);
 
   // Click handler for individual sizes
-  $(selectors.quickAddSize, productCard).each((index, button) => {
+  $(selectors.quickAddSizeColor, productCard).each((index, button) => {
     button.addEventListener("click", () => {
-      const color = productCard.querySelector('input:checked').value;
+      const colorEl = productCard.querySelector('input:checked');
       const size = button.dataset.value;
       const variant = productObject.variants.find(variant => {
-        return variant.options.includes(color) && variant.options.includes(size);
+        if (colorEl) {
+          return variant.options.includes(colorEl.value) && variant.options.includes(size);
+        } else {
+          return variant.options.includes(size);
+        }
       });
-
-      console.log(variant);
 
       $.post("/cart/add.js", {
         quantity: 1,
@@ -60,7 +62,7 @@ function updateColorLabel(productCard) {
   $(selectors.colorSwatch, productCard).each((index, swatch) => {
     $(swatch).change(evt => {
       $(selectors.variantName, productCard)[0].innerHTML = evt.target.value;
-      updateSizeSwatch();
+      updateSizeSwatch(productCard);
     })
   })
 }
@@ -74,7 +76,7 @@ function updateSizeSwatch(productCard) {
       if (currentVariantColor.trim().toLowerCase() != quickAddSizeColor.dataset.quickAddSizeColor.toLowerCase()) {
         quickAddSizeColor.style.display = "none";
       } else {
-        quickAddSizeColor.style.display = "block";
+        quickAddSizeColor.style.display = "flex";
       }
     }
   });
