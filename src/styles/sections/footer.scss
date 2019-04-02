@@ -126,7 +126,9 @@ footer {
 
   .social-icons {
     .social-icon {
-      margin-right: 10px;
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
 
       img {
         width: 30px;
