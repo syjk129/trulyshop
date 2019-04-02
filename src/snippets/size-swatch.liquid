@@ -19,7 +19,7 @@
     {% assign value = variant.options[size_index] %}
     <label
       data-value="{{ value | escape }}"
-      class="swatch size-swatch {% unless variant.available %}unavailable{% endunless %}"
+      class="swatch size-swatch product-size-swatch {% unless variant.available %}unavailable{% endunless %}"
       data-color="{{ variant.options[color_index] }}">
       <input
         id="size-swatch-{{ value | handle }}"

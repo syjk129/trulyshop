@@ -16,8 +16,9 @@ const selectors = {
   comparePriceText: '[data-compare-text]',
   originalSelectorId: '[data-product-select]',
   priceWrapper: '[data-price-wrapper]',
+  productWrapper: '[data-product-wrapper]',
   productDetails: '[data-product-details]',
-  productImageWrapper: '[data-product-image-wrapper]',
+  productImageWrapper: '[data-product-image]',
   productFeaturedImage: '[data-product-featured-image]',
   productJson: '[data-product-json]',
   productPrice: '[data-product-price]',
@@ -31,48 +32,69 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 $(document).ready(() => {
-  // Product Images
-  const productImagesDesktop = document.getElementsByClassName("product-images-desktop");
-  const productImagesMobile = document.getElementsByClassName("product-image-slider");
-  if (productImagesDesktop && productImagesDesktop.length > 0) {
-    productImagesDesktop[1].style.display = "none";
-    productImagesMobile[1].style.display = "none";
-    $('.product-image-slider').slick("setPosition");
-  }
-
-  // See how models style
-  const seeHowStyles = $(".see-how-style").filter(":visible");
-  if (seeHowStyles && seeHowStyles.length == 2) {
-    seeHowStyles[1].style.display = "none";
-
-    seeHowStyles[0].getElementsByClassName("btn")[0].onclick = () => {
-      seeHowStyles[0].style.display = "none";
-      seeHowStyles[1].style.display = "flex";
-      productImagesDesktop[0].style.display = "none";
-      productImagesDesktop[1].style.display = "block";
-      productImagesMobile[0].style.display = "none";
-      productImagesMobile[1].style.display = "block";
-      $('.product-image-slider').slick("setPosition");
-    }
-    seeHowStyles[1].getElementsByClassName("btn")[0].onclick = () => {
-      seeHowStyles[0].style.display = "flex";
-      seeHowStyles[1].style.display = "none";
-      productImagesDesktop[0].style.display = "block";
-      productImagesDesktop[1].style.display = "none";
-      productImagesMobile[0].style.display = "block";
-      productImagesMobile[1].style.display = "none";
-      $('.product-image-slider').slick("setPosition");
-    }
-  }
-
-  $(selectors.productDetails).each((index, productDetails) => {
+  $(selectors.productWrapper).each((index, productWrapper) => {
+    const productDetails = productWrapper.getElementsByClassName("product-details")[0];
+    initSeeHowStyle(productDetails);
     updateColorSwatch(productDetails);
     updateSizeSwatch(productDetails);
-  })
+    const color = productDetails.querySelector('input[name="color-option"]:checked').value;
+    updateProductImages(color);
+  });
 
   // Put this here last so that sticky is initialized after swatches are updated
   initializeStickySidebar();
 });
+
+function initSeeHowStyle(productDetails) {
+  const seeHowStyles = $(".see-how-style:visible");
+  if (seeHowStyles && seeHowStyles.length == 2) {
+    seeHowStyles[1].style.display = "none";
+
+    seeHowStyles[0].getElementsByClassName("btn")[0].onclick = () => {
+      const color = productDetails.querySelector('input[name="color-option"]:checked').value;
+      updateProductImages(color, seeHowStyles[1].dataset.model);
+      seeHowStyles[0].style.display = "none";
+      seeHowStyles[1].style.display = "flex";
+    }
+    seeHowStyles[1].getElementsByClassName("btn")[0].onclick = () => {
+      const color = productDetails.querySelector('input[name="color-option"]:checked').value;
+      updateProductImages(color, seeHowStyles[0].dataset.model);
+      seeHowStyles[0].style.display = "flex";
+      seeHowStyles[1].style.display = "none";
+    }
+  }
+}
+
+function updateProductImages(currentColor, currentModel) {
+  if (!currentModel) {
+    currentModel = $('.see-how-style:visible')[0].dataset.model;
+  }
+  // console.log(currentColor);
+  // console.log(currentModel);
+
+  // Desktop
+  $(selectors.productImageWrapper).each((index, productImage) => {
+    const productImageModel = productImage.dataset.model;
+    const productImageColor = productImage.dataset.color;
+    if (productImageColor.trim() != currentColor.trim() || productImageModel.trim() != currentModel.trim()) {
+      productImage.style.display = "none";
+    } else {
+      productImage.style.display = "block";
+    }
+  });
+
+  // Mobile
+  $('[data-product-image-slider]').each((index, slider) => {
+    const productImageModel = slider.dataset.model;
+    const productImageColor = slider.dataset.color;
+    if (productImageColor.trim() != currentColor.trim() || productImageModel.trim() != currentModel.trim()) {
+      slider.style.display = "none";
+    } else {
+      slider.style.display = "block";
+    }
+    $('.product-image-slider').slick("setPosition");
+  })
+}
 
 function updateColorSwatch(productDetails) {
   const currentSize = productDetails.querySelector('input[name="size-option"]:checked').value;
@@ -88,6 +110,7 @@ function updateColorSwatch(productDetails) {
     swatch.onclick = (evt) => {
       updateSizeSwatch(productDetails);
       updateSubmitButton(evt.target.value, currentSize, productDetails);
+      updateProductImages(evt.target.value);
     }
   }
 }

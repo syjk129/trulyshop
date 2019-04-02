@@ -22,7 +22,7 @@
         <div class="menu-icon" id="header-menu-btn"><div></div></div>
       </div>
       <h1>
-        <div class="desktop">
+        <div class="tablet-up">
           {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
           <a href="/">
             <img class="logo"
@@ -31,7 +31,7 @@
               alt="{{ section.settings.logo.alt | default: shop.name }}">
           </a>
         </div>
-        <div class="mobile">
+        <div class="phone">
           {% capture image_size_mobile %}{{ section.settings.logo_max_width_mobile }}x{% endcapture %}
           <a href="/">
             <img class="logo"
