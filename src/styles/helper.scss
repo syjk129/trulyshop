@@ -52,6 +52,10 @@
     left: 0;
     right: 0;
     bottom: 0;
+
+    &.video {
+      object-fit: none;
+    }
   }
 
   &.square {
