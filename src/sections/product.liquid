@@ -60,7 +60,7 @@
               data-model="{{ alt_values[0] }}"
               data-color="{{ alt_values[1] }}"
               data-product-image>
-              <img src="{{ image | img_url: '600x600' }}">
+              <img src="{{ image | img_url: '900x900' }}">
             </div>
           {% endif %}
         {% endfor %}
@@ -104,10 +104,10 @@
                 {% assign current_color = alt_values[1] | strip %}
                 {% assign alt_info = alt_values[2] | strip %}
                 {% if model_name == current_model and color == current_color %}
-                  <img class="slider-image" src="{{ image | img_url: '600x600' }}">
+                  <img class="slider-image" src="{{ image | img_url: '900x900' }}">
                 {% elsif current_model == "Video" %}
                   <div class="ratio-box square video" data-product-video>
-                    <img class="ratio-box-content slider-image" src="{{ image | img_url: '600x600' }}">
+                    <img class="ratio-box-content slider-image" src="{{ image | img_url: '900x900' }}">
                     <iframe
                       class="ratio-box-content mobile-product-video"
                       src="{{ alt_info }}"
@@ -189,7 +189,7 @@
       {% for item in product.collections[0].products %}
         {% unless item.id == product.id %}
           <a href="{{ item.url }}" class="ratio-image r4x3">
-            <img src="{{ item.featured_image | img_url: '400x400' }}">
+            <img src="{{ item.featured_image | img_url: '900x900' }}">
           </a>
         {% endunless %}
       {% endfor %}

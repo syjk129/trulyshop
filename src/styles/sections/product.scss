@@ -4,6 +4,11 @@
   padding-bottom: 100px;
   margin-bottom: 50px;
   border-bottom: 1px solid $color-grey-3;
+
+  @include phone {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
 }
 
 .product {
@@ -101,6 +106,11 @@
 
     .product-description {
       color: $color-grey-1;
+      padding-bottom: 20px;
+
+      .callout {
+        color: black;
+      }
     }
 
     form {
