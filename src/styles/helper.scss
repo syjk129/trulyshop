@@ -52,8 +52,12 @@
     left: 0;
     right: 0;
     bottom: 0;
+  }
 
-    &.video {
+  &.video {
+    background-color: #C5CCCF;
+
+    .ratio-box-content {
       object-fit: unset;
     }
   }
