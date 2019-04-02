@@ -41,6 +41,7 @@ $(document).ready(() => {
     updateProductImages(color);
   });
 
+  initMobileProductVideoHandler();
   // Put this here last so that sticky is initialized after swatches are updated
   initializeStickySidebar();
 });
@@ -94,6 +95,30 @@ function updateProductImages(currentColor, currentModel) {
     }
     $('.product-image-slider').slick("setPosition");
   })
+}
+
+function initMobileProductVideoHandler() {
+  $("[data-product-video]").each((index, videoEl) => {
+    videoEl.onclick = () => {
+      const iframe = videoEl.getElementsByClassName("mobile-product-video")[0];
+      const image = videoEl.getElementsByClassName("slider-image")[0];
+      image.style.display = "none";
+      iframe.style.display = "block";
+      window.addEventListener("blur", resetProductVideoHandler(videoEl));
+    }
+  })
+}
+
+function resetProductVideoHandler(videoEl) {
+  return function helper() {
+    const iframe = videoEl.getElementsByClassName("mobile-product-video")[0];
+    if (document.activeElement === iframe) {
+      // clicked
+      const image = videoEl.getElementsByClassName("slider-image")[0];
+      image.style.display = "block";
+      iframe.style.display = "none";
+    }
+  }
 }
 
 function updateColorSwatch(productDetails) {

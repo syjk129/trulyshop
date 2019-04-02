@@ -20,7 +20,7 @@
     {% unless product_models contains alt_values[0] %}
       {% assign model_name = alt_values[0] | split: "|" %}
       {% assign model_fit = alt_values[1] | split: "|" %}
-      {% unless alt_values[0] contains "Campaign" %}
+      {% unless alt_values[0] contains "Campaign" or alt_values[0] contains "Video" %}
         {% assign product_models = product_models | concat: model_name %}
         {% assign product_models_fits = product_models_fits | concat: model_fit %}
       {% endunless %}
@@ -40,6 +40,7 @@
       <div class="product-images-desktop" data-model="{{ product_models[0] }}">
         {% for image in product.images %}
           {% assign alt_values = image.alt | split: "|" %}
+          {% assign image_model = alt_values[0] | strip %}
           <div class="ratio-image square"
             data-model="{{ alt_values[0] }}"
             data-color="{{ alt_values[1] }}"
@@ -99,9 +100,23 @@
                 {% assign current_color = alt_values[1] | strip %}
                 {% if model_name == current_model and color == current_color %}
                   <img class="slider-image" src="{{ image | img_url: '600x600' }}">
+                {% elsif current_model == "Video" %}
+                  <div class="ratio-box square" data-product-video>
+                    <img class="ratio-box-content slider-image" src="{{ image | img_url: '600x600' }}">
+                    <iframe
+                      class="ratio-box-content mobile-product-video"
+                      src="https://player.vimeo.com/video/327788125?background=1&loop=1&autoplay=1"
+                      frameborder="0"
+                      allow=autoplay
+                      width="600"
+                      height="300"
+                      webkitallowfullscreen
+                      mozallowfullscreen
+                      allowfullscreen></iframe>
+                  </div>
                 {% endif %}
               {% endfor %}
-              <div class="ratio-box square">
+              {% comment %} <div class="ratio-box square">
                 <iframe
                   class="ratio-box-content"
                   src="https://player.vimeo.com/video/327788125?loop=1"
@@ -112,7 +127,7 @@
                   webkitallowfullscreen
                   mozallowfullscreen
                   allowfullscreen></iframe>
-              </div>
+              </div> {% endcomment %}
             </div>
           {% endfor %}
         {% endunless %}
