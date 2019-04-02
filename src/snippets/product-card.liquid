@@ -67,7 +67,7 @@
                   {% if color == image_color %}
                     {% unless product_models contains alt_values[0] %}
                       {% assign model_name = alt_values[0] | split: "|" %}
-                      {% unless alt_values[0] contains "Campaign" %}
+                      {% unless alt_values[0] contains "Campaign" or alt_values[0] contains "Video" %}
                         <img
                           class="product-card-image"
                           src="{{ image | img_url: '600x600' }}"
