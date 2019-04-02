@@ -1,6 +1,7 @@
 @import "../variables";
 
 input {
+  -webkit-appearance: none;
   outline: none;
   border-color: $color-grey-2;
   color: black;
