@@ -1,0 +1,64 @@
+@import "../variables";
+
+.size-guide-modal {
+  max-width: 500px;
+  width: 100%;
+  padding: $page-padding-desktop;
+
+  @include phone {
+    padding: 0;
+
+    .disclaimer {
+      text-align: center;
+    }
+  }
+
+  .tablet-up,
+  .phone {
+    width: 100%;
+    margin: auto;
+  }
+
+  .phone {
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .size-unit {
+    margin-bottom: 10px;
+  }
+
+  .close {
+    position: absolute;
+    top: $page-padding-desktop / 2;
+    right: $page-padding-desktop / 2;
+    font-size: 40px;
+    font-weight: 200;
+    cursor: pointer;
+  }
+
+  .size-guide {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+
+    &:not(:last-child) {
+      margin-bottom: 50px;
+    }
+
+    th {
+      border-bottom: 1px solid black;
+    }
+
+    td,
+    th {
+      padding: 10px;
+
+      &:not(:first-child) {
+        text-align: center;
+      }
+    }
+  }
+}

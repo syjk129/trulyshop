@@ -24,7 +24,7 @@ const selectors = {
   productPrice: '[data-product-price]',
   productThumbs: '[data-product-single-thumbnail]',
   singleOptionSelector: '[data-single-option-selector]',
-  colorSwatch: ['[data-product-color-swatch]']
+  sizeGuideToggle: '[data-size-guide-toggle]'
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 $(document).ready(() => {
   $(selectors.productWrapper).each((index, productWrapper) => {
     const productDetails = productWrapper.getElementsByClassName("product-details")[0];
+    initSizeGuideToggle(productWrapper);
     initSeeHowStyle(productDetails);
     updateColorSwatch(productDetails);
     updateSizeSwatch(productDetails);
@@ -45,6 +46,14 @@ $(document).ready(() => {
   // Put this here last so that sticky is initialized after swatches are updated
   initializeStickySidebar();
 });
+
+function initSizeGuideToggle(productWrapper) {
+  $(selectors.sizeGuideToggle, productWrapper).each((index, sizeGuideToggle) => {
+    sizeGuideToggle.onclick = () => {
+      document.getElementById("size-guide-modal").style.display = "block";
+    }
+  })
+}
 
 function initSeeHowStyle(productDetails) {
   const seeHowStyles = $(".see-how-style:visible");
