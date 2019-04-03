@@ -1,5 +1,5 @@
-<nav role="navigation">
-  <div class="sidebar desktop">
+<nav role="navigation" id="sidebar-nav">
+  <div class="sidebar__inner">
     {%- assign sidebar_nav_list = section.settings.sidebar_nav_list -%}
     {% if linklists[sidebar_nav_list].links.size > 0 %}
       {% for link in linklists[sidebar_nav_list].links %}
@@ -24,6 +24,7 @@
 {% schema %}
   {
     "name": "Sidebar Navigation",
+    "class": "sidebar desktop",
     "settings": [
       {
         "type": "link_list",

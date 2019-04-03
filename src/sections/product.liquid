@@ -19,7 +19,7 @@
     {%- assign alt_values = image.alt | split: "|" -%}
     {% unless product_models contains alt_values[0] %}
       {% assign model_name = alt_values[0] | split: "|" %}
-      {% assign model_fit = alt_values[1] | split: "|" %}
+      {% assign model_fit = alt_values[3] | split: "|" %}
       {% unless alt_values[0] contains "Campaign" or alt_values[0] contains "Video" %}
         {% assign product_models = product_models | concat: model_name %}
         {% assign product_models_fits = product_models_fits | concat: model_fit %}
@@ -30,11 +30,11 @@
   <div class="product" id="product-content" data-product-wrapper>
     <div class="product-images tablet-up">
       <div class="see-how-style" data-model="{{ product_models[0] }}">
-        <div class="body3">{{ product_models[0] }} is 5'8", size 8, wearing a Small</div>
+        <div class="body3">{{ product_models_fits[0] }}</div>
         <button class="btn outline">See how {{ product_models[1] }} Wears it</button>
       </div>
       <div class="see-how-style" data-model="{{ product_models[1] }}">
-        <div class="body3">{{ product_models[1] }} is 5'8", size 8, wearing a Small</div>
+        <div class="body3">{{ product_models_fits[1] }}</div>
         <button class="btn outline">See how {{ product_models[0] }} Wears it</button>
       </div>
       <div class="product-images-desktop">
@@ -69,13 +69,11 @@
     <div class="breadcrumb phone">
       <div class="body3 grey collections">Collections / {{ product.collections[0].description }} / {{ product.title }}</div>
       <div class="see-how-style" data-model="{{ product_models[0] }}">
-        <div class="body3 tablet-up">{{ product_models[0] }} is 5'8", size 8, wearing a Small</div>
-        <div class="body2 phone">{{ product_models[0] }} is 5'8", size 8, wearing a Small</div>
+        <div class="body2 phone">{{ product_models_fits[0] }}</div>
         <button class="btn outline">See how {{ product_models[1] }} Wears it</button>
       </div>
       <div class="see-how-style" data-model="{{ product_models[1] }}">
-        <div class="body3 tablet-up">{{ product_models[1] }} is 5'8", size 8, wearing a Small</div>
-        <div class="body2 phone">{{ product_models[1] }} is 5'8", size 8, wearing a Small</div>
+        <div class="body2 phone">{{ product_models_fits[1] }}</div>
         <button class="btn outline">See how {{ product_models[0] }} Wears it</button>
       </div>
     </div>

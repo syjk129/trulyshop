@@ -1,16 +1,15 @@
 @import "../variables";
 
 .product-card-container {
-  padding-bottom: 50px;
-  margin-bottom: 50px;
-
-  @include phone {
-    padding-bottom: 30px;
-    margin-bottom: 30px;
-  }
-
   &:not(:last-child) {
+    padding-bottom: 50px;
+    margin-bottom: 50px;
     border-bottom: 1px solid $color-grey-3;
+
+    @include phone {
+      padding-bottom: 30px;
+      margin-bottom: 30px;
+    }
   }
 
   .product-title {

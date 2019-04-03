@@ -9,17 +9,19 @@
 <div class="product-card-container">
   {% assign mod = index | modulo:2 %}
   {% assign campaign_image = "" %}
+  {% assign product_blurb = "" %}
   {% for image in product.images %}
     {% assign alt_values = image.alt | split: "|" %}
     {% if alt_values[0] contains "Campaign" %}
       {% assign campaign_image = image %}
+      {% assign product_blurb = alt_values[2] %}
     {% endif %}
   {% endfor %}
   <a class="product-campaign-img phone" href="{{ product.url }}">
     <img src="{{ campaign_image | img_url: '900x900' }}">
   </a>
   <div class="body1 product-title">{{ product.title }}</div>
-  <div class="body2 grey product-description">A classic cami - updated in clean silk.</div>
+  <div class="body2 grey product-description">{{ product_blurb }}</div>
   <div class="product-card-content">
     {% if mod == 1 %}
       <a class="product-campaign-img tablet-up" href="{{ product.url }}">

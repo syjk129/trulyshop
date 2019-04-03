@@ -1,5 +1,12 @@
 @import "../variables";
 
+.full-screen-widget {
+  width: 100%;
+  background-color: blue;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
 .full-screen-image {
   margin-bottom: 10px;
 
