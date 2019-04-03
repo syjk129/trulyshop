@@ -156,8 +156,8 @@
         border-radius: 50%;
         background-color: transparent;
         outline: none;
-        color: black;
-        border: 1px solid black;
+        color: $color-grey-3;
+        border: 1px solid $color-grey-3;
         cursor: pointer;
 
         &:not(:last-child) {
@@ -165,8 +165,10 @@
         }
 
         &:hover {
-          background-color: black;
-          color: white;
+          // background-color: black;
+          border-color: black;
+          color: black;
+          // color: white;
         }
 
         &.unavailable {
