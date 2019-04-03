@@ -25,7 +25,7 @@
       margin-right: 10px;
     }
 
-    .body2 {
+    .body3 {
       text-decoration: underline;
       cursor: pointer;
     }
@@ -64,10 +64,8 @@
   }
 
   .product-images {
-    max-width: 540px;
-    width: 60%;
     margin-right: 25px;
-    flex-shrink: 0;
+    flex: 1;
 
     .ratio-image {
       margin-bottom: 10px;
@@ -90,8 +88,14 @@
 
   .product-details {
     width: 100%;
+    max-width: 260px;
+    flex-shrink: 0;
     box-sizing: border-box;
     will-change: min-height;
+
+    .title {
+      margin-bottom: 10px;
+    }
 
     .sidebar__inner {
       transform: translate(0, 0); /* For browsers don't support translate3d. */
@@ -122,7 +126,6 @@
     }
 
     .product-description {
-      color: $color-grey-1;
       padding-bottom: 20px;
 
       .callout {

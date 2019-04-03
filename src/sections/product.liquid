@@ -129,15 +129,15 @@
     <div class="product-details" id="product-details" data-product-details>
       <div class="sidebar__inner">
         <div class="callout">{{ product.vendor }}</div>
-        <h3>{{ product.title }}</h3>
+        <div class="body1 title">{{ product.title }}</div>
         <div class="body1 price">{{ product.price | money }}</div>
         <div class="divider tablet-up"></div>
         <form action="/cart/add" method="post" enctype="multipart/form-data">
           <div class="js">
-            <div class="body2 select-label">{{ 'product.choose_color' | t }}</div>
+            <div class="body3 select-label">{{ 'product.choose_color' | t }}</div>
             {% include 'color-swatch' %}
             <div class="divider tablet-up"></div>
-            <div class="body2 select-label">{{ 'product.choose_size' | t }}</div>
+            <div class="body3 select-label">{{ 'product.choose_size' | t }}</div>
             {% include 'size-swatch' %}
             <div class="divider tablet-up"></div>
           </div>
@@ -153,8 +153,8 @@
               {% endfor %}
             </select>
           </div>
-          <div class="body2 select-label">{{ 'product.quantity' | t }}</div>
-          <input class="quantity" type="number" id="Quantity" name="quantity" value="1" min="1">
+          <div class="body3 select-label">{{ 'product.quantity' | t }}</div>
+          <input class="quantity small" type="number" id="Quantity" name="quantity" value="1" min="1">
           <button
             class="btn large add-to-cart"
             type="submit"
@@ -172,10 +172,10 @@
 
         <div class="size-guide-button">
           <img src="{{ 'ruler.png' | asset_url }}">
-          <div class="body2 grey" data-size-guide-toggle>Size Guide</div>
+          <div class="body3 grey" data-size-guide-toggle>Size Guide</div>
         </div>
         <div class="callout">{{ 'product.details' | t }}</div>
-        <div class="product-description">{{ product.description }}</div>
+        <div class="product-description body3 grey">{{ product.description }}</div>
 
         {% unless product == empty %}
           <script type="application/json" data-product-json>

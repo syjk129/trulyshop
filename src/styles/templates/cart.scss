@@ -8,6 +8,22 @@
     padding: $page-padding-mobile;
   }
 
+  .cart-empty {
+    min-height: 300px;
+
+    h2 {
+      margin-bottom: 50px;
+
+      @include phone {
+        margin-bottom: 20px;
+      }
+    }
+
+    .btn {
+      display: inline-block;
+    }
+  }
+
   .update-subtotal {
     display: flex;
     justify-content: space-between;
