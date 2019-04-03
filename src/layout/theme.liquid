@@ -16,27 +16,30 @@
 
   {{ content_for_header }}
 </head>
-
-<body>
   {% section "header" %}
   {% section "menu-nav" %}
-  <div class="content">
-    {% if
-      template contains 'index' or
-      template contains 'product' or
-      template contains 'collection' or
-      template contains 'page'
-    %}
-      {% section "sidebar-nav" %}
-    {% elsif
-      template contains 'customers/account' or
-      template contains 'customers/addresses'
-    %}
-      {% section "sidebar-account-nav" %}
-    {% endif %}
-    <div class="full-width main-content">
-      {{ content_for_layout }}
+  <div class="content-container">
+    <div class="content" id="theme-content">
+      {% if
+        template contains 'index' or
+        template contains 'product' or
+        template contains 'collection' or
+        template contains 'page'
+      %}
+        {% section "sidebar-nav" %}
+      {% elsif
+        template contains 'customers/account' or
+        template contains 'customers/addresses'
+      %}
+        {% section "sidebar-account-nav" %}
+      {% endif %}
+      <div class="full-width main-content">
+        {{ content_for_layout }}
+      </div>
     </div>
+    {% if template contains 'index' %}
+      {% section "our-values" %}
+    {% endif %}
   </div>
   {% section "footer" %}
 </body>

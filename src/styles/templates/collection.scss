@@ -34,15 +34,18 @@
     .collection-info-container {
       display: flex;
       width: 100%;
-      max-height: 370px;
+      max-height: 400px;
     }
 
     .collection-info {
       padding: 70px 35px;
       background-color: #F8F8F8;
+      max-width: 60%;
+      box-sizing: border-box;
 
       @include phone {
         padding: 30px 25px;
+        max-width: 100%;
       }
 
       h3 {
@@ -65,6 +68,10 @@
   }
 
   .product-cards {
-    padding: $page-padding-mobile;
+    padding: $page-padding-mobile 0;
+
+    @include phone {
+      padding: $page-padding-mobile;
+    }
   }
 }

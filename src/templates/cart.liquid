@@ -1,119 +1,126 @@
 <div class="cart content-medium">
-  <h3 class="item-table-header tablet-up">{{ 'cart.shopping_cart' | t }}</h3>
-  <h3 class="phone">{{ 'cart.shopping_cart' | t }}</h3>
-  <form action="/cart" method="post" novalidate>
-    <table class="cart-table item-table tablet-up">
-      <tr>
-        <th class="body2 details">
-          {{ 'cart.item' | t }}
-        </th>
-        <th class="body2 quantity">
-          {{ 'cart.quantity' | t }}
-        </th>
-        <th class="body2 subtotal">
-          {{ 'cart.subtotal' | t }}
-        </th>
-      </tr>
-      {% for item in cart.items %}
-        {% assign color_index = -1 %}
-        {% assign size_index = -1 %}
-
-        {% for option in item.product.options %}
-          {% assign downcased_option = option | downcase %}
-          {% if downcased_option contains 'color' %}
-            {% assign color_index = forloop.index0 %}
-          {% elsif downcased_option contains 'size' %}
-            {% assign size_index = forloop.index0 %}
-          {% endif %}
-        {% endfor %}
-
+  {% if cart.item_count == 0 %}
+    <div class="cart-empty">
+      <h2>Psst! your cart is empty</h2>
+      <a class="btn large outline" href="/">{{ 'cart.keep_shopping' | t }}</a>
+    </div>
+  {% else %}
+    <h3 class="item-table-header tablet-up">{{ 'cart.shopping_cart' | t }}</h3>
+    <h3 class="phone">{{ 'cart.shopping_cart' | t }}</h3>
+    <form action="/cart" method="post" novalidate>
+      <table class="cart-table item-table tablet-up">
         <tr>
-          <td class="details">
-            <div class="item">
-              <div class="item-img-container">
-                <div class="item-img">
-                  <img src="{{ item.image | img_url: '480x480' }}">
+          <th class="body2 details">
+            {{ 'cart.item' | t }}
+          </th>
+          <th class="body2 quantity">
+            {{ 'cart.quantity' | t }}
+          </th>
+          <th class="body2 subtotal">
+            {{ 'cart.subtotal' | t }}
+          </th>
+        </tr>
+        {% for item in cart.items %}
+          {% assign color_index = -1 %}
+          {% assign size_index = -1 %}
+
+          {% for option in item.product.options %}
+            {% assign downcased_option = option | downcase %}
+            {% if downcased_option contains 'color' %}
+              {% assign color_index = forloop.index0 %}
+            {% elsif downcased_option contains 'size' %}
+              {% assign size_index = forloop.index0 %}
+            {% endif %}
+          {% endfor %}
+
+          <tr>
+            <td class="details">
+              <div class="item">
+                <div class="item-img-container">
+                  <div class="item-img">
+                    <img src="{{ item.image | img_url: '480x480' }}">
+                  </div>
+                </div>
+                <div class="item-details">
+                  <div class="body2">{{ item.product.title }}</div>
+                  {% if size_index != -1 %}
+                    <div class="body3 variant">
+                      Size: {{ item.variant.options[size_index] | capitalize }}
+                    </div>
+                  {% endif %}
+                  {% if color_index != -1 %}
+                    <div class="body3 variant">
+                      Color: {{ item.variant.options[color_index] | capitalize }}
+                    </div>
+                  {% endif %}
                 </div>
               </div>
-              <div class="item-details">
-                <div class="body2">{{ item.product.title }}</div>
-                {% if size_index != -1 %}
-                  <div class="body3 variant">
-                    Size: {{ item.variant.options[size_index] | capitalize }}
-                  </div>
-                {% endif %}
-                {% if color_index != -1 %}
-                  <div class="body3 variant">
-                    Color: {{ item.variant.options[color_index] | capitalize }}
-                  </div>
-                {% endif %}
-              </div>
+            </td>
+            <td class="quantity">
+              <input
+                type="number"
+                name="updates[]"
+                id="updates_{{ item.key }}"
+                value="{{ item.quantity }}"
+                min="0"
+                aria-label="{{ cart.quantity | t }}">
+              <span class="cart-remove cart-remove-desktop body3 grey" data-id="{{ item.id }}">Remove</span>
+            </td>
+            <td class="body2 subtotal">
+              {{ item.final_line_price | money }}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+      <div class="cart-content phone">
+        {% for item in cart.items %}
+          <div class="cart-item">
+            <div class="cart-item-img">
+              {{ item.image | img_url: '300x300' | img_tag }}
             </div>
-          </td>
-          <td class="quantity">
-            <input
-              type="number"
-              name="updates[]"
-              id="updates_{{ item.key }}"
-              value="{{ item.quantity }}"
-              min="0"
-              aria-label="{{ cart.quantity | t }}">
-            <span class="cart-remove cart-remove-desktop body3 grey" data-id="{{ item.id }}">Remove</span>
-          </td>
-          <td class="body2 subtotal">
-            {{ item.final_line_price | money }}
-          </td>
-        </tr>
-      {% endfor %}
-    </table>
-    <div class="cart-content phone">
-      {% for item in cart.items %}
-        <div class="cart-item">
-          <div class="cart-item-img">
-            {{ item.image | img_url: '300x300' | img_tag }}
-          </div>
-          <div class="cart-item-content">
-            <span class="cart-remove" data-id="{{ item.id }}">&times;</span>
-            <div class="body2 title">{{ item.product.title }}</div>
-            <div class="body3 price">{{ item.product.price | money }}</div>
-            <div class="quantity-selector">
-              <span
-                class="body3 cart-quantity-btn cart-decrement"
-                data-id="{{ item.id }}"
-                data-quantity="{{ item.quantity }}">-</span>
-              <div class="body3">{{ item.quantity }}</div>
-              <span
-                class="body3 cart-quantity-btn cart-increment"
-                data-id="{{ item.id }}"
-                data-quantity="{{ item.quantity }}">+</span>
+            <div class="cart-item-content">
+              <span class="cart-remove" data-id="{{ item.id }}">&times;</span>
+              <div class="body2 title">{{ item.product.title }}</div>
+              <div class="body3 price">{{ item.product.price | money }}</div>
+              <div class="quantity-selector">
+                <span
+                  class="body3 cart-quantity-btn cart-decrement"
+                  data-id="{{ item.id }}"
+                  data-quantity="{{ item.quantity }}">-</span>
+                <div class="body3">{{ item.quantity }}</div>
+                <span
+                  class="body3 cart-quantity-btn cart-increment"
+                  data-id="{{ item.id }}"
+                  data-quantity="{{ item.quantity }}">+</span>
+              </div>
+              {% if size_index != -1 %}
+                <div class="body3 variant">
+                  Size: {{ item.variant.options[size_index] | capitalize }}
+                </div>
+              {% endif %}
+              {% if color_index != -1 %}
+                <div class="body3 variant">
+                  Color: {{ item.variant.options[color_index] | capitalize }}
+                </div>
+              {% endif %}
             </div>
-            {% if size_index != -1 %}
-              <div class="body3 variant">
-                Size: {{ item.variant.options[size_index] | capitalize }}
-              </div>
-            {% endif %}
-            {% if color_index != -1 %}
-              <div class="body3 variant">
-                Color: {{ item.variant.options[color_index] | capitalize }}
-              </div>
-            {% endif %}
           </div>
-        </div>
-      {% endfor %}
-    </div>
-    <div class="update-subtotal">
-      <input class="body3" type="submit" name="update" value="{{ 'cart.update_cart' | t }}">
-      <div>
-        <span class="body2">Subtotal</span>
-        <span class="body1">{{ cart.total_price | money }}</span>
+        {% endfor %}
       </div>
-    </div>
-    <div class="body3 text-right shipping-tax-disclaimer">{{ 'cart.shipping_tax_disclaimer' | t }}</div>
-    <div class="cart-action">
-      <a class="btn large outline" href="/">{{ 'cart.keep_shopping' | t}}</a>
-      <input class="btn large" type="submit" name="checkout" value="{{ 'cart.checkout' | t}}">
-    </div>
-    <div class="body3 text-center cart-disclaimer">{{ 'cart.agree_to_terms' | t }}</div>
-    <div class="body3 text-center cart-disclaimer">{{ 'cart.calculated_at_checkout' | t }}</div>
-  </form>
+      <div class="update-subtotal">
+        <input class="body3" type="submit" name="update" value="{{ 'cart.update_cart' | t }}">
+        <div>
+          <span class="body2">Subtotal</span>
+          <span class="body1">{{ cart.total_price | money }}</span>
+        </div>
+      </div>
+      <div class="body3 text-right shipping-tax-disclaimer">{{ 'cart.shipping_tax_disclaimer' | t }}</div>
+      <div class="cart-action">
+        <a class="btn large outline" href="/">{{ 'cart.keep_shopping' | t}}</a>
+        <input class="btn large" type="submit" name="checkout" value="{{ 'cart.checkout' | t}}">
+      </div>
+      <div class="body3 text-center cart-disclaimer">{{ 'cart.agree_to_terms' | t }}</div>
+      <div class="body3 text-center cart-disclaimer">{{ 'cart.calculated_at_checkout' | t }}</div>
+    </form>
+  {% endif %}
 </div>

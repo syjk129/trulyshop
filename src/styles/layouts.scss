@@ -3,19 +3,28 @@
 $small-content-width: 450px;
 $medium-content-width: 735px;
 
-.content {
-  display: flex;
+.content-container {
   max-width: $max-content-width;
   width: 100%;
-  box-sizing: border-box;
   margin: auto;
+  box-sizing: border-box;
   padding: $page-padding-desktop;
   margin-bottom: 100px;
 
-  @media(max-width: $mobile-width-break) {
+  @include phone {
     padding: $page-padding-mobile;
     padding-top: 20px;
     margin-bottom: 40px;
+  }
+}
+
+.content {
+  display: flex;
+
+  .sidebar__inner {
+    transform: translate(0, 0); /* For browsers don't support translate3d. */
+    transform: translate3d(0, 0, 0);
+    will-change: position, transform;
   }
 }
 
