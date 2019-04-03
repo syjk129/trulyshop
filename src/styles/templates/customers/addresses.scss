@@ -3,6 +3,10 @@
 .addresses {
   padding-top: 30px;
 
+  @include phone {
+    padding: $page-padding-mobile;
+  }
+
   .header {
     margin-bottom: 30px;
   }
@@ -10,7 +14,7 @@
   .address-list {
     margin-bottom: 100px;
 
-    @media (max-width: $mobile-width-break) {
+    @include phone {
       margin-bottom: 50px;
     }
 
@@ -21,7 +25,7 @@
       max-width: 160px;
       margin-right: 50px;
 
-      @media (max-width: $mobile-width-break) {
+      @include phone {
         width: 100%;
         margin-right: 0;
         margin-bottom: 20px;
@@ -40,7 +44,7 @@
           cursor: pointer;
           background-color: transparent;
 
-          @media (max-width: $mobile-width-break) {
+          @include phone {
             font-weight: 200;
             font-size: 20px;
           }
@@ -59,36 +63,15 @@
   width: 100%;
   padding: 70px;
 
-  @media (max-width: $mobile-width-break) {
+  @include phone {
     padding: 0;
   }
 
-  .mobile-modal-header {
-    position: relative;
-    padding: 25px;
-    box-shadow: $default-drop-shadow;
-    text-align: center;
-
-    .close {
-      position: absolute;
-      top: 25px;
-      right: $page-padding-mobile;
-      font-size: 40px;
-      font-weight: 200;
-      cursor: pointer;
-    }
-  }
-  
-  .mobile {
+  .phone {
     height: 100%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-  }
-
-  .mobile-modal-content {
-    overflow-y: scroll;
-    padding: 25px $page-padding-mobile;
   }
 }
 
@@ -99,7 +82,7 @@
     width: 100%;
     margin-bottom: 20px;
 
-    @media (max-width: $mobile-width-break) {
+    @include phone {
       margin-bottom: 10px;
     }
   }
@@ -114,7 +97,7 @@
     &:not(:last-of-type) {
       margin-bottom: 20px;
 
-      @media (max-width: $mobile-width-break) {
+      @include phone {
         margin-bottom: 10px;
       }
     }
@@ -140,7 +123,7 @@
       width: 40%;
     }
 
-    @media (max-width: $mobile-width-break) {
+    @include phone {
       margin-bottom: 0;
     }
   }

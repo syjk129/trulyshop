@@ -11,8 +11,10 @@ for (let i = 0; i < modals.length; i++) {
 
   const modalClose = modals[i].getElementsByClassName("modal-close");
   if (modalClose && modalClose.length > 0) {
-    modalClose[0].onclick = () => {
-      modals[i].style.display = "none";
+    for (let j = 0; j < modalClose.length; j++) {
+      modalClose[j].onclick = () => {
+        modals[i].style.display = "none";
+      }
     }
   }
 }

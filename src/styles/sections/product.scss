@@ -14,6 +14,23 @@
 .product {
   display: flex;
 
+  .size-guide-button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+
+    img {
+      width: 10px;
+      object-fit: contain;
+      margin-right: 10px;
+    }
+
+    .body2 {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
   .breadcrumb {
     padding: $page-padding-mobile;
     padding-top: 20px;

@@ -22,7 +22,7 @@
     margin: auto;
     background-color: white;
 
-    @media (max-width: $mobile-width-break) {
+    @include phone {
       height: 100%;
       box-sizing: border-box;
       position: relative;
@@ -32,5 +32,33 @@
       display: block;
       overflow-y: scroll;
     }
+  }
+
+  .phone {
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-modal-header {
+    position: relative;
+    padding: 25px;
+    box-shadow: $default-drop-shadow;
+    text-align: center;
+
+    .close {
+      position: absolute;
+      top: 25px;
+      right: $page-padding-mobile;
+      font-size: 40px;
+      font-weight: 200;
+      cursor: pointer;
+    }
+  }
+
+  .mobile-modal-content {
+    overflow-y: scroll;
+    padding: 25px $page-padding-mobile;
   }
 }
