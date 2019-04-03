@@ -1,0 +1,81 @@
+<section class="featured-social-images">
+  <h3>{{ section.settings.title }}</h3>
+  <div class="featured-social-image-content">
+    <a href="{{ section.settings.social_link1 }}" class="item">
+      <div class="ratio-image square">
+        <img src="{{ section.settings.social_content_img1 | img_url: '500x500' }}">
+      </div>
+      <div class="body2 grey tablet-up">{{ section.settings.social_handle1 }}</div>
+    </a>
+    <a href="{{ section.settings.social_link2 }}" class="item">
+      <div class="ratio-image square">
+        <img src="{{ section.settings.social_content_img2 | img_url: '500x500' }}">
+      </div>
+      <div class="body2 grey tablet-up">{{ section.settings.social_handle2 }}</div>
+    </a>
+    <a href="{{ section.settings.social_link3 }}" class="item">
+      <div class="ratio-image square">
+        <img src="{{ section.settings.social_content_img3 | img_url: '500x500' }}">
+      </div>
+      <div class="body2 grey tablet-up">{{ section.settings.social_handle3 }}</div>
+    </a>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Featured Instagram",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "image_picker",
+        "id": "social_content_img1",
+        "label": "Image 1"
+      },
+      {
+        "type": "text",
+        "id": "social_handle1",
+        "label": "Instagram Handle 1"
+      },
+      {
+        "type": "text",
+        "id": "social_link1",
+        "label": "Instagram Url 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "social_content_img2",
+        "label": "Image 2"
+      },
+      {
+        "type": "text",
+        "id": "social_handle2",
+        "label": "Instagram Handle 2"
+      },
+      {
+        "type": "text",
+        "id": "social_link2",
+        "label": "Instagram Url 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "social_content_img3",
+        "label": "Image 3"
+      },
+      {
+        "type": "text",
+        "id": "social_handle3",
+        "label": "Instagram Handle 3"
+      },
+      {
+        "type": "text",
+        "id": "social_link3",
+        "label": "Instagram Url 3"
+      }
+    ]
+  }
+{% endschema %}
