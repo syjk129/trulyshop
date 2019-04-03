@@ -2,10 +2,10 @@
   {%- if section.settings.announcement_bar_enabled -%}
     <div class="announcement-bar">
       <div class="announcement-bar-content">
-        <div class="callout regular tablet-up">
+        <div class="callout semibold tablet-up">
           {{ section.settings.announcement_bar_text }}
         </div>
-        <a href="{{ section.settings.announcement_bar_link }}" class="callout regular phone no-underline">
+        <a href="{{ section.settings.announcement_bar_link }}" class="callout semibold phone no-underline">
           {{ section.settings.announcement_bar_text_mobile }}
         </a>
         {%- if section.settings.announcement_bar_link -%}
@@ -26,6 +26,7 @@
           {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
           <a href="/">
             <img class="logo"
+              style="width: {{ section.settings.logo_max_width }}px"
               src="{{ section.settings.logo | img_url: image_size }}"
               srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
               alt="{{ section.settings.logo.alt | default: shop.name }}">
@@ -35,6 +36,7 @@
           {% capture image_size_mobile %}{{ section.settings.logo_max_width_mobile }}x{% endcapture %}
           <a href="/">
             <img class="logo"
+              style="width: {{ section.settings.logo_max_width_mobile }}px"
               src="{{ section.settings.logo | img_url: image_size_mobile }}"
               srcset="{{ section.settings.logo | img_url: image_size_mobile }} 1x, {{ section.settings.logo | img_url: image_size_mobile, scale: 2 }} 2x"
               alt="{{ section.settings.logo.alt | default: shop.name }}">
