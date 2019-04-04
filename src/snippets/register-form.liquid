@@ -56,9 +56,9 @@
 
     <div class="optin">
       {% include 'checkbox' with name: "customer[accepts_marketing]" %}
-      <span class="body3">I want to receive emails</span>
+      <span class="body3">{{ 'customer.marketing_optin' | t }}</span>
     </div>
-    <input type="submit" class="btn large" value="{{ 'customer.create_account' | t }}">
+    <input type="submit" class="btn large" value="{{ 'customer.create' | t }}">
     <span class="form-input-error">
       {{ form.errors.messages["form"] }}
     </span>

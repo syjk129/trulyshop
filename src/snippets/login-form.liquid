@@ -7,7 +7,7 @@
 
 <div id="{{ form_id }}" class="auth-form">
   <div class="login" id="CustomerLoginForm">
-    <h3 class="auth-header">{{ 'customer.log_in' | t }}</h3>
+    <h3 class="auth-header">{{ 'customer.sign_in' | t }}</h3>
     {% form 'customer_login' %}
       <input type="email"
         name="customer[email]"
@@ -31,7 +31,7 @@
         {{ form.errors.messages["password"] }}
       </span>
 
-      <input type="submit" class="btn large" value="{{ 'customer.log_in' | t }}">
+      <input type="submit" class="btn large" value="{{ 'customer.sign_in' | t }}">
       <span class="form-input-error">
         {{ form.errors.messages["form"] }}
       </span>
@@ -42,7 +42,7 @@
     {% endform %}
 
     <div class="body3 no-account">{{ 'customer.dont_have_account' | t }}</div>
-    <a class="btn large outline register" href="/account/register">{{ 'customer.sign_up' | t }}</a>
+    <a class="btn large outline register" href="/account/register">{{ 'customer.create_account' | t }}</a>
   </div>
   <div class="hide" id="RecoverPasswordForm">
     <h3 class="auth-header">{{ 'customer.recover_password' | t }}</h3>

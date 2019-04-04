@@ -10,6 +10,14 @@
   margin-bottom: 50px;
 }
 
+.auth {
+  box-sizing: border-box;
+
+  @include phone {
+    padding: $page-padding-mobile;
+  }
+}
+
 .auth-header {
   margin-bottom: 50px;
 }
@@ -17,7 +25,6 @@
 .auth-form {
   .toggle {
     color: $color-grey-1;
-    margin-bottom: 70px;
     display: block;
   }
 
@@ -40,6 +47,7 @@
     align-items: top;
     margin-bottom: 30px;
     color: $color-grey-1;
+    text-align: left;
 
     .checkbox {
       margin-right: 10px;
