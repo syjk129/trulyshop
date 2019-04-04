@@ -5,14 +5,18 @@
         <div class="callout semibold tablet-up">
           {{ section.settings.announcement_bar_text }}
         </div>
-        <a href="{{ section.settings.announcement_bar_link }}" class="callout semibold phone no-underline">
-          {{ section.settings.announcement_bar_text_mobile }}
-        </a>
-        {%- if section.settings.announcement_bar_link -%}
+        {% if section.settings.announcement_bar_link %}
+          <a href="{{ section.settings.announcement_bar_link }}" class="callout semibold phone no-underline">
+            {{ section.settings.announcement_bar_text_mobile }}
+          </a>
           <a class="tablet-up" href="{{ section.settings.announcement_bar_link }}">
             {{ section.settings.announcement_bar_link_text }}
           </a>
-        {%- endif -%}
+        {% else %}
+          <div class="callout semibold phone">
+            {{ section.settings.announcement_bar_text_mobile }}
+          </div>
+        {% endif %}
       </div>
     </div>  
   {%- endif -%}
@@ -27,8 +31,8 @@
           <a href="/">
             <img class="logo"
               style="width: {{ section.settings.logo_max_width }}px"
-              src="{{ section.settings.logo | img_url: image_size }}"
-              srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+              src="{{ section.settings.logo | img_url: '300x300' }}"
+              srcset="{{ section.settings.logo | img_url: '300x300' }} 1x, {{ section.settings.logo | img_url: '300x300', scale: 2 }} 2x"
               alt="{{ section.settings.logo.alt | default: shop.name }}">
           </a>
         </div>
@@ -37,8 +41,8 @@
           <a href="/">
             <img class="logo"
               style="width: {{ section.settings.logo_max_width_mobile }}px"
-              src="{{ section.settings.logo | img_url: image_size_mobile }}"
-              srcset="{{ section.settings.logo | img_url: image_size_mobile }} 1x, {{ section.settings.logo | img_url: image_size_mobile, scale: 2 }} 2x"
+              src="{{ section.settings.logo | img_url: '300x300' }}"
+              srcset="{{ section.settings.logo | img_url: '300x300' }} 1x, {{ section.settings.logo | img_url: '300x300', scale: 2 }} 2x"
               alt="{{ section.settings.logo.alt | default: shop.name }}">
           </a>
         </div>

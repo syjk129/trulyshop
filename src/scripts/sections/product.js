@@ -43,9 +43,14 @@ $(document).ready(() => {
   });
 
   initMobileProductVideoHandler();
-  // Put this here last so that sticky is initialized after swatches are updated
   initializeStickySidebar();
 });
+
+$(window).on("load", () => {
+  // Put this here so that sticky is initialized again after page is all loaded
+  // Kind of a hack tho
+  initializeStickySidebar();
+})
 
 function initSizeGuideToggle(productWrapper) {
   $(selectors.sizeGuideToggle, productWrapper).each((index, sizeGuideToggle) => {

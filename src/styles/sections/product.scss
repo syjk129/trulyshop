@@ -97,12 +97,6 @@
       margin-bottom: 10px;
     }
 
-    .sidebar__inner {
-      transform: translate(0, 0); /* For browsers don't support translate3d. */
-      transform: translate3d(0, 0, 0);
-      will-change: position, transform;
-    }
-
     .callout {
       margin-bottom: 30px;
     }

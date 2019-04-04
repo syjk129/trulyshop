@@ -63,7 +63,7 @@
           <span class="body2">{{ 'cart.subtotal' | t }}</span>
           <span class="body2">{{ cart.total_price | money }}</span>
         </div>
-        <div class="body3">{{ 'cart.complimentary_shipping' | t }}</div>
+        {% comment %} <div class="body3">{{ 'cart.complimentary_shipping' | t }}</div> {% endcomment %}
         <a class="btn large outline" href="account/login">{{ 'cart.keep_shopping' | t }}</a>
         <input class="btn large" type="submit" name="checkout" value="{{ 'cart.checkout' | t}}">
         <div class="body3">
