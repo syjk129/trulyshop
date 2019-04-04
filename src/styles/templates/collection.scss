@@ -27,6 +27,10 @@
   header {
     margin-bottom: 50px;
 
+    @include phone {
+      margin-bottom: 20px;
+    }
+
     .banner-content {
       display: flex;
     }

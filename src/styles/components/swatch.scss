@@ -9,6 +9,7 @@ $small-swatch-content-size: 15px;
 .swatch-container {
   display: flex;
   margin-bottom: 10px;
+  min-height: $swatch-size;
 }
 
 .swatch {

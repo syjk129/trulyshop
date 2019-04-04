@@ -13,6 +13,14 @@
     padding: 40px 15px;
   }
 
+  .ratio-image {
+    margin-bottom: 50px;
+
+    @include phone {
+      margin-bottom: 20px;
+    }
+  }
+
   h1 {
     margin-bottom: 20px;
 
