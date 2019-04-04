@@ -13,7 +13,7 @@
             {{ section.settings.announcement_bar_link_text }}
           </a>
         {% else %}
-          <div class="callout semibold phone">
+          <div class="body2 regular phone">
             {{ section.settings.announcement_bar_text_mobile }}
           </div>
         {% endif %}
@@ -48,10 +48,10 @@
         </div>
       </h1>
       <div class="action user-actions">
-        <div class="cart-icon">
+        <div class="cart-icon phone">
           {% include 'icon-button' with
             icon: 'bag',
-            button_id: 'header-cart'
+            button_id: 'header-cart-mobile'
           %}
           {% if cart.item_count > 0 %}
             <span class="cart-amount">
@@ -63,20 +63,19 @@
             </span>
           {% endif %}
         </div>
-        <div class="desktop">
+        <div class="tablet-up">
           {% if customer %}
-            {% include 'icon-button' with
-              icon: 'account',
-              button_id: 'header-account',
-              redirect_link: '/account'
-            %}
+            <a href="/account" class="body2 grey no-underline" id="header-account">
+              {{ 'navigation.my_account' | t }}
+            </a>
           {% else %}
-            {% include 'icon-button' with
-              icon: 'account',
-              button_id: 'header-account',
-              redirect_link: '/account/login'
-            %}
+            <a href="/account/login" class="body2 grey no-underline" id="header-account">
+              {{ 'navigation.sign_in' | t }}
+            </a>
           {% endif %}
+          <div class="tablet-up body2 grey" id="header-cart">
+            {{ 'navigation.my_bag' | t }}&nbsp;<span class="black">({{ cart.item_count }})</span>
+          </div>
         </div>
       </div>
     </div>

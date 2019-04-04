@@ -146,6 +146,7 @@
 
     .product-details {
       padding: $page-padding-mobile;
+      max-width: none;
 
       .callout {
         margin-bottom: 10px;

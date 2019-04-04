@@ -1,0 +1,75 @@
+@import "../variables";
+
+.email-signup-popup {
+  position: fixed;
+  bottom: 0;
+  right: -630px;
+  padding: 50px;
+  background-color: $color-blue;
+  max-width: 630px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+  transition: .5s;
+
+  @include phone {
+    padding: 35px $page-padding-mobile;
+  }
+
+  .close {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 200;
+    cursor: pointer;
+
+    @include phone {
+      top: $page-padding-mobile;
+      right: $page-padding-mobile;
+    }
+  }
+
+  h3 {
+    margin-bottom: 20px;
+
+    @include phone {
+      text-align: center;
+    }
+  }
+
+  .email-signup-form {
+    display: flex;
+    align-items: flex-end;
+
+    @include phone {
+      flex-direction: column;
+      align-items: unset;
+
+      .email-signup-input {
+        margin-bottom: 20px;
+        width: 100%;
+        text-align: center;
+      }
+    }
+    
+    .email-signup-input {
+      flex: 1;
+      margin-right: 20px;
+      font-weight: $font-weight-light;
+    }
+
+    input {
+      &::placeholder {
+        color: black;
+      }
+
+      &.btn:hover {
+        &::placeholder {
+          color: white;
+        }
+      }
+    }
+  }
+}

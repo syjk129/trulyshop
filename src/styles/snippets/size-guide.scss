@@ -1,22 +1,42 @@
 @import "../variables";
 
 .size-guide-modal {
-  max-width: 500px;
+  max-width: 820px;
   width: 100%;
   padding: $page-padding-desktop;
 
   @include phone {
     padding: 0;
-
-    .disclaimer {
-      text-align: center;
-    }
   }
-
   .tablet-up,
   .phone {
     width: 100%;
     margin: auto;
+  }
+
+  .disclaimer {
+    text-align: center;
+  }
+
+  .size-guide-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid black;
+
+    @include phone {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .size-guide-title {
+    text-align: center;
+    margin-bottom: 30px;
   }
 
   .phone {
@@ -49,12 +69,15 @@
     }
 
     th {
-      border-bottom: 1px solid black;
+      &.body1 {
+        text-align: left;
+      }
     }
 
     td,
     th {
-      padding: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid $color-grey-3;
 
       &:not(:first-child) {
         text-align: center;

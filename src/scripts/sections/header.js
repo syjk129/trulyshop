@@ -17,6 +17,11 @@ $(document).ready(() => {
     toggleSidebar("menu-cart");
   }
 
+  const cartButtonMobile = document.getElementById("header-cart-mobile");
+  cartButtonMobile.onclick = () => {
+    toggleSidebar("menu-cart");
+  }
+
   const menuButton = document.getElementById("header-menu-btn");
   menuButton.onclick = () => {
     toggleSidebar("menu-nav");
