@@ -63,6 +63,23 @@
 
     display: flex;
 
+    .tablet-up {
+      display: flex;
+      align-items: center;
+
+      a {
+        margin-right: 30px;
+      }
+
+      .body2 {
+        cursor: pointer;
+      }
+
+      .black {
+        color: black;
+      }
+    }
+
     .cart-icon {
       position: relative;
 

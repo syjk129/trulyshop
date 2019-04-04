@@ -14,10 +14,10 @@
   }
 
   .ratio-image {
-    margin-bottom: 50px;
+    margin: 50px 0;
 
     @include phone {
-      margin-bottom: 20px;
+      margin: 20px 0;
     }
   }
 
@@ -52,6 +52,7 @@
   .body1 {
     margin-bottom: 20px;
     font-weight: $font-weight-regular;
+    line-height: $line-height-3;
 
     &.heading {
       margin-bottom: 60px;
