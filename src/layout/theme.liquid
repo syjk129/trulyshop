@@ -7,7 +7,11 @@
   <meta name="theme-color" content="">
   <link rel="canonical" href="{{ canonical_url }}">
   <link href="https://s3.us-east-2.amazonaws.com/thetrulystore/fonts/fonts_campton.css" rel="stylesheet" type="text/CSS">
-  <title>TRULY | Fashion-forward collections co-created by women, for women.</title>
+  {%- if settings.favicon != blank -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+  {%- endif -%} 
+
+  <title>TRULY</title>
 
   <meta name="description" content="">
 
