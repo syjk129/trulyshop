@@ -3,7 +3,7 @@
     <div class="callout sidebar-header">{{ 'customer.my_account' | t }}</div>
     <a id="sidebar-account-link" class="child-link {% if request.path == '/account' %}selected{% endif %}" href="/account">{{ 'customer.order_history' | t }}</a>
     <a class="child-link {% if request.path == '/account/addresses' %}selected{% endif %}" href="/account/addresses">{{ 'customer.saved_addresses' | t }}</a>
-    <a id="sidebar-share-link" class="child-link" href="/account?share=1">{{ 'customer.invite_friends' | t }}</a>
+    {% comment %} <a id="sidebar-share-link" class="child-link" href="/account?share=1">{{ 'customer.invite_friends' | t }}</a> {% endcomment %}
     <a class="child-link" href="/account/logout">{{ 'customer.log_out' | t }}</a>
   </div>
 </nav>
