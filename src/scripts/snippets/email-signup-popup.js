@@ -70,7 +70,7 @@ function emailSignupPopupBelowFooter() {
     emailSignupPopup.style.position = "absolute";
   }
 
-  if (document.documentElement.scrollTop + window.innerHeight < footer.getBoundingClientRect().top) {
+  if (document.documentElement.scrollTop + window.innerHeight < footer.getBoundingClientRect().top - emailSignupPopup.getBoundingClientRect().height) {
     emailSignupPopup.style.bottom = 0;
     emailSignupPopup.style.position = "fixed";
   }
