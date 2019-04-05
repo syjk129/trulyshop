@@ -11,7 +11,6 @@ $(document).ready(() => {
     dismissEmailSignupPopup();
   }
 
-  console.log(getCookie("emailSubscribedFromSignupPopup") != "true");
   if (!sessionStorage["dismissEmailSignupPopup"] && getCookie("emailSubscribedFromSignupPopup") != "true") {
     setTimeout(() => {
       emailSignupPopup.style.right = "0px";
@@ -59,6 +58,7 @@ function dismissEmailSignupPopup() {
   const emailSignupPopup = document.getElementById("email-signup-popup");
   emailSignupPopup.style.right = `-${emailSignupPopup.getBoundingClientRect().width}px`;
   sessionStorage["dismissEmailSignupPopup"] = true;
+  document.removeEventListener("scroll", emailSignupPopupBelowFooter);
 }
 
 function emailSignupPopupBelowFooter() {
@@ -68,7 +68,9 @@ function emailSignupPopupBelowFooter() {
   if (emailSignupPopup.getBoundingClientRect().top + emailSignupPopup.getBoundingClientRect().height >= footer.getBoundingClientRect().top) {
     emailSignupPopup.style.bottom = `${footer.getBoundingClientRect().height}px`;
     emailSignupPopup.style.position = "absolute";
-  } else {
+  }
+
+  if (document.documentElement.scrollTop + window.innerHeight < footer.getBoundingClientRect().top) {
     emailSignupPopup.style.bottom = 0;
     emailSignupPopup.style.position = "fixed";
   }
