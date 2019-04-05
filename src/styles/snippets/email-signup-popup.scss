@@ -16,6 +16,10 @@
     padding: 35px $page-padding-mobile;
   }
 
+  .email-signup-popup-error {
+    margin-top: 20px;
+  }
+
   .close {
     position: absolute;
     right: 30px;
@@ -48,7 +52,6 @@
       align-items: unset;
 
       .email-signup-input {
-        margin-bottom: 20px;
         width: 100%;
         text-align: center;
       }
