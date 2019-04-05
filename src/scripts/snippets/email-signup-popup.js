@@ -11,10 +11,10 @@ $(document).ready(() => {
     dismissEmailSignupPopup();
   }
 
-  console.log(getCookie("emailSubscribedFromSignupPopup") != "true");
   if (!sessionStorage["dismissEmailSignupPopup"] && getCookie("emailSubscribedFromSignupPopup") != "true") {
     setTimeout(() => {
       emailSignupPopup.style.right = "0px";
+      document.addEventListener("scroll", emailSignupPopupBelowFooter);
     }, 4000);
   }
 
@@ -58,4 +58,20 @@ function dismissEmailSignupPopup() {
   const emailSignupPopup = document.getElementById("email-signup-popup");
   emailSignupPopup.style.right = `-${emailSignupPopup.getBoundingClientRect().width}px`;
   sessionStorage["dismissEmailSignupPopup"] = true;
+  document.removeEventListener("scroll", emailSignupPopupBelowFooter);
+}
+
+function emailSignupPopupBelowFooter() {
+  const emailSignupPopup = document.getElementById("email-signup-popup");
+  const footer = document.getElementById("footer");
+
+  if (emailSignupPopup.getBoundingClientRect().top + emailSignupPopup.getBoundingClientRect().height >= footer.getBoundingClientRect().top) {
+    emailSignupPopup.style.bottom = `${footer.getBoundingClientRect().height}px`;
+    emailSignupPopup.style.position = "absolute";
+  }
+
+  if (document.documentElement.scrollTop + window.innerHeight < footer.getBoundingClientRect().top - emailSignupPopup.getBoundingClientRect().height) {
+    emailSignupPopup.style.bottom = 0;
+    emailSignupPopup.style.position = "fixed";
+  }
 }

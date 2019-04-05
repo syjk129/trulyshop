@@ -37,12 +37,12 @@
         {{ content_for_layout }}
       </div>
     </div>
-    {% include 'email-signup-popup' %}
     {% if template contains 'index' %}
       {% section "our-values" %}
       {% section "featured-instagram" %}
     {% endif %}
   </div>
+  {% include 'email-signup-popup' %}
   {% section "footer" %}
 </body>
 </html>
