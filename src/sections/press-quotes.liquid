@@ -2,12 +2,21 @@
   <div class="callout">{{ section.settings.press_title_text }}</div>
   <div class="quote">
     {% if section.settings.press_1_text != "" %}
-      <a class="no-underline" href="{{ section.settings.press_1_url }}">
-        <h2 data-quote="{{ section.settings.press_1_text }}">“{{ section.settings.press_1_text }}”</h3>
+      <a class="no-underline"
+        href="{{ section.settings.press_1_url }}"
+        target="_blank"
+        data-quote="{{ section.settings.press_1_text }}">
+        <h2 class="tablet-up">“ {{ section.settings.press_1_text }} ”</h3>
+        <div class="body1 phone">“ {{ section.settings.press_1_text }} ”</div>
       </a>
     {% endif %}
     {% if section.settings.press_2_text != "" %}
-      <h2 class="hide" data-quote="{{ section.settings.press_2_text }}">”{{ section.settings.press_2_text }}”</h3>
+      <a class="hide no-underline"
+        href="{{ section.settings.press_1_url }}"
+        target="_blank"
+        data-quote="{{ section.settings.press_2_text }}">
+        <h2>” {{ section.settings.press_2_text }} ”</h3>
+      </a>
     {% endif %}
   </div>
   <div class="press-logos">
