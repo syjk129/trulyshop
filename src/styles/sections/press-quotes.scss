@@ -1,0 +1,30 @@
+@import "../variables";
+
+.press-quotes {
+  max-width: 750px;
+  margin: auto;
+  margin-top: 100px;
+  text-align: center;
+
+  .callout {
+    margin-bottom: 50px;
+  }
+
+  .quote {
+    margin-bottom: 50px;
+
+    h2 {
+      font-weight: $font-weight-semibold;
+    }
+  }
+
+  .press-logos {
+    display: flex;
+    justify-content: center;
+
+    img {
+      height: 50px;
+      object-fit: contain;
+    }
+  }
+}

@@ -1,18 +1,21 @@
 <section class="press-quotes">
+  <div class="callout">{{ section.settings.press_title_text }}</div>
   <div class="quote">
-    {% if press_1_text %}
-      <h2 data-quote="{{ press_1_text }}">{{ press_1_text }}</h3>
+    {% if section.settings.press_1_text != "" %}
+      <a class="no-underline" href="{{ section.settings.press_1_url }}">
+        <h2 data-quote="{{ section.settings.press_1_text }}">“{{ section.settings.press_1_text }}”</h3>
+      </a>
     {% endif %}
-    {% if press_2_text %}
-      <h2 class="hide" data-quote="{{ press_2_text }}">{{ press_2_text }}</h3>
+    {% if section.settings.press_2_text != "" %}
+      <h2 class="hide" data-quote="{{ section.settings.press_2_text }}">”{{ section.settings.press_2_text }}”</h3>
     {% endif %}
   </div>
   <div class="press-logos">
-    {% if press_1_quote %}
-      <img class="press-logo" data-quote="{{ press_1_text }}"src="{{ press_1_logo | img_url: '300x300' }}">
+    {% if section.settings.press_1_text != "" %}
+      <img class="press-logo" data-quote="{{ section.settings.press_1_text }}" src="{{ section.settings.press_1_logo | img_url: '300x300' }}">
     {% endif %}
-    {% if press_2_quote %}
-      <img class="press-logo" data-quote="{{ press_2_text }}" src="{{ press_2_logo | img_url: '300x300' }}">
+    {% if section.settings.press_2_text != "" %}
+      <img class="press-logo" data-quote="{{ section.settings.press_2_text }}" src="{{ section.settings.press_2_logo | img_url: '300x300' }}">
     {% endif %}
   </div>
 </section>
@@ -22,6 +25,12 @@
     "name": "Press Quotes",
     "class": "full-width",
     "settings": [
+      {
+        "type": "text",
+        "id": "press_title_text",
+        "label": "Press Title Text",
+        "default": "What people are saying"
+      },
       {
         "type": "header",
         "content": "Quote 1"
@@ -35,6 +44,11 @@
         "type": "text",
         "id": "press_1_text",
         "label": "Quote Text"
+      },
+      {
+        "type": "text",
+        "id": "press_1_url",
+        "label": "Press Url"
       },
       {
         "type": "header",
