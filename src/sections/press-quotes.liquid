@@ -1,4 +1,4 @@
-<div class="press-quotes">
+<section class="press-quotes">
   <div class="quote">
     {% if press_1_text %}
       <h2 data-quote="{{ press_1_text }}">{{ press_1_text }}</h3>
@@ -15,7 +15,7 @@
       <img class="press-logo" data-quote="{{ press_2_text }}" src="{{ press_2_logo | img_url: 300x300 }}">
     {% endif %}
   </div>
-</div>
+</section>
 
 {% schema %}
   {
