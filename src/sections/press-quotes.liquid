@@ -1,0 +1,55 @@
+<div class="press-quotes">
+  <div class="quote">
+    {% if press_1_text %}
+      <h2 data-quote="{{ press_1_text }}">{{ press_1_text }}</h3>
+    {% endif %}
+    {% if press_2_text %}
+      <h2 class="hide" data-quote="{{ press_2_text }}">{{ press_2_text }}</h3>
+    {% endif %}
+  </div>
+  <div class="press-logos">
+    {% if press_1_quote %}
+      <img class="press-logo" data-quote="{{ press_1_text }}"src="{{ press_1_logo | img_url: 300x300 }}">
+    {% endif %}
+    {% if press_2_quote %}
+      <img class="press-logo" data-quote="{{ press_2_text }}" src="{{ press_2_logo | img_url: 300x300 }}">
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Press Quotes",
+    "class": "full-width",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Quote 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "press_1_logo",
+        "label": "Press Logo"
+      },
+      {
+        "type": "text",
+        "id": "press_1_text",
+        "label": "Quote Text"
+      },
+      {
+        "type": "header",
+        "content": "Quote 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "press_2_logo",
+        "label": "Press Logo"
+      },
+      {
+        "type": "text",
+        "id": "press_2_text",
+        "label": "Quote Text"
+      },
+    ]
+  }
+{% endschema %}
