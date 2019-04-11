@@ -147,11 +147,17 @@ function updateColorSwatch(productDetails) {
     }
     
     swatch.onclick = (evt) => {
+      updateColorLabel(evt.target.value, productDetails);
       updateSizeSwatch(productDetails);
       updateSubmitButton(evt.target.value, currentSize, productDetails);
       updateProductImages(evt.target.value);
     }
   }
+}
+
+function updateColorLabel(color, productDetails) {
+  const colorLabel = productDetails.getElementsByClassName("select-color-label");
+  colorLabel[0].innerHTML = color;
 }
 
 function updateSizeSwatch(productDetails) {
