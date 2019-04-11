@@ -48,5 +48,9 @@
     box-sizing: border-box;
     padding: 50px;
     text-align: center;
+
+    @include phone {
+      padding: 30px;
+    }
   }
 }
