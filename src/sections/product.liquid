@@ -129,6 +129,7 @@
         <div class="callout">{{ product.vendor }}</div>
         <div class="body1 title">{{ product.title }}</div>
         <div class="body1 price">{{ product.price | money }}</div>
+        <div class="body1 price">{{ product.compare_at_price_max | money }}</div>
         <div class="divider tablet-up"></div>
         <form action="/cart/add" method="post" enctype="multipart/form-data">
           <div class="js">

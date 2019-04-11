@@ -1,0 +1,46 @@
+@import "../variables";
+
+.press-quotes {
+  max-width: 750px;
+  margin: auto;
+  margin-top: 100px;
+  text-align: center;
+
+  @include phone {
+    margin-top: 50px;
+  }
+
+  .callout {
+    margin-bottom: 50px;
+
+    @include phone {
+      margin-bottom: 30px;
+    }
+  }
+
+  .quote {
+    margin-bottom: 50px;
+
+    @include phone {
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-weight: $font-weight-semibold;
+    }
+  }
+
+  .press-logos {
+    display: flex;
+    justify-content: center;
+
+    img {
+      height: 50px;
+      object-fit: contain;
+
+      @include phone {
+        height: 25px;
+      }
+    }
+  }
+}

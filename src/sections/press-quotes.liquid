@@ -1,0 +1,79 @@
+<section class="press-quotes">
+  <div class="callout">{{ section.settings.press_title_text }}</div>
+  <div class="quote">
+    {% if section.settings.press_1_text != "" %}
+      <a class="no-underline"
+        href="{{ section.settings.press_1_url }}"
+        target="_blank"
+        data-quote="{{ section.settings.press_1_text }}">
+        <h2 class="tablet-up">“ {{ section.settings.press_1_text }} ”</h3>
+        <div class="body1 phone">“ {{ section.settings.press_1_text }} ”</div>
+      </a>
+    {% endif %}
+    {% if section.settings.press_2_text != "" %}
+      <a class="hide no-underline"
+        href="{{ section.settings.press_1_url }}"
+        target="_blank"
+        data-quote="{{ section.settings.press_2_text }}">
+        <h2 class="tablet-up">“ {{ section.settings.press_2_text }} ”</h3>
+        <div class="body1 phone">“ {{ section.settings.press_2_text }} ”</div>
+      </a>
+    {% endif %}
+  </div>
+  <div class="press-logos">
+    {% if section.settings.press_1_text != "" %}
+      <img class="press-logo" data-quote="{{ section.settings.press_1_text }}" src="{{ section.settings.press_1_logo | img_url: '300x300' }}">
+    {% endif %}
+    {% if section.settings.press_2_text != "" %}
+      <img class="press-logo" data-quote="{{ section.settings.press_2_text }}" src="{{ section.settings.press_2_logo | img_url: '300x300' }}">
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Press Quotes",
+    "class": "full-width",
+    "settings": [
+      {
+        "type": "text",
+        "id": "press_title_text",
+        "label": "Press Title Text",
+        "default": "What people are saying"
+      },
+      {
+        "type": "header",
+        "content": "Quote 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "press_1_logo",
+        "label": "Press Logo"
+      },
+      {
+        "type": "text",
+        "id": "press_1_text",
+        "label": "Quote Text"
+      },
+      {
+        "type": "text",
+        "id": "press_1_url",
+        "label": "Press Url"
+      },
+      {
+        "type": "header",
+        "content": "Quote 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "press_2_logo",
+        "label": "Press Logo"
+      },
+      {
+        "type": "text",
+        "id": "press_2_text",
+        "label": "Quote Text"
+      }
+    ]
+  }
+{% endschema %}
