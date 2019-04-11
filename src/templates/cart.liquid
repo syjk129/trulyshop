@@ -5,8 +5,8 @@
       <a class="btn large outline" href="/">{{ 'cart.keep_shopping' | t }}</a>
     </div>
   {% else %}
-    <h3 class="item-table-header tablet-up">{{ 'cart.shopping_cart' | t }}</h3>
-    <h3 class="phone">{{ 'cart.shopping_cart' | t }}</h3>
+    <h3 class="item-table-header tablet-up">{{ 'cart.your_bag' | t }}</h3>
+    <h3 class="phone">{{ 'cart.your_bag' | t }}</h3>
     <form action="/cart" method="post" novalidate>
       <table class="cart-table item-table tablet-up">
         <tr>
@@ -108,7 +108,7 @@
         {% endfor %}
       </div>
       <div class="update-subtotal">
-        <input class="body3" type="submit" name="update" value="{{ 'cart.update_cart' | t }}">
+        <input class="body3" type="submit" name="update" value="{{ 'cart.update_bag' | t }}">
         <div>
           <span class="body2">Subtotal</span>
           <span class="body1">{{ cart.total_price | money }}</span>
