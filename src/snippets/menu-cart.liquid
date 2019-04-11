@@ -42,7 +42,7 @@
               </div>
               {% if size_index != -1 %}
                 <div class="body3 variant">
-                  Size: {{ item.variant.options[size_index] | capitalize }}
+                  Size: {{ item.variant.options[size_index] | upcase }}
                 </div>
               {% endif %}
               {% if color_index != -1 %}

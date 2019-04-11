@@ -40,7 +40,7 @@
               <div class="body2">{{ item.product.title }}</div>
               {% if size_index != -1 %}
                 <div class="body3 grey">
-                  Size: {{ item.variant.options[size_index] | capitalize }}
+                  Size: {{ item.variant.options[size_index] | upcase }}
                 </div>
               {% endif %}
               {% if color_index != -1 %}
@@ -83,7 +83,7 @@
           <div class="body2">{{ item.price | money }}</div>
           {% if size_index != -1 %}
             <div class="body3 grey variant">
-              Size: {{ item.variant.options[size_index] | capitalize }}
+              Size: {{ item.variant.options[size_index] | upcase }}
             </div>
           {% endif %}
           {% if color_index != -1 %}
